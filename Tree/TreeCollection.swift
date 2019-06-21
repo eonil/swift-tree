@@ -19,7 +19,7 @@
 /// Iterating over `TreeCollection` doesn't have to be sorted.
 /// You can imagine `Swift.Set` or `Swift.Dictionary`.
 ///
-protocol TreeCollection: Collection {
+public protocol TreeCollection: Collection {
     /// A read-only sorted view of all paths in this collection.
     /// Paths are sorted in Depth-First-Search order.
     ///
@@ -41,11 +41,11 @@ protocol TreeCollection: Collection {
 //    func path(at i: Index) -> Path
 }
 
-protocol MutableTreeCollection: MutableCollection, TreeCollection {
+public protocol MutableTreeCollection: MutableCollection, TreeCollection {
     subscript(_ p: Path) -> Element { get set }
 }
 
-protocol NodeReplaceableTreeCollection: TreeCollection {
+public protocol NodeReplaceableTreeCollection: TreeCollection {
     init()
     mutating func replaceSubtree<S>(at p: Path, with s: S) where S: TreeCollection, S.Element == Element
 }
