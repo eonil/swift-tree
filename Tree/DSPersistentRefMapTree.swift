@@ -15,7 +15,9 @@ import SBTL
 /// This is reference mapping based and likely to provide better data locality
 /// than naive recursive tree structure.
 ///
-struct DSPersistentRefMapTree<State>: DSRefMapTree {
+struct DSPersistentRefMapTree<State>:
+DSRefMapTree,
+RandomAccessCollection {
     typealias StateMap = BTLMap<Identity,State>
     typealias ChildrenMap = BTLMap<Identity,Children>
     typealias Children = BTL<Identity>
@@ -47,7 +49,9 @@ struct DSPersistentRefMapTree<State>: DSRefMapTree {
         set(v) { childrenMap[id] = v }
     }
 }
-extension DSPersistentRefMapTree: MutableCollection {
+
+// MARK: Collection
+extension DSPersistentRefMapTree {
     typealias Index = StateMap.Index
     var rootIndex: Index {
         return stateMap.keys.firstIndex(of: rootID!)!
@@ -60,9 +64,6 @@ extension DSPersistentRefMapTree: MutableCollection {
     }
     var endIndex: Index {
         return stateMap.endIndex
-    }
-    func index(after i: Index) -> Index {
-        return stateMap.index(after: i)
     }
     subscript(_ i: Index) -> State {
         get {
@@ -108,6 +109,7 @@ extension DSPersistentRefMapTree {
             setChildren(of: id, as: [])
         }
     }
+    /// This removes all subtrees recursively
     mutating func remove(at p: IndexPath) {
         precondition(rootID != nil, "Path is out of range.")
         switch p.count {

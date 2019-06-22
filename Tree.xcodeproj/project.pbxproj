@@ -10,12 +10,13 @@
 		4558191822BCB57E00B07175 /* DSCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191722BCB57E00B07175 /* DSCursor.swift */; };
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
 		4558195822BCF8E600B07175 /* DSRefMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558195722BCF8E600B07175 /* DSRefMapTree.swift */; };
-		458522B422BC9A6600C367E0 /* PDTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B322BC9A6600C367E0 /* PDTree.swift */; };
-		458522B622BC9B6E00C367E0 /* TreeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* TreeCollection.swift */; };
+		458522B422BC9A6600C367E0 /* PersistentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B322BC9A6600C367E0 /* PersistentTree.swift */; };
+		458522B622BC9B6E00C367E0 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
 		458522B922BCA40D00C367E0 /* DSPersistentRefMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B822BCA40D00C367E0 /* DSPersistentRefMapTree.swift */; };
 		458522BB22BCA80E00C367E0 /* DSIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522BA22BCA80E00C367E0 /* DSIdentity.swift */; };
-		45A12CC622BE2A4D004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12CC522BE2A4D004DFDAF /* Tree.swift */; };
 		45A12CC822BE2E76004DFDAF /* SubtreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */; };
+		45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558196022BCF98700B07175 /* libSBTL.a */; };
+		45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558194422BCF71200B07175 /* libHAMT.a */; };
 		45CE398F22BC6576007205EE /* TreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* TreeTest.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,20 @@
 			remoteGlobalIDString = 45B81C7922B77CD200306395;
 			remoteInfo = SBTL;
 		};
+		45A12D0722BE74D9004DFDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 45B81C7922B77CD200306395;
+			remoteInfo = SBTL;
+		};
+		45A12D0922BE74D9004DFDAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 456B655C2294EA680063FCB5;
+			remoteInfo = "HAMT-macOS";
+		};
 		45CE399222BC6576007205EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4591BA7F22BC5BA40052039C /* Project object */;
@@ -134,8 +149,8 @@
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		458522AE22BC867A00C367E0 /* MapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTree.swift; sourceTree = "<group>"; };
-		458522B322BC9A6600C367E0 /* PDTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDTree.swift; sourceTree = "<group>"; };
-		458522B522BC9B6E00C367E0 /* TreeCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeCollection.swift; sourceTree = "<group>"; };
+		458522B322BC9A6600C367E0 /* PersistentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentTree.swift; sourceTree = "<group>"; };
+		458522B522BC9B6E00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		458522B722BCA1E600C367E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		458522B822BCA40D00C367E0 /* DSPersistentRefMapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSPersistentRefMapTree.swift; sourceTree = "<group>"; };
 		458522BA22BCA80E00C367E0 /* DSIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSIdentity.swift; sourceTree = "<group>"; };
@@ -144,7 +159,6 @@
 		4591BA9722BC5BC50052039C /* MutableTreeProtocol.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableTreeProtocol.extension.swift; sourceTree = "<group>"; };
 		4591BA9822BC5BC50052039C /* IndexPath.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPath.extension.swift; sourceTree = "<group>"; };
 		4591BA9F22BC5C040052039C /* TreeForwardIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeForwardIterator.swift; sourceTree = "<group>"; };
-		45A12CC522BE2A4D004DFDAF /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeProtocol.swift; sourceTree = "<group>"; };
 		45CE398622BC6182007205EE /* Tree.Index==TreeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tree.Index==TreeIndex.swift"; sourceTree = "<group>"; };
 		45CE398C22BC6576007205EE /* TreeTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */,
+				45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */,
 				45CE399122BC6576007205EE /* libTree.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +240,7 @@
 				4591BA8922BC5BA40052039C /* Tree */,
 				45CE398D22BC6576007205EE /* TreeTest */,
 				4591BA8822BC5BA40052039C /* Products */,
+				45A12D0522BE74D2004DFDAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,16 +257,22 @@
 			isa = PBXGroup;
 			children = (
 				458522B222BC9A5100C367E0 /* Deprecated */,
-				458522B522BC9B6E00C367E0 /* TreeCollection.swift */,
+				458522B522BC9B6E00C367E0 /* Tree.swift */,
 				45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */,
-				45A12CC522BE2A4D004DFDAF /* Tree.swift */,
-				458522B322BC9A6600C367E0 /* PDTree.swift */,
+				458522B322BC9A6600C367E0 /* PersistentTree.swift */,
 				4558191722BCB57E00B07175 /* DSCursor.swift */,
 				458522BA22BCA80E00C367E0 /* DSIdentity.swift */,
 				4558195722BCF8E600B07175 /* DSRefMapTree.swift */,
 				458522B822BCA40D00C367E0 /* DSPersistentRefMapTree.swift */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		45A12D0522BE74D2004DFDAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		45CE398D22BC6576007205EE /* TreeTest */ = {
@@ -305,6 +328,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				45A12D0822BE74D9004DFDAF /* PBXTargetDependency */,
+				45A12D0A22BE74D9004DFDAF /* PBXTargetDependency */,
 				45CE399322BC6576007205EE /* PBXTargetDependency */,
 			);
 			name = TreeTest;
@@ -455,13 +480,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A12CC622BE2A4D004DFDAF /* Tree.swift in Sources */,
 				458522BB22BCA80E00C367E0 /* DSIdentity.swift in Sources */,
 				45A12CC822BE2E76004DFDAF /* SubtreeProtocol.swift in Sources */,
 				4558191822BCB57E00B07175 /* DSCursor.swift in Sources */,
-				458522B422BC9A6600C367E0 /* PDTree.swift in Sources */,
+				458522B422BC9A6600C367E0 /* PersistentTree.swift in Sources */,
 				458522B922BCA40D00C367E0 /* DSPersistentRefMapTree.swift in Sources */,
-				458522B622BC9B6E00C367E0 /* TreeCollection.swift in Sources */,
+				458522B622BC9B6E00C367E0 /* Tree.swift in Sources */,
 				4558195822BCF8E600B07175 /* DSRefMapTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,6 +511,16 @@
 			isa = PBXTargetDependency;
 			name = SBTL;
 			targetProxy = 4558196522BCF98D00B07175 /* PBXContainerItemProxy */;
+		};
+		45A12D0822BE74D9004DFDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SBTL;
+			targetProxy = 45A12D0722BE74D9004DFDAF /* PBXContainerItemProxy */;
+		};
+		45A12D0A22BE74D9004DFDAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "HAMT-macOS";
+			targetProxy = 45A12D0922BE74D9004DFDAF /* PBXContainerItemProxy */;
 		};
 		45CE399322BC6576007205EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

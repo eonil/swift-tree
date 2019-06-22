@@ -2,14 +2,103 @@
 //  Tree.swift
 //  Tree
 //
-//  Created by Henry on 2019/06/22.
+//  Created by Henry on 2019/06/21.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-/// Default implementation of ephemeral tree.
+/// A collection that oganizes elements in tree-shape.
 ///
-/// - TODO:
-///     Currently, this is just an alias to persistent tree.
-///     We need to implement actually ephemeral tree if needed.
+/// Root-Less
+/// ---------
+/// `Tree` can be empty. Empty state have no root,
+/// and you need to insert root explicitly.
 ///
-public typealias Tree<Element> = PDTree<Element>
+/// Path Base Access
+/// --------------
+/// You can access element using paths.
+/// You have to use correct paths when you  insert/remove elements
+/// into/from trees. Paths are secondary indices just like keys in dictionaries.
+///
+/// Unsorted Iteration
+/// ------------------
+/// Iterating over `Tree` doesn't have to be sorted.
+/// You can imagine `Swift.Set` or `Swift.Dictionary`.
+/// Iterating over all elements takes *O(n)* time.
+///
+/// Sorted Path Iteration
+/// ---------------------
+/// You can iterate sorted paths from `paths` property.
+/// Iterating over sorted paths takes *O(n * log(n))* time.
+///
+/// Subtree Structure Query
+/// -----------------------
+/// You can query subtree structure recursively
+/// via `subtree` property.
+///
+public protocol Tree: Collection {
+    /// A read-only sorted view of all paths in this collection.
+    /// Paths are sorted in Depth-First-Search order.
+    ///
+    /// - Complexity:
+    ///     Iterating over all paths should take O(n * log(n)).
+    var paths: Paths { get }
+    associatedtype Paths: Collection where
+        Paths.Element == Path
+
+//    /// Subpaths to child nodes of a node at path.
+//    func subpaths(of p: Path) -> Subpaths
+//    associatedtype Subpaths: Collection where
+//        Subpaths.Element == Path
+
+    subscript(_ p: Path) -> Element { get }
+    associatedtype Path: Comparable
+
+    func index(for p: Path) -> Index
+//    func path(at i: Index) -> Path
+
+    /// Root subtree if available.
+    var subtree: Subtree? { get }
+    associatedtype Subtree: SubtreeProtocol where
+        Subtree.Index == Index,
+        Subtree.Path == Path,
+        Subtree.Element == Element
+}
+
+/// A tree that can update element without modifying topology.
+public protocol MutableTree: Tree {
+    subscript(_ p: Path) -> Element { get set }
+}
+
+/// A tree that can modify topology.
+public protocol NodeReplaceableTree: Tree {
+    init()
+    mutating func insertSubtree<S>(_ s: S, at p: Path) where S: Tree, S.Element == Element, S.Path == Path
+    mutating func replaceSubtree<S>(at p: Path, with s: S) where S: Tree, S.Element == Element, S.Path == Path
+    mutating func removeSubtree(at p: Path)
+//    mutating func replaceSubtree<S>(at i: Index, with s: S) where S: Tree, S.Element == Element
+}
+//extension NodeReplaceableTree {
+//    mutating func replaceSubtree<S>(for p: Path, with s: S) where S: Tree, S.Element == Element {
+//        let i = index(for: p)
+//        replaceSubtree(at: i, with: s)
+//    }
+//}
+
+//extension NodeReplaceableTree where
+//Path: RandomAccessCollection,
+//Path.Element: Comparable {
+//
+//    /// Replaces consecutive subtrees in tree collection.
+//    mutating func replaceSubtrees<C>(_ subrange: Range<Path.Element>, at p: Path, with c: C) where
+//        C: Collection, C.Element == Element
+//}
+//
+//import Foundation
+//extension NodeReplaceableTree where Path == IndexPath {
+//    mutating func replaceSubtree<S>(at p: Path, with s: S) where S: Tree, S.Element == Element {
+//        let i = p.last!
+//        let q = p.dropLast()
+//        let r = i..<(i+1)
+//        replaceSubtrees(r, at: q, with: s)
+//    }
+//}

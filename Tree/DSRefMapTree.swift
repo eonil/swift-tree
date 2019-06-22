@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DSRefMapTree: MutableCollection {
+protocol DSRefMapTree {
     associatedtype Identity: Hashable
     associatedtype State
     associatedtype IdentityCollection: RandomAccessCollection where
