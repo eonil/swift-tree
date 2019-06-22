@@ -10,17 +10,17 @@ import Foundation
 
 /// Any invalid path will be treated as end-index.
 struct DSCursor<Element>: Comparable {
-    var source: DSRefMapTree<Element>
+    var source: DSPersistentRefMapTree<Element>
     var pathStack = IndexPath()
     var identityStack = ArraySlice<DSIdentity>()
-    init(source s: DSRefMapTree<Element>, path p: IndexPath) {
+    init(source s: DSPersistentRefMapTree<Element>, path p: IndexPath) {
         source = s
         precondition(s.rootID != nil, "You cannot make cursor on empty source.")
         pathStack.append(p)
         identityStack.append(s.findIdentity(for: p, from: s.rootID!))
     }
     /// Creates cursor for end-index.
-    init(source s: DSRefMapTree<Element>) {
+    init(source s: DSPersistentRefMapTree<Element>) {
         source = s
     }
     var position: IndexPath {

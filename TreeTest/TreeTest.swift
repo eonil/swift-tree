@@ -12,7 +12,7 @@ import XCTest
 
 class TreeTest: XCTestCase {
     func testDFSIteration() {
-        typealias X = Tree<Int>
+        typealias X = PDTree<Int>
         var x = X()
         x.insert(11, at: [])
         x.insert(22, at: [0])
