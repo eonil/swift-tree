@@ -58,21 +58,6 @@ public protocol TreeCollection: Collection {
         Subtree.Path == Path,
         Subtree.Element == Element
 }
-/// An interface to query tree structure easy and quick.
-public protocol SubtreeProtocol {
-    var index: Index { get }
-    associatedtype Index
-
-    var path: Path { get }
-    associatedtype Path
-
-    var element: Element { get }
-    associatedtype Element
-
-    var subtrees: SubtreeCollection { get }
-    associatedtype SubtreeCollection: RandomAccessCollection where
-        SubtreeCollection.Element == Self
-}
 
 public protocol MutableTreeCollection: MutableCollection, TreeCollection {
     subscript(_ p: Path) -> Element { get set }

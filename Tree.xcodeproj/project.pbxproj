@@ -15,6 +15,7 @@
 		458522B922BCA40D00C367E0 /* DSPersistentRefMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B822BCA40D00C367E0 /* DSPersistentRefMapTree.swift */; };
 		458522BB22BCA80E00C367E0 /* DSIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522BA22BCA80E00C367E0 /* DSIdentity.swift */; };
 		45A12CC622BE2A4D004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12CC522BE2A4D004DFDAF /* Tree.swift */; };
+		45A12CC822BE2E76004DFDAF /* SubtreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */; };
 		45CE398F22BC6576007205EE /* TreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* TreeTest.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 /* End PBXBuildFile section */
@@ -144,6 +145,7 @@
 		4591BA9822BC5BC50052039C /* IndexPath.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexPath.extension.swift; sourceTree = "<group>"; };
 		4591BA9F22BC5C040052039C /* TreeForwardIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeForwardIterator.swift; sourceTree = "<group>"; };
 		45A12CC522BE2A4D004DFDAF /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeProtocol.swift; sourceTree = "<group>"; };
 		45CE398622BC6182007205EE /* Tree.Index==TreeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tree.Index==TreeIndex.swift"; sourceTree = "<group>"; };
 		45CE398C22BC6576007205EE /* TreeTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CE398E22BC6576007205EE /* TreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTest.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				458522B222BC9A5100C367E0 /* Deprecated */,
 				458522B522BC9B6E00C367E0 /* TreeCollection.swift */,
+				45A12CC722BE2E76004DFDAF /* SubtreeProtocol.swift */,
 				45A12CC522BE2A4D004DFDAF /* Tree.swift */,
 				458522B322BC9A6600C367E0 /* PDTree.swift */,
 				4558191722BCB57E00B07175 /* DSCursor.swift */,
@@ -454,6 +457,7 @@
 			files = (
 				45A12CC622BE2A4D004DFDAF /* Tree.swift in Sources */,
 				458522BB22BCA80E00C367E0 /* DSIdentity.swift in Sources */,
+				45A12CC822BE2E76004DFDAF /* SubtreeProtocol.swift in Sources */,
 				4558191822BCB57E00B07175 /* DSCursor.swift in Sources */,
 				458522B422BC9A6600C367E0 /* PDTree.swift in Sources */,
 				458522B922BCA40D00C367E0 /* DSPersistentRefMapTree.swift in Sources */,
