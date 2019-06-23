@@ -1,5 +1,5 @@
 //
-//  DSPersistentRefMapTree.swift
+//  ImplPersistentMapBasedTree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/21.
@@ -15,8 +15,8 @@ import SBTL
 /// This is reference mapping based and likely to provide better data locality
 /// than naive recursive tree structure.
 ///
-struct DSPersistentRefMapTree<State>:
-DSRefMapTree,
+struct ImplPersistentMapBasedTree<State>:
+ImplMapBasedTree,
 RandomAccessCollection {
     typealias StateMap = BTLMap<Identity,State>
     typealias ChildrenMap = BTLMap<Identity,Children>
@@ -26,8 +26,10 @@ RandomAccessCollection {
     private var stateMap = StateMap()
     private var childrenMap = ChildrenMap()
 
-    typealias Identity = DSIdentity
+    typealias Identity = ImplIdentity
     init() {}
+    /// - Complexity:
+    ///     O(log(n)).
     func state(of id: Identity) -> State {
         return stateMap[id]!
     }
@@ -51,7 +53,7 @@ RandomAccessCollection {
 }
 
 // MARK: Collection
-extension DSPersistentRefMapTree {
+extension ImplPersistentMapBasedTree {
     typealias Index = StateMap.Index
     var rootIndex: Index {
         return stateMap.keys.firstIndex(of: rootID!)!
@@ -75,7 +77,10 @@ extension DSPersistentRefMapTree {
         }
     }
 }
-extension DSPersistentRefMapTree {
+extension ImplPersistentMapBasedTree {
+    /// - Complexity:
+    ///     O(n * log(n)).
+    ///     Because maxiumu depth is n.
     func findIdentity(for p: IndexPath, from base: Identity) -> Identity {
         precondition(rootID != nil, "Path is out of range.")
         switch p.count {
@@ -84,47 +89,64 @@ extension DSPersistentRefMapTree {
         default:
             let i = p.first!
             let q = p.dropFirst()
-            let x = children(of: base)[i]
+            let x = children(of: base)[i] // O(log(n))
             return findIdentity(for: q, from: x)
         }
     }
+    /// - Complexity:
+    ///     O(log(n))
+    /// - Returns:
+    ///     Children identity list.
+    @discardableResult
+    mutating func insert(_ s: State, at i: Int, asChildOf pid: ImplIdentity) -> BTL<ImplIdentity> {
+        let id = Identity()
+        var pcids = children(of: pid)       // O(log(n))
+        pcids.insert(id, at: i)             // O(log(n)) because max child count is n, and insertion in B-Tree is log(n).
+        setChildren(of: pid, as: pcids)     // O(log(n))
+        setState(of: id, as: s)             // O(log(n))
+        setChildren(of: id, as: [])         // O(log(n))
+        return pcids
+    }
+    /// - Complexity:
+    ///     O(n * log(n)).
+    ///     Because maxiumum depth is n.
     mutating func insert(_ s: State, at p: IndexPath) {
         switch p.count {
         case 0:
             precondition(rootID == nil, "Path is out of range.")
             let id = Identity()
             rootID = id
-            setState(of: id, as: s)
-            setChildren(of: id, as: [])
+            setState(of: id, as: s) // O(log(n))
+            setChildren(of: id, as: []) // O(log(n))
         default:
             precondition(rootID != nil, "Path is out of range.")
-            let id = Identity()
             let i = p.last!
             let q = p.dropLast()
-            let pid = findIdentity(for: q)
-            var pcids = children(of: pid)
-            pcids.insert(id, at: i)
-            setChildren(of: pid, as: pcids)
-            setState(of: id, as: s)
-            setChildren(of: id, as: [])
+            let pid = findIdentity(for: q)      // O(depth * log(n))
+            insert(s, at: i, asChildOf: pid)    // O(log(n))
         }
     }
-    /// This removes all subtrees recursively
+    /// Removes all subtrees from path recursively.
+    /// - Complexity:
+    ///     O(n * log(n)).
+    ///     Because depth <= n.
     mutating func remove(at p: IndexPath) {
         precondition(rootID != nil, "Path is out of range.")
         switch p.count {
         case 0:
-            removeRecursively(rootID!)
+            removeRecursively(rootID!)          // O(n * log(n)).
         default:
-            let id = findIdentity(for: p)
-            removeRecursively(id)
+            let id = findIdentity(for: p)       // O(depth * log(n)).
+            removeRecursively(id)               // O(n * log(n)).
         }
     }
-    private mutating func removeRecursively(_ id: Identity) {
-        stateMap[id] = nil
+    /// - Complexity:
+    ///     O(n * log(n)).
+    mutating func removeRecursively(_ id: Identity) {
+        stateMap[id] = nil                      // O(log(n))
         for cid in childrenMap[id] ?? [] {
-            removeRecursively(cid)
-            childrenMap[id] = nil
+            removeRecursively(cid)              // O(n * log(n)) because maximum number of recursive operation is n.
+            childrenMap[id] = nil               // O(log(n))
         }
     }
 }

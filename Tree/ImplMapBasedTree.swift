@@ -1,5 +1,5 @@
 //
-//  DSRefMapTree.swift
+//  ImplMapBasedTree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol DSRefMapTree {
+protocol ImplMapBasedTree {
     associatedtype Identity: Hashable
     associatedtype State
     associatedtype IdentityCollection: RandomAccessCollection where
@@ -28,7 +28,7 @@ protocol DSRefMapTree {
     mutating func remove(at p: IndexPath)
 }
 
-extension DSRefMapTree {
+extension ImplMapBasedTree {
     func findIdentity(for p: IndexPath) -> Identity {
         return findIdentity(for: p, from: rootID!)
     }
