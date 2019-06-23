@@ -8,7 +8,14 @@
 
 import Foundation
 
-/// Any invalid path will be treated as end-index.
+/// Free directional tree walker.
+///
+/// - Complexity:
+///     O(n) to iterate over all elements in tree.
+///
+/// - Note:
+///     Any invalid path will be treated as end-index.
+///
 struct DSCursor<Element>: Comparable {
     var source: DSPersistentRefMapTree<Element>
     var pathStack = IndexPath()

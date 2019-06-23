@@ -6,9 +6,8 @@
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-import Foundation
-
-/// An interface to query tree structure easy and quick.
+/// An interface to query tree structure easily and quickly.
+///
 public protocol SubtreeProtocol {
     var index: Index { get }
     associatedtype Index

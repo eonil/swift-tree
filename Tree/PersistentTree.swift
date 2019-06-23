@@ -37,7 +37,7 @@ public extension PersistentTree {
     mutating func insertSubtree<S>(_ s: S, at p: IndexPath) where S : Tree, Element == S.Element, Path == S.Path {
         for p1 in s.paths {
             let p2 = p.appending(p1)
-            let e = s[p2]
+            let e = s.element(for: p)
             insert(e, at: p2)
         }
     }
@@ -177,11 +177,11 @@ public extension PersistentTree.Paths.Index {
 // MARK: Recursive Subtree Navigation
 public extension PersistentTree {
     /// Convenient view to navigate subtrees.
-    var subtree: Subtree? {
-        guard impl.rootID != nil else { return nil }
-        let id = impl.rootID!
-        let p = [] as IndexPath
-        return Subtree(impl: impl, id: id, px: p)
+    func subtree(at p: IndexPath) -> Subtree {
+        precondition(!impl.isEmpty, "Path is out of range.")
+        let id = impl.findIdentity(for: p, from: impl.rootID!)
+        let s = Subtree(impl: impl, id: id, px: p)
+        return s
     }
     struct Subtree: SubtreeProtocol {
         var impl: Impl
