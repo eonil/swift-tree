@@ -159,6 +159,9 @@ public extension OrderedTreeMap.Subtree {
     }
     var startIndex: Int { return subkeys.startIndex }
     var endIndex: Int { return subkeys.endIndex }
+    func index(for key: Key) -> Int? {
+        return subkeys.firstIndex(of: key)
+    }
     subscript(_ i: Int) -> Element {
         get {
             let ck = subkeys[i]
