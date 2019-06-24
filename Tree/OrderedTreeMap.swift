@@ -171,8 +171,11 @@ public extension OrderedTreeMap.Subtree {
     }
     func subtree(at i: Int) -> OrderedTreeMap.Subtree {
         let k = subkeys[i]
-        let cks = impl.linkageMap[k]!
-        return OrderedTreeMap.Subtree(impl: impl, key: k, subkeys: cks)
+        return subtree(for: k)!
+    }
+    func subtree(for key: Key) -> OrderedTreeMap.Subtree? {
+        guard let cks = impl.linkageMap[key] else { return nil }
+        return OrderedTreeMap.Subtree(impl: impl, key: key, subkeys: cks)
     }
     /// Gets value for a key.
     /// Search range is limited to direct (shallow) children of current subtree.
