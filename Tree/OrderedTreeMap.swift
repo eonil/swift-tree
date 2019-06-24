@@ -149,8 +149,8 @@ public extension OrderedTreeMap.Subtree {
         get { return impl.stateMap[key]! }
         set(v) { impl.setState(v, for: key) }
     }
-    var startIndex: Int { subkeys.startIndex }
-    var endIndex: Int { subkeys.endIndex }
+    var startIndex: Int { return subkeys.startIndex }
+    var endIndex: Int { return subkeys.endIndex }
     subscript(_ i: Int) -> Element {
         get {
             let ck = subkeys[i]
@@ -201,7 +201,7 @@ public extension OrderedTreeMap.Subtree {
 
 // MARK: BFS
 public extension OrderedTreeMap.Subtree {
-    var bfs: BFS { BFS(impl: self) }
+    var bfs: BFS { return BFS(impl: self) }
     struct BFS: Sequence {
         private(set) var impl: OrderedTreeMap.Subtree
     }
@@ -227,7 +227,7 @@ public extension OrderedTreeMap.Subtree.BFS.Iterator {
 
 // MARK: DFS
 public extension OrderedTreeMap.Subtree {
-    var dfs: DFS { DFS(impl: self) }
+    var dfs: DFS { return DFS(impl: self) }
     struct DFS: Sequence {
         private(set) var impl: OrderedTreeMap.Subtree
     }
