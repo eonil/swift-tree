@@ -122,6 +122,10 @@ public extension OrderedTreeMap {
         let cks = impl.linkageMap[impl.rootKey]!
         return Subtree(impl: impl, key: impl.rootKey, subkeys: cks)
     }
+    func subtree(for key: Key) -> Subtree? {
+        guard let cks = impl.linkageMap[key] else { return nil }
+        return Subtree(impl: impl, key: key, subkeys: cks)
+    }
     /// Convenient access to each subtree.
     struct Subtree: RandomAccessCollection {
         private(set) var impl: IMPL
@@ -159,6 +163,7 @@ public extension OrderedTreeMap.Subtree {
     }
     var startIndex: Int { return subkeys.startIndex }
     var endIndex: Int { return subkeys.endIndex }
+    /// Search range is limited to direct children.
     func index(for key: Key) -> Int? {
         return subkeys.firstIndex(of: key)
     }
@@ -176,9 +181,10 @@ public extension OrderedTreeMap.Subtree {
         let k = subkeys[i]
         return subtree(for: k)!
     }
+    /// Search range is limited to direct children.
     func subtree(for key: Key) -> OrderedTreeMap.Subtree? {
-        guard let cks = impl.linkageMap[key] else { return nil }
-        return OrderedTreeMap.Subtree(impl: impl, key: key, subkeys: cks)
+        guard subkeys.contains(key) else { return nil }
+        return tree.subtree(for: key)
     }
     /// Gets value for a key.
     /// Search range is limited to direct (shallow) children of current subtree.
