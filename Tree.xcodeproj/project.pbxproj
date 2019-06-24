@@ -11,8 +11,6 @@
 		4506A2BD22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BC22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift */; };
 		4506A2BF22C0ED9600B6476E /* OrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BE22C0ED9600B6476E /* OrderedTreeMapTest.swift */; };
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
-		45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558196022BCF98700B07175 /* libSBTL.a */; };
-		45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558194422BCF71200B07175 /* libHAMT.a */; };
 		45A12DDF22BFB88F004DFDAF /* OrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */; };
 		45A12DE122BFB927004DFDAF /* IMPLOrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */; };
 		45A12E8C22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */; };
@@ -27,117 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4558194322BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 456B655D2294EA680063FCB5;
-			remoteInfo = "HAMT-macOS";
-		};
-		4558194522BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 456B656A2294EA770063FCB5;
-			remoteInfo = "HAMT-iOS";
-		};
-		4558194722BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 456B65752294EA920063FCB5;
-			remoteInfo = "HAMT-tvOS";
-		};
-		4558194922BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 456B65962294EADE0063FCB5;
-			remoteInfo = PD4UnitTests;
-		};
-		4558194B22BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45DBBED322978C6500E80F33;
-			remoteInfo = PD5UnitTests;
-		};
-		4558194D22BCF71200B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 456B658B2294EACB0063FCB5;
-			remoteInfo = PerfTool;
-		};
-		4558194F22BCF71C00B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 456B655C2294EA680063FCB5;
-			remoteInfo = "HAMT-macOS";
-		};
-		4558195F22BCF98700B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45B81C7A22B77CD200306395;
-			remoteInfo = SBTL;
-		};
-		4558196122BCF98700B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45B81C9D22B77D2500306395;
-			remoteInfo = SBTLUnitTests;
-		};
-		4558196322BCF98700B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45B81C8822B77CE600306395;
-			remoteInfo = SBTLBenchmark;
-		};
-		4558196522BCF98D00B07175 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 45B81C7922B77CD200306395;
-			remoteInfo = SBTL;
-		};
-		45A12D0722BE74D9004DFDAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 45B81C7922B77CD200306395;
-			remoteInfo = SBTL;
-		};
-		45A12D0922BE74D9004DFDAF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 456B655C2294EA680063FCB5;
-			remoteInfo = "HAMT-macOS";
-		};
 		45CE399222BC6576007205EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4591BA7F22BC5BA40052039C /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4591BA8622BC5BA40052039C;
 			remoteInfo = Tree;
-		};
-		45D0633822BE269900CD9A08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 45DED57B22BD058000976D25;
-			remoteInfo = SBTLMapTest;
-		};
-		45D0633A22BE269900CD9A08 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 450B3F7822BD03710091D6BB;
-			remoteInfo = SBTLMapBenchmark;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -162,9 +55,7 @@
 		4558191922BCCCEF00B07175 /* SubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeTest.swift; sourceTree = "<group>"; };
 		4558191B22BCEA4100B07175 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4558191D22BCEAD300B07175 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		4558193A22BCF71100B07175 /* HAMT.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HAMT.xcodeproj; path = "../swift-hamt/HAMT.xcodeproj"; sourceTree = "<group>"; };
 		4558195722BCF8E600B07175 /* ImplMapBasedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplMapBasedTree.swift; sourceTree = "<group>"; };
-		4558195922BCF98700B07175 /* SBTL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SBTL.xcodeproj; path = "../swift-sbtl/SBTL.xcodeproj"; sourceTree = "<group>"; };
 		458522A622BC7F4400C367E0 /* TreePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -213,8 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */,
-				45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */,
 				45CE399122BC6576007205EE /* libTree.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,31 +111,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4558193B22BCF71100B07175 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4558194422BCF71200B07175 /* libHAMT.a */,
-				4558194622BCF71200B07175 /* libHAMT.a */,
-				4558194822BCF71200B07175 /* libHAMT.a */,
-				4558194A22BCF71200B07175 /* PD4UnitTests.xctest */,
-				4558194C22BCF71200B07175 /* PD5UnitTests.xctest */,
-				4558194E22BCF71200B07175 /* PerfTool */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		4558195A22BCF98700B07175 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4558196022BCF98700B07175 /* libSBTL.a */,
-				4558196222BCF98700B07175 /* SBTLTest.xctest */,
-				45D0633922BE269900CD9A08 /* SBTLMapTest.xctest */,
-				4558196422BCF98700B07175 /* SBTLBenchmark */,
-				45D0633B22BE269900CD9A08 /* SBTLMapBenchmark */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		458522B222BC9A5100C367E0 /* Deprecated */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,8 +134,6 @@
 				458522B722BCA1E600C367E0 /* README.md */,
 				4558191D22BCEAD300B07175 /* LICENSE.md */,
 				4558191B22BCEA4100B07175 /* Package.swift */,
-				4558195922BCF98700B07175 /* SBTL.xcodeproj */,
-				4558193A22BCF71100B07175 /* HAMT.xcodeproj */,
 				4591BA8922BC5BA40052039C /* Tree */,
 				45CE398D22BC6576007205EE /* TreeTest */,
 				458522B222BC9A5100C367E0 /* Deprecated */,
@@ -369,8 +231,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4558196622BCF98D00B07175 /* PBXTargetDependency */,
-				4558195022BCF71C00B07175 /* PBXTargetDependency */,
 			);
 			name = Tree;
 			packageProductDependencies = (
@@ -392,8 +252,6 @@
 			);
 			dependencies = (
 				45B5EBF622C0D8D2007E66B4 /* PBXTargetDependency */,
-				45A12D0822BE74D9004DFDAF /* PBXTargetDependency */,
-				45A12D0A22BE74D9004DFDAF /* PBXTargetDependency */,
 				45CE399322BC6576007205EE /* PBXTargetDependency */,
 			);
 			name = TreeTest;
@@ -436,16 +294,6 @@
 			);
 			productRefGroup = 4591BA8822BC5BA40052039C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4558193B22BCF71100B07175 /* Products */;
-					ProjectRef = 4558193A22BCF71100B07175 /* HAMT.xcodeproj */;
-				},
-				{
-					ProductGroup = 4558195A22BCF98700B07175 /* Products */;
-					ProjectRef = 4558195922BCF98700B07175 /* SBTL.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				4591BA8622BC5BA40052039C /* Tree */,
@@ -453,86 +301,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		4558194422BCF71200B07175 /* libHAMT.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libHAMT.a;
-			remoteRef = 4558194322BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558194622BCF71200B07175 /* libHAMT.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libHAMT.a;
-			remoteRef = 4558194522BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558194822BCF71200B07175 /* libHAMT.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libHAMT.a;
-			remoteRef = 4558194722BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558194A22BCF71200B07175 /* PD4UnitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PD4UnitTests.xctest;
-			remoteRef = 4558194922BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558194C22BCF71200B07175 /* PD5UnitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PD5UnitTests.xctest;
-			remoteRef = 4558194B22BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558194E22BCF71200B07175 /* PerfTool */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = PerfTool;
-			remoteRef = 4558194D22BCF71200B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558196022BCF98700B07175 /* libSBTL.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libSBTL.a;
-			remoteRef = 4558195F22BCF98700B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558196222BCF98700B07175 /* SBTLTest.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBTLTest.xctest;
-			remoteRef = 4558196122BCF98700B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		4558196422BCF98700B07175 /* SBTLBenchmark */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = SBTLBenchmark;
-			remoteRef = 4558196322BCF98700B07175 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		45D0633922BE269900CD9A08 /* SBTLMapTest.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SBTLMapTest.xctest;
-			remoteRef = 45D0633822BE269900CD9A08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		45D0633B22BE269900CD9A08 /* SBTLMapBenchmark */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = SBTLMapBenchmark;
-			remoteRef = 45D0633A22BE269900CD9A08 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		45CE398A22BC6576007205EE /* Resources */ = {
@@ -575,26 +343,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4558195022BCF71C00B07175 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "HAMT-macOS";
-			targetProxy = 4558194F22BCF71C00B07175 /* PBXContainerItemProxy */;
-		};
-		4558196622BCF98D00B07175 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SBTL;
-			targetProxy = 4558196522BCF98D00B07175 /* PBXContainerItemProxy */;
-		};
-		45A12D0822BE74D9004DFDAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SBTL;
-			targetProxy = 45A12D0722BE74D9004DFDAF /* PBXContainerItemProxy */;
-		};
-		45A12D0A22BE74D9004DFDAF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "HAMT-macOS";
-			targetProxy = 45A12D0922BE74D9004DFDAF /* PBXContainerItemProxy */;
-		};
 		45B5EBF622C0D8D2007E66B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 45B5EBF522C0D8D2007E66B4 /* BTree */;
