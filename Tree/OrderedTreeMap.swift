@@ -40,8 +40,9 @@ public extension OrderedTreeMap {
         guard let i = impl.stateMap.index(forKey: key) else { return nil }
         return OrderedTreeMap.Index(impl: i)
     }
-    subscript(_ key: Key) -> Value? {
-        return impl.stateMap[key]
+    subscript(_ key: Key) -> Value {
+        get { return impl.stateMap[key]! }
+        set(v) { impl.setState(v, for: key) }
     }
 }
 
@@ -188,8 +189,15 @@ public extension OrderedTreeMap.Subtree {
     }
     /// Gets value for a key.
     /// Search range is limited to direct (shallow) children of current subtree.
-    subscript(_ k: Key) -> Value? {
-        return subkeys.contains(k) ? impl.stateMap[k] : nil
+    subscript(_ k: Key) -> Value {
+        get {
+            precondition(subkeys.contains(k), "The key is not a direct child of this node.")
+            return impl.stateMap[k]!
+        }
+        set(v) {
+            precondition(subkeys.contains(k), "The key is not a direct child of this node.")
+            impl.setState(v, for: k)
+        }
     }
     /// Replaces subtrees in range with new subtrees recursively.
     mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == OrderedTreeMap.Subtree {
