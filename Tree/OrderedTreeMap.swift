@@ -36,6 +36,10 @@ public struct OrderedTreeMap<Key,Value>: BidirectionalCollection where Key:Compa
 }
 
 public extension OrderedTreeMap {
+    func index(for key: Key) -> Index? {
+        guard let i = impl.stateMap.index(forKey: key) else { return nil }
+        return OrderedTreeMap.Index(impl: i)
+    }
     subscript(_ key: Key) -> Value? {
         return impl.stateMap[key]
     }
@@ -123,6 +127,10 @@ public extension OrderedTreeMap {
         private(set) var impl: IMPL
         private(set) var key: Key
         private(set) var subkeys: IMPL.Children
+        var value: Value {
+            get { return impl.stateMap[key]! }
+            set(v) { impl.setState(v, for: key) }
+        }
     }
 }
 public extension OrderedTreeMap.Subtree {
@@ -145,9 +153,9 @@ public extension OrderedTreeMap.Subtree {
     var tree: OrderedTreeMap {
         return OrderedTreeMap(impl: impl)
     }
-    var value: Value {
-        get { return impl.stateMap[key]! }
-        set(v) { impl.setState(v, for: key) }
+    var index: OrderedTreeMap.Index? {
+        guard let i = impl.stateMap.index(forKey: key) else { return nil }
+        return OrderedTreeMap.Index(impl: i)
     }
     var startIndex: Int { return subkeys.startIndex }
     var endIndex: Int { return subkeys.endIndex }
