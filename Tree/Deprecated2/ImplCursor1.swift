@@ -16,6 +16,7 @@ import Foundation
 /// - Note:
 ///     Any invalid path will be treated as end-index.
 ///
+@available(*,deprecated: 0)
 struct ImplCursor1<Element>: Comparable {
     var source: ImplPersistentMapBasedTree<Element>
     var pathStack = IndexPath()
@@ -79,6 +80,14 @@ struct ImplCursor1<Element>: Comparable {
     ///     O(log(n)).
     var nextDFS: ImplCursor1? {
         return child(at: 0) ?? nextSibling ?? parent?.nextSibling
+    }
+    func nextDFS(isIncluded: (IndexPath) -> Bool) -> ImplCursor1? {
+        guard var n = nextDFS else { return nil }
+        while !isIncluded(n.position) {
+            guard let n1 = n.nextDFS else { return nil }
+            n = n1
+        }
+        return n
     }
 
     static func == (lhs: ImplCursor1, rhs: ImplCursor1) -> Bool {

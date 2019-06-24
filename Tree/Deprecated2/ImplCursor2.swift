@@ -12,6 +12,7 @@ import SBTL
 /// This does not care actual validity of indicated position.
 ///
 /// Not tested yet...
+@available(*,deprecated: 0)
 struct ImplCursor2<Element> {
     typealias Source = ImplPersistentMapBasedTree<Element>
     typealias Identity = ImplIdentity

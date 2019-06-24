@@ -3,25 +3,36 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
 		45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558196022BCF98700B07175 /* libSBTL.a */; };
 		45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558194422BCF71200B07175 /* libHAMT.a */; };
-		45A12D6822BF1FFC004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
-		45A12D6B22BF1FFC004DFDAF /* PersistentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B322BC9A6600C367E0 /* PersistentTree.swift */; };
-		45A12D6C22BF1FFC004DFDAF /* ImplCursor1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191722BCB57E00B07175 /* ImplCursor1.swift */; };
-		45A12D6D22BF1FFC004DFDAF /* ImplIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522BA22BCA80E00C367E0 /* ImplIdentity.swift */; };
-		45A12D6E22BF1FFC004DFDAF /* ImplMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558195722BCF8E600B07175 /* ImplMapBasedTree.swift */; };
-		45A12D6F22BF1FFC004DFDAF /* ImplPersistentMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B822BCA40D00C367E0 /* ImplPersistentMapBasedTree.swift */; };
-		45A12D8022BF3CB7004DFDAF /* DFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D7F22BF3CB7004DFDAF /* DFS.swift */; };
-		45A12D8222BF3D44004DFDAF /* Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8122BF3D44004DFDAF /* Subtree.swift */; };
-		45A12D8422BF3DC2004DFDAF /* SubtreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8322BF3DC2004DFDAF /* SubtreeProtocol.swift */; };
-		45A12D8622BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8522BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift */; };
-		45A12D8822BF620B004DFDAF /* ImplCursor2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8722BF620B004DFDAF /* ImplCursor2.swift */; };
-		45A12D8A22BF6BF0004DFDAF /* ImplEphemeralMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8922BF6BF0004DFDAF /* ImplEphemeralMapBasedTree.swift */; };
+		45A12DDF22BFB88F004DFDAF /* OrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */; };
+		45A12DE122BFB927004DFDAF /* IMPLOrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */; };
+		45A12E8C22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */; };
+		45A12E9022C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */; };
+		45A12EAB22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12EAA22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift */; };
+		45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
+		45A12EB122C0C2C7004DFDAF /* DFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D7F22BF3CB7004DFDAF /* DFS.swift */; };
+		45A12EB222C0C2C7004DFDAF /* Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8122BF3D44004DFDAF /* Subtree.swift */; };
+		45A12EB322C0C2C7004DFDAF /* SubtreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8322BF3DC2004DFDAF /* SubtreeProtocol.swift */; };
+		45A12EB422C0C2C7004DFDAF /* PersistentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B322BC9A6600C367E0 /* PersistentTree.swift */; };
+		45A12EB522C0C2C7004DFDAF /* ImplIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522BA22BCA80E00C367E0 /* ImplIdentity.swift */; };
+		45A12EB622C0C2C7004DFDAF /* ImplMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558195722BCF8E600B07175 /* ImplMapBasedTree.swift */; };
+		45A12EB722C0C2C7004DFDAF /* ImplEphemeralMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8922BF6BF0004DFDAF /* ImplEphemeralMapBasedTree.swift */; };
+		45A12EB822C0C2C7004DFDAF /* ImplPersistentMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B822BCA40D00C367E0 /* ImplPersistentMapBasedTree.swift */; };
+		45A12EB922C0C2C7004DFDAF /* ImplDFSSortedMapBasedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8522BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift */; };
+		45A12EBA22C0C2C7004DFDAF /* ImplCursor1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191722BCB57E00B07175 /* ImplCursor1.swift */; };
+		45A12EBB22C0C2C7004DFDAF /* ImplCursor2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12D8722BF620B004DFDAF /* ImplCursor2.swift */; };
+		45A12EBC22C0C2C7004DFDAF /* xTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DD122BFA646004DFDAF /* xTreeMap.swift */; };
+		45B5EBD222C0CC6C007E66B4 /* OrderedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */; };
+		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
+		45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */; };
+		45B5EBF822C0D8D9007E66B4 /* BTree in Frameworks */ = {isa = PBXBuildFile; productRef = 45B5EBF722C0D8D9007E66B4 /* BTree */; };
+		45B5EBF922C0D8D9007E66B4 /* BTree in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 45B5EBF722C0D8D9007E66B4 /* BTree */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		45CE398F22BC6576007205EE /* TreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* TreeTest.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 /* End PBXBuildFile section */
@@ -141,6 +152,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		45A12E7C22C08B1B004DFDAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45B5EBF322C0D8C3007E66B4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				45B5EBF922C0D8D9007E66B4 /* BTree in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		451D8D2022BC785B00A4B819 /* TreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeProtocol.swift; sourceTree = "<group>"; };
 		4558191722BCB57E00B07175 /* ImplCursor1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplCursor1.swift; sourceTree = "<group>"; };
@@ -170,6 +205,15 @@
 		45A12D8522BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplDFSSortedMapBasedTree.swift; sourceTree = "<group>"; };
 		45A12D8722BF620B004DFDAF /* ImplCursor2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplCursor2.swift; sourceTree = "<group>"; };
 		45A12D8922BF6BF0004DFDAF /* ImplEphemeralMapBasedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplEphemeralMapBasedTree.swift; sourceTree = "<group>"; };
+		45A12DD122BFA646004DFDAF /* xTreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTreeMap.swift; sourceTree = "<group>"; };
+		45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeMap.swift; sourceTree = "<group>"; };
+		45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLOrderedTreeMap.swift; sourceTree = "<group>"; };
+		45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLOrderedTreeMapDFS.swift; sourceTree = "<group>"; };
+		45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMPLOrderedTreeMapBFS.swift; sourceTree = "<group>"; };
+		45A12EAA22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeMap.extension.swift; sourceTree = "<group>"; };
+		45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderedTree.swift; path = "../../../../../../repo/pub/github.com/eonil/swift-tree/Tree/OrderedTree.swift"; sourceTree = "<group>"; };
+		45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IMPLImplicitIdentity.swift; path = "../../../../../../repo/pub/github.com/eonil/swift-tree/Tree/IMPLImplicitIdentity.swift"; sourceTree = "<group>"; };
+		45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeSubtreeTest.swift; sourceTree = "<group>"; };
 		45CE398622BC6182007205EE /* Tree.Index==TreeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tree.Index==TreeIndex.swift"; sourceTree = "<group>"; };
 		45CE398C22BC6576007205EE /* TreeTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		45CE398E22BC6576007205EE /* TreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTest.swift; sourceTree = "<group>"; };
@@ -191,6 +235,7 @@
 				45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */,
 				45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */,
 				45CE399122BC6576007205EE /* libTree.a in Frameworks */,
+				45B5EBF822C0D8D9007E66B4 /* BTree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +312,28 @@
 			isa = PBXGroup;
 			children = (
 				458522B222BC9A5100C367E0 /* Deprecated */,
+				45A12EA022C0B9CF004DFDAF /* Deprecated2 */,
+				45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */,
+				45A12EAA22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift */,
+				45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */,
+				45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */,
+				45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */,
+				45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */,
+				45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */,
+			);
+			path = Tree;
+			sourceTree = "<group>";
+		};
+		45A12D0522BE74D2004DFDAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45A12EA022C0B9CF004DFDAF /* Deprecated2 */ = {
+			isa = PBXGroup;
+			children = (
 				458522B522BC9B6E00C367E0 /* Tree.swift */,
 				45A12D7F22BF3CB7004DFDAF /* DFS.swift */,
 				45A12D8122BF3D44004DFDAF /* Subtree.swift */,
@@ -279,15 +346,9 @@
 				45A12D8522BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift */,
 				4558191722BCB57E00B07175 /* ImplCursor1.swift */,
 				45A12D8722BF620B004DFDAF /* ImplCursor2.swift */,
+				45A12DD122BFA646004DFDAF /* xTreeMap.swift */,
 			);
-			path = Tree;
-			sourceTree = "<group>";
-		};
-		45A12D0522BE74D2004DFDAF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
+			path = Deprecated2;
 			sourceTree = "<group>";
 		};
 		45CE398D22BC6576007205EE /* TreeTest */ = {
@@ -295,6 +356,7 @@
 			children = (
 				45CE398E22BC6576007205EE /* TreeTest.swift */,
 				4558191922BCCCEF00B07175 /* SubtreeTest.swift */,
+				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
 			);
 			path = TreeTest;
@@ -320,6 +382,7 @@
 				4591BA8322BC5BA40052039C /* Headers */,
 				4591BA8422BC5BA40052039C /* Sources */,
 				4591BA8522BC5BA40052039C /* Frameworks */,
+				45A12E7C22C08B1B004DFDAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +391,8 @@
 				4558195022BCF71C00B07175 /* PBXTargetDependency */,
 			);
 			name = Tree;
+			packageProductDependencies = (
+			);
 			productName = Tree;
 			productReference = 4591BA8722BC5BA40052039C /* libTree.a */;
 			productType = "com.apple.product-type.library.static";
@@ -339,15 +404,20 @@
 				45CE398822BC6576007205EE /* Sources */,
 				45CE398922BC6576007205EE /* Frameworks */,
 				45CE398A22BC6576007205EE /* Resources */,
+				45B5EBF322C0D8C3007E66B4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				45B5EBF622C0D8D2007E66B4 /* PBXTargetDependency */,
 				45A12D0822BE74D9004DFDAF /* PBXTargetDependency */,
 				45A12D0A22BE74D9004DFDAF /* PBXTargetDependency */,
 				45CE399322BC6576007205EE /* PBXTargetDependency */,
 			);
 			name = TreeTest;
+			packageProductDependencies = (
+				45B5EBF722C0D8D9007E66B4 /* BTree */,
+			);
 			productName = TreeTest;
 			productReference = 45CE398C22BC6576007205EE /* TreeTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -380,6 +450,9 @@
 				Base,
 			);
 			mainGroup = 4591BA7E22BC5BA40052039C;
+			packageReferences = (
+				45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */,
+			);
 			productRefGroup = 4591BA8822BC5BA40052039C /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -495,18 +568,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45A12D8A22BF6BF0004DFDAF /* ImplEphemeralMapBasedTree.swift in Sources */,
-				45A12D6D22BF1FFC004DFDAF /* ImplIdentity.swift in Sources */,
-				45A12D8022BF3CB7004DFDAF /* DFS.swift in Sources */,
-				45A12D8822BF620B004DFDAF /* ImplCursor2.swift in Sources */,
-				45A12D6B22BF1FFC004DFDAF /* PersistentTree.swift in Sources */,
-				45A12D6F22BF1FFC004DFDAF /* ImplPersistentMapBasedTree.swift in Sources */,
-				45A12D6C22BF1FFC004DFDAF /* ImplCursor1.swift in Sources */,
-				45A12D8422BF3DC2004DFDAF /* SubtreeProtocol.swift in Sources */,
-				45A12D6822BF1FFC004DFDAF /* Tree.swift in Sources */,
-				45A12D8222BF3D44004DFDAF /* Subtree.swift in Sources */,
-				45A12D8622BF5A0D004DFDAF /* ImplDFSSortedMapBasedTree.swift in Sources */,
-				45A12D6E22BF1FFC004DFDAF /* ImplMapBasedTree.swift in Sources */,
+				45A12EB822C0C2C7004DFDAF /* ImplPersistentMapBasedTree.swift in Sources */,
+				45A12DDF22BFB88F004DFDAF /* OrderedTreeMap.swift in Sources */,
+				45A12E8C22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift in Sources */,
+				45A12EB522C0C2C7004DFDAF /* ImplIdentity.swift in Sources */,
+				45B5EBD222C0CC6C007E66B4 /* OrderedTree.swift in Sources */,
+				45A12EB422C0C2C7004DFDAF /* PersistentTree.swift in Sources */,
+				45A12EB322C0C2C7004DFDAF /* SubtreeProtocol.swift in Sources */,
+				45A12EB222C0C2C7004DFDAF /* Subtree.swift in Sources */,
+				45A12DE122BFB927004DFDAF /* IMPLOrderedTreeMap.swift in Sources */,
+				45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */,
+				45A12EB622C0C2C7004DFDAF /* ImplMapBasedTree.swift in Sources */,
+				45A12EB922C0C2C7004DFDAF /* ImplDFSSortedMapBasedTree.swift in Sources */,
+				45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */,
+				45A12EBC22C0C2C7004DFDAF /* xTreeMap.swift in Sources */,
+				45A12EAB22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift in Sources */,
+				45A12EB722C0C2C7004DFDAF /* ImplEphemeralMapBasedTree.swift in Sources */,
+				45A12EBA22C0C2C7004DFDAF /* ImplCursor1.swift in Sources */,
+				45A12EB122C0C2C7004DFDAF /* DFS.swift in Sources */,
+				45A12E9022C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift in Sources */,
+				45A12EBB22C0C2C7004DFDAF /* ImplCursor2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */,
 				4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */,
 				45CE398F22BC6576007205EE /* TreeTest.swift in Sources */,
 			);
@@ -541,6 +623,10 @@
 			isa = PBXTargetDependency;
 			name = "HAMT-macOS";
 			targetProxy = 45A12D0922BE74D9004DFDAF /* PBXContainerItemProxy */;
+		};
+		45B5EBF622C0D8D2007E66B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 45B5EBF522C0D8D2007E66B4 /* BTree */;
 		};
 		45CE399322BC6576007205EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -768,6 +854,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/attaswift/BTree";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		45B5EBF522C0D8D2007E66B4 /* BTree */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */;
+			productName = BTree;
+		};
+		45B5EBF722C0D8D9007E66B4 /* BTree */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */;
+			productName = BTree;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4591BA7F22BC5BA40052039C /* Project object */;
 }

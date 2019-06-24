@@ -8,13 +8,18 @@ let package = Package(
     products: [
         .library(name: "Tree", targets: ["Tree"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/eonil/BTree", .branch("master")),
+    ],
     targets: [
         .target(
             name: "Tree",
+            dependencies: ["BTree"],
             path: "Tree"),
+
         .testTarget(
             name: "TreeTest",
-            dependencies: ["Tree"],
+            dependencies: ["Tree", "BTree"],
             path: "TreeTest"),
     ]
 )

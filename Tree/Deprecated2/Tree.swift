@@ -41,6 +41,7 @@
 ///     in this library.
 ///     - Treat hash-table access as O(1).
 ///     - Persistent variant can take log(n) more time for all each operations.
+@available(*,deprecated: 0)
 public protocol Tree: Sequence {
     var isEmpty: Bool { get }
     associatedtype Element
@@ -63,8 +64,8 @@ public protocol Tree: Sequence {
     ///     Complete Binary Tree and can use simple `Int` index
     ///     without sacrificing navigatability. In that case,
     ///     path-based operations can provide O(1) time.
-    associatedtype Path: Comparable
-    associatedtype Paths: Collection where Paths.Element == Path
+    associatedtype Path
+//    associatedtype Paths: Collection where Paths.Element == Path
     associatedtype SubPaths: RandomAccessCollection where SubPaths.Element == Path
 
 ////    var locations: Locations { get }

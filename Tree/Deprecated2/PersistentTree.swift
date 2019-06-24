@@ -23,6 +23,7 @@ import Foundation
 /// ---------------------------------
 /// You can query paths and subpaths
 ///
+@available(*,deprecated: 0)
 public struct PersistentTree<Element>:
 Sequence,
 Collection,
@@ -30,7 +31,7 @@ MutableCollection,
 Tree,
 MutableTree,
 NodeReplaceableTree {
-    private var impl = Impl()
+    private(set) var impl = Impl()
     private var root: Impl.Identity?
     public init() {}
 }
@@ -293,7 +294,7 @@ public extension PersistentTree {
         let s = Subtree(impl: impl, id: id, px: p)
         return s
     }
-    struct Subtree {
+    struct Subtree: Sequence, Tree {
         var impl: Impl
         var id: Impl.Identity
         var px: Path
@@ -305,12 +306,35 @@ public extension PersistentTree {
     }
 }
 public extension PersistentTree.Subtree {
-    var index: PersistentTree.Index { PersistentTree.Index(impl: impl.index(for: id)) }
-    var path: PersistentTree.Path { px }
-    var element: PersistentTree.Element { impl.state(of: id) }
+    typealias Path = IndexPath
+    typealias SubPaths = PersistentTree.SubPaths
+//    var index: PersistentTree.Index { PersistentTree.Index(impl: impl.index(for: id)) }
+//    var path: PersistentTree.Path { px }
+//    var element: PersistentTree.Element { impl.state(of: id) }
     var subtrees: PersistentTree.Subtrees {
         let cs = impl.children(of: id)
         return PersistentTree.Subtrees(impl: impl, px: px, childrenIDs: cs)
+    }
+    var isEmpty: Bool {
+        return impl.isEmpty
+    }
+    subscript(_ p: Path) -> Element {
+        let id1 = impl.findIdentity(for: p, from: id)
+        return impl.state(of: id1)
+    }
+    func subpaths(of p: Path) -> SubPaths {
+        precondition(impl.rootID != nil, "Path is out of range.")
+        let id = impl.findIdentity(for: p, from: impl.rootID!)
+        let cs = impl.children(of: id)
+        return SubPaths(path: p, childCount: cs.count)
+    }
+    __consuming func makeIterator() -> Iterator {
+        let c = ImplCursor1(source: impl, path: px)
+        return Iterator(px: px, impl: c)
+    }
+    struct Iterator: IteratorProtocol {
+        let px: Path
+        private(set) var impl: ImplCursor1<Element>?
     }
 }
 public extension PersistentTree.Subtrees {
@@ -320,5 +344,12 @@ public extension PersistentTree.Subtrees {
         let id = childrenIDs[i]
         let p = px.appending(i)
         return PersistentTree.Subtree(impl: impl, id: id, px: p)
+    }
+}
+public extension PersistentTree.Subtree.Iterator {
+    mutating func next() -> Element? {
+        let s = impl?.state
+        impl = impl?.nextDFS(isIncluded: { p in p.starts(with: px) })
+        return s
     }
 }

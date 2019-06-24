@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(*,deprecated: 0)
 protocol ImplMapBasedTree {
     associatedtype Identity: Hashable
     associatedtype State

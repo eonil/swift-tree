@@ -1,21 +1,21 @@
 //
-//  ImplIdentity.swift
+//  IMPLImplicitIdentity.swift
 //  Tree
 //
-//  Created by Henry on 2019/06/21.
+//  Created by Henry on 2019/06/24.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-struct ImplIdentity: Hashable, Comparable {
+struct IMPLImplicitIdentity: Hashable, Comparable {
     private let mk = Marker()
     init() {}
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(mk))
     }
-    static func == (lhs: ImplIdentity, rhs: ImplIdentity) -> Bool {
+    static func == (lhs: IMPLImplicitIdentity, rhs: IMPLImplicitIdentity) -> Bool {
         return lhs.mk === rhs.mk
     }
-    static func < (lhs: ImplIdentity, rhs: ImplIdentity) -> Bool {
+    static func < (lhs: IMPLImplicitIdentity, rhs: IMPLImplicitIdentity) -> Bool {
         return ObjectIdentifier(lhs.mk) < ObjectIdentifier(rhs.mk)
     }
 }

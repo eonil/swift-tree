@@ -15,6 +15,7 @@ import SBTL
 /// This is reference mapping based and likely to provide better data locality
 /// than naive recursive tree structure.
 ///
+@available(*,deprecated: 0)
 struct ImplPersistentMapBasedTree<State>:
 ImplMapBasedTree,
 RandomAccessCollection {
