@@ -9,35 +9,29 @@
 import Foundation
 
 public extension OrderedTreeMap {
-    func subtree(at p: IndexPath) -> Subtree {
-        return subtree[p]
-    }
     subscript(_ p: IndexPath) -> Element {
         return subtree[p]
+    }
+    func subtree(at p: IndexPath) -> Subtree {
+        return subtree.subtree(at: p)
     }
 }
 
 public extension OrderedTreeMap.Subtree {
     subscript(_ p: IndexPath) -> Element {
-        switch p.count {
-        case 0:
-            let k = key
-            let v = impl.stateMap[k]!
-            return (k,v)
-        default:
-            let i = p.first!
-            let q = p.dropFirst()
-            return self[i][q]
-        }
+        let s = subtree(at: p)
+        let k = s.key
+        let v = s.value
+        return (k,v)
     }
-    subscript(_ p: IndexPath) -> OrderedTreeMap.Subtree {
+    func subtree(at p: IndexPath) -> OrderedTreeMap.Subtree {
         switch p.count {
         case 0:
             return self
         default:
             let i = p.first!
             let q = p.dropFirst()
-            return self[i][q]
+            return subtree(at: i).subtree(at: q)
         }
     }
 }

@@ -16,7 +16,6 @@ let package = Package(
             name: "Tree",
             dependencies: ["BTree"],
             path: "Tree"),
-
         .testTarget(
             name: "TreeTest",
             dependencies: ["Tree", "BTree"],

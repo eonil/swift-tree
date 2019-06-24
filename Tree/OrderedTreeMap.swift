@@ -10,9 +10,6 @@
 ///
 /// You can consider this as a map of `[key: Key: (value: Value, subtrees: [Self])]`.
 ///
-/// - Singly rooted tree.
-/// - Path `[]` is invalid and unaccepted.
-///
 /// Map-Like Read, Tree-Like Write
 /// ------------------------------
 /// - You can query value for a key like a map.
@@ -21,11 +18,12 @@
 ///
 /// Subtree based Access
 /// --------------------
-/// - You can navigate tree substructures with object-oriented interface.
-/// - You can perform mutation directly on subtree.
+/// - You can navigate tree substructures with object-oriented interface using `Subtree`.
+/// - You can perform mutation directly on `Subtree`.
 /// - You can retrieve mutation result directly from subtree.
+///   Modified tree can be obtained from `Subtree.tree`.
 ///
-public struct OrderedTreeMap<Key,Value> where Key:Comparable {
+public struct OrderedTreeMap<Key,Value>: BidirectionalCollection where Key:Comparable {
     private(set) var impl: IMPL
     typealias IMPL = IMPLOrderedTreeMap<Key,Value>
     /// Initializes a new ordered-tree-map instance with root element.
@@ -34,6 +32,12 @@ public struct OrderedTreeMap<Key,Value> where Key:Comparable {
     }
     private init(impl x: IMPL) {
         impl = x
+    }
+}
+
+public extension OrderedTreeMap {
+    subscript(_ key: Key) -> Value? {
+        return impl.stateMap[key]
     }
 }
 
@@ -68,8 +72,34 @@ public struct OrderedTreeMap<Key,Value> where Key:Comparable {
 // MARK: Collection Access
 public extension OrderedTreeMap {
     typealias Element = (key: Key, value: Value)
-    subscript(_ key: Key) -> Value? {
-        return impl.stateMap[key]
+    var isEmpty: Bool {
+        return impl.stateMap.isEmpty
+    }
+    var count: Int {
+        return impl.stateMap.count
+    }
+    var startIndex: Index {
+        return Index(impl: impl.stateMap.startIndex)
+    }
+    var endIndex: Index {
+        return Index(impl: impl.stateMap.endIndex)
+    }
+    func index(after i: Index) -> Index {
+        return Index(impl: impl.stateMap.index(after: i.impl))
+    }
+    func index(before i: Index) -> Index {
+        return Index(impl: impl.stateMap.index(before: i.impl))
+    }
+    subscript(_ i: Index) -> Element {
+        return impl.stateMap[i.impl]
+    }
+    struct Index: Comparable {
+        private(set) var impl: IMPL.StateMap.Index
+    }
+}
+public extension OrderedTreeMap.Index {
+    static func < (lhs: OrderedTreeMap.Index, rhs: OrderedTreeMap.Index) -> Bool {
+        return lhs.impl < rhs.impl
     }
 }
 
@@ -103,6 +133,22 @@ public extension OrderedTreeMap.Subtree {
         key = e.key
         subkeys = impl.linkageMap[key]!
     }
+    /// Represents a subtree in a tree.
+    /// - This is a convenient object-oriented interface.
+    /// - You can iterate direct children in this subtree node
+    ///   using `RandomAccessCollection` interface.
+    /// - You also can query child subtrees using `subtree(at:)` method.
+    /// - You can perform mutations on subtree.
+    /// - Modified tree can be obtained from `tree` property.
+    /// - Mutation on subtree won't affect original tree.
+    ///   Instead, a new version of tree will be created.
+    var tree: OrderedTreeMap {
+        return OrderedTreeMap(impl: impl)
+    }
+    var value: Value {
+        get { return impl.stateMap[key]! }
+        set(v) { impl.setState(v, for: key) }
+    }
     var startIndex: Int { subkeys.startIndex }
     var endIndex: Int { subkeys.endIndex }
     subscript(_ i: Int) -> Element {
@@ -115,40 +161,43 @@ public extension OrderedTreeMap.Subtree {
             replaceSubrange(i..<i+1, with: [v])
         }
     }
-    subscript(_ i: Int) -> OrderedTreeMap.Subtree {
-        get {
-            let k = subkeys[i]
-            let cks = impl.linkageMap[k]!
-            return OrderedTreeMap.Subtree(impl: impl, key: k, subkeys: cks)
-        }
-        set(v) { replaceSubtrees(i..<i+1, with: [v]) }
+    func subtree(at i: Int) -> OrderedTreeMap.Subtree {
+        let k = subkeys[i]
+        let cks = impl.linkageMap[k]!
+        return OrderedTreeMap.Subtree(impl: impl, key: k, subkeys: cks)
     }
     /// Gets value for a key.
     /// Search range is limited to direct (shallow) children of current subtree.
     subscript(_ k: Key) -> Value? {
         return subkeys.contains(k) ? impl.stateMap[k] : nil
     }
-    /// Gets current base tree-map.
-    /// If you perform mutation on subtree, this will give you modified version of tree.
-    /// Mutation on a subtree won't affect original base tree.
-    /// Instead, a new version of tree will be created.
-    var tree: OrderedTreeMap {
-        return OrderedTreeMap(impl: impl)
-    }
-
+    /// Replaces subtrees in range with new subtrees recursively.
     mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == OrderedTreeMap.Subtree {
         let ts1 = newElements.lazy.map({ $0.impl })
-        impl.replaceSubrange(subrange, in: key, with: ts1)
+        impl.replaceSubtrees(subrange, in: key, with: ts1)
+        // Update local cache.
+        subkeys = impl.linkageMap[key]!
     }
-//    mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-//        replaceSubrange(subrange, with: newElements.lazy.map({ e in OrderedTreeMap.Subtree(e) }))
-//    }
+    /// Replaces subtrees in range with new elements as new subtrees
+    /// - TODO:
+    ///     We dont need to initialize `OrderedTreeMap` instance every time...
     mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-        let es1 = newElements.lazy.map({ k,v in (k,v) })
-        impl.replaceSubrange(subrange, in: key, with: es1)
+        replaceSubtrees(subrange, with: newElements.lazy.map({ e in OrderedTreeMap.Subtree(e) }))
+    }
+    /// Inserts a subtree recursively at index.
+    mutating func insert(_ s: OrderedTreeMap.Subtree, at i: Int) {
+        replaceSubtrees(i..<i, with: [s])
+    }
+    /// Inserts an element as a subtree.
+    mutating func insert(_ e: Element, at i: Int) {
+        let s = OrderedTreeMap.Subtree(e)
+        replaceSubtrees(i..<i, with: [s])
+    }
+    /// Removes a subtree recursively.
+    mutating func remove(at i: Int) {
+        replaceSubtrees(i..<i+1, with: [])
     }
 }
-
 
 // MARK: BFS
 public extension OrderedTreeMap.Subtree {

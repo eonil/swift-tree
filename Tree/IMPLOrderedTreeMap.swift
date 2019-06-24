@@ -36,28 +36,29 @@ extension IMPLOrderedTreeMap {
 
 // MARK: Tree Access
 extension IMPLOrderedTreeMap {
-    mutating func replaceState(_ v:V, for k:K) {
+    mutating func setState(_ v:V, for k:K) {
         assert(stateMap[k] != nil, "State must exist at this point.")
         stateMap[k] = v
     }
-    mutating func replaceSubrange<C>(_ r:Range<Int>, in pk:K, with ts:C) where C:Collection, C.Element == IMPLOrderedTreeMap {
-        removeSubrange(r, in: pk)
-        insertSubrange(ts, at: r.lowerBound, in: pk)
+    mutating func replaceSubtrees<C>(_ r:Range<Int>, in pk:K, with ts:C) where C:Collection, C.Element == IMPLOrderedTreeMap {
+        removeSubtrees(r, in: pk)
+        insertSubtrees(ts, at: r.lowerBound, in: pk)
     }
-    /// Please note that this remove all subtrees of existing range.
+    /// - TODO:
+    ///     We dont need to initialize `IMPLOrderedTreeMap` instance every time...
     mutating func replaceSubrange<C>(_ r:Range<Int>, in pk:K, with kvs:C) where C:Collection, C.Element == (K,V) {
-        removeSubrange(r, in: pk)
-        insertSubrange(kvs, at: r.lowerBound, in: pk)
+        let ts1 = kvs.map({ IMPLOrderedTreeMap(root: $0) })
+        replaceSubtrees(r, in: pk, with: ts1)
     }
     /// This inserts other trees recursively.
     /// - Complexity:
     ///     O(n * log(n)).
     /// - TODO:
     ///     It seems this can be optimized further by using `BTree` directly.
-    private mutating func insertSubrange<C>(_ ts:C, at i:Int, in pk:K) where C:Collection, C.Element == IMPLOrderedTreeMap {
+    private mutating func insertSubtrees<C>(_ ts:C, at i:Int, in pk:K) where C:Collection, C.Element == IMPLOrderedTreeMap {
         for t in ts {
             for (k,v) in t.stateMap {
-                precondition(stateMap.keys.contains(k), "You cannot insert duplicated key.")
+                precondition(stateMap[k] == nil, "You cannot insert duplicated key.")
                 stateMap[k] = v
             }
             for (k,cks) in t.linkageMap {
@@ -68,17 +69,7 @@ extension IMPLOrderedTreeMap {
         cks.insert(contentsOf: ts.lazy.map({ $0.rootKey }), at: i)
         linkageMap[pk] = cks
     }
-    private mutating func insertSubrange<C>(_ kvs:C, at i:Int, in pk:K) where C:Collection, C.Element == (K,V) {
-        for (k,v) in kvs {
-            precondition(stateMap[k] == nil, "You cannot insert duplicated key.")
-            stateMap[k] = v
-            linkageMap[k] = []
-        }
-        var cks = linkageMap[pk]!
-        cks.insert(contentsOf: kvs.lazy.map({$0.0}), at: i)
-        linkageMap[pk] = cks
-    }
-    private mutating func removeSubrange(_ r:Range<Int>, in pk:K) {
+    private mutating func removeSubtrees(_ r:Range<Int>, in pk:K) {
         var cks = linkageMap[pk]!
         let childKeysToRemove = cks[r]
         for ck in childKeysToRemove.lazy.reversed() {

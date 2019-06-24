@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4506A2A722C0DC8B00B6476E /* BTree in Frameworks */ = {isa = PBXBuildFile; productRef = 4506A2A622C0DC8B00B6476E /* BTree */; };
+		4506A2BD22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BC22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift */; };
+		4506A2BF22C0ED9600B6476E /* OrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BE22C0ED9600B6476E /* OrderedTreeMapTest.swift */; };
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
 		45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558196022BCF98700B07175 /* libSBTL.a */; };
 		45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4558194422BCF71200B07175 /* libHAMT.a */; };
@@ -31,8 +34,6 @@
 		45B5EBD222C0CC6C007E66B4 /* OrderedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */; };
 		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
 		45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */; };
-		45B5EBF822C0D8D9007E66B4 /* BTree in Frameworks */ = {isa = PBXBuildFile; productRef = 45B5EBF722C0D8D9007E66B4 /* BTree */; };
-		45B5EBF922C0D8D9007E66B4 /* BTree in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 45B5EBF722C0D8D9007E66B4 /* BTree */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		45CE398F22BC6576007205EE /* TreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* TreeTest.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 /* End PBXBuildFile section */
@@ -163,20 +164,11 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		45B5EBF322C0D8C3007E66B4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				45B5EBF922C0D8D9007E66B4 /* BTree in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4506A2BC22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLOrderedTreeMapTest.swift; sourceTree = "<group>"; };
+		4506A2BE22C0ED9600B6476E /* OrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeMapTest.swift; sourceTree = "<group>"; };
 		451D8D2022BC785B00A4B819 /* TreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeProtocol.swift; sourceTree = "<group>"; };
 		4558191722BCB57E00B07175 /* ImplCursor1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplCursor1.swift; sourceTree = "<group>"; };
 		4558191922BCCCEF00B07175 /* SubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeTest.swift; sourceTree = "<group>"; };
@@ -225,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4506A2A722C0DC8B00B6476E /* BTree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,7 +228,6 @@
 				45A12D0B22BE74E0004DFDAF /* libHAMT.a in Frameworks */,
 				45A12D0622BE74D2004DFDAF /* libSBTL.a in Frameworks */,
 				45CE399122BC6576007205EE /* libTree.a in Frameworks */,
-				45B5EBF822C0D8D9007E66B4 /* BTree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +349,8 @@
 				45CE398E22BC6576007205EE /* TreeTest.swift */,
 				4558191922BCCCEF00B07175 /* SubtreeTest.swift */,
 				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
+				4506A2BC22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift */,
+				4506A2BE22C0ED9600B6476E /* OrderedTreeMapTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
 			);
 			path = TreeTest;
@@ -392,6 +386,7 @@
 			);
 			name = Tree;
 			packageProductDependencies = (
+				4506A2A622C0DC8B00B6476E /* BTree */,
 			);
 			productName = Tree;
 			productReference = 4591BA8722BC5BA40052039C /* libTree.a */;
@@ -404,7 +399,6 @@
 				45CE398822BC6576007205EE /* Sources */,
 				45CE398922BC6576007205EE /* Frameworks */,
 				45CE398A22BC6576007205EE /* Resources */,
-				45B5EBF322C0D8C3007E66B4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -416,7 +410,6 @@
 			);
 			name = TreeTest;
 			packageProductDependencies = (
-				45B5EBF722C0D8D9007E66B4 /* BTree */,
 			);
 			productName = TreeTest;
 			productReference = 45CE398C22BC6576007205EE /* TreeTest.xctest */;
@@ -451,7 +444,7 @@
 			);
 			mainGroup = 4591BA7E22BC5BA40052039C;
 			packageReferences = (
-				45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */,
+				4506A2A522C0DC8B00B6476E /* XCRemoteSwiftPackageReference "BTree" */,
 			);
 			productRefGroup = 4591BA8822BC5BA40052039C /* Products */;
 			projectDirPath = "";
@@ -595,8 +588,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4506A2BD22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift in Sources */,
 				45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */,
 				4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */,
+				4506A2BF22C0ED9600B6476E /* OrderedTreeMapTest.swift in Sources */,
 				45CE398F22BC6576007205EE /* TreeTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,8 +781,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TreeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -796,6 +792,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Eonil.TreeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -807,8 +804,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TreeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -817,6 +815,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Eonil.TreeTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -856,25 +855,24 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */ = {
+		4506A2A522C0DC8B00B6476E /* XCRemoteSwiftPackageReference "BTree" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/attaswift/BTree";
+			repositoryURL = "https://github.com/eonil/BTree";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		45B5EBF522C0D8D2007E66B4 /* BTree */ = {
+		4506A2A622C0DC8B00B6476E /* BTree */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */;
+			package = 4506A2A522C0DC8B00B6476E /* XCRemoteSwiftPackageReference "BTree" */;
 			productName = BTree;
 		};
-		45B5EBF722C0D8D9007E66B4 /* BTree */ = {
+		45B5EBF522C0D8D2007E66B4 /* BTree */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 45A12E7922C08B1B004DFDAF /* XCRemoteSwiftPackageReference "BTree" */;
 			productName = BTree;
 		};
 /* End XCSwiftPackageProductDependency section */
