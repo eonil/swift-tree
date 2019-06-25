@@ -1,5 +1,5 @@
 //
-//  PersistentUnorderedTreeMap.Subtree.swift
+//  PersistentUnorderedMapTree.Subtree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/25.
@@ -9,7 +9,7 @@
 import BTree
 
 // MARK: Subtree Access
-public extension PersistentUnorderedTreeMap {
+public extension PersistentUnorderedMapTree {
     /// Convenient access to each subtree.
     ///
     /// Implicit Shallow Iteration
@@ -37,10 +37,10 @@ public extension PersistentUnorderedTreeMap {
         }
     }
 }
-public extension PersistentUnorderedTreeMap.Subtree {
+public extension PersistentUnorderedMapTree.Subtree {
     typealias Element = (key: Key, value: Value)
     init(_ e: Element) {
-        impl = PersistentUnorderedTreeMap(e).impl
+        impl = PersistentUnorderedMapTree(e).impl
         key = e.key
         subkeys = impl.linkageMap[key]!
     }
@@ -53,22 +53,22 @@ public extension PersistentUnorderedTreeMap.Subtree {
     /// - Modified tree can be obtained from `tree` property.
     /// - Mutation on subtree won't affect original tree.
     ///   Instead, a new version of tree will be created.
-    var tree: PersistentUnorderedTreeMap {
-        return PersistentUnorderedTreeMap(impl: impl)
+    var tree: PersistentUnorderedMapTree {
+        return PersistentUnorderedMapTree(impl: impl)
     }
     struct Index: Comparable {
         private(set) var impl: SortedSet<Key>.Index
     }
 }
-public extension PersistentUnorderedTreeMap.Subtree.Index {
-    static func == (lhs: PersistentUnorderedTreeMap.Subtree.Index, rhs: PersistentUnorderedTreeMap.Subtree.Index) -> Bool {
+public extension PersistentUnorderedMapTree.Subtree.Index {
+    static func == (lhs: PersistentUnorderedMapTree.Subtree.Index, rhs: PersistentUnorderedMapTree.Subtree.Index) -> Bool {
         return lhs.impl == rhs.impl
     }
-    static func < (lhs: PersistentUnorderedTreeMap.Subtree.Index, rhs: PersistentUnorderedTreeMap.Subtree.Index) -> Bool {
+    static func < (lhs: PersistentUnorderedMapTree.Subtree.Index, rhs: PersistentUnorderedMapTree.Subtree.Index) -> Bool {
         return lhs.impl < rhs.impl
     }
 }
-public extension PersistentUnorderedTreeMap.Subtree {
+public extension PersistentUnorderedMapTree.Subtree {
     var startIndex: Index { return Index(impl: subkeys.startIndex) }
     var endIndex: Index { return Index(impl: subkeys.endIndex) }
     func index(after i: Index) -> Index {
@@ -89,14 +89,14 @@ public extension PersistentUnorderedTreeMap.Subtree {
             return (ck,cv)
         }
     }
-    func subtree(at i: Index) -> PersistentUnorderedTreeMap.Subtree {
+    func subtree(at i: Index) -> PersistentUnorderedMapTree.Subtree {
         let k = subkeys[i.impl]
         return subtree(for: k)!
     }
 }
-public extension PersistentUnorderedTreeMap.Subtree {
+public extension PersistentUnorderedMapTree.Subtree {
     /// Search range is limited to direct children.
-    func subtree(for key: Key) -> PersistentUnorderedTreeMap.Subtree? {
+    func subtree(for key: Key) -> PersistentUnorderedMapTree.Subtree? {
         guard subkeys.contains(key) else { return nil }
         return tree.subtree(for: key)
     }
@@ -113,12 +113,12 @@ public extension PersistentUnorderedTreeMap.Subtree {
         }
     }
     /// Replaces subtrees in range with new subtrees recursively.
-    mutating func replaceSubtree(_ k: Key, with newSubtree: PersistentUnorderedTreeMap.Subtree) {
+    mutating func replaceSubtree(_ k: Key, with newSubtree: PersistentUnorderedMapTree.Subtree) {
         removeSubtree(k)
         insertSubtree(newSubtree)
     }
     /// Inserts a subtree recursively at index.
-    mutating func insertSubtree(_ s: PersistentUnorderedTreeMap.Subtree) {
+    mutating func insertSubtree(_ s: PersistentUnorderedMapTree.Subtree) {
         let k = s.impl.rootKey
         precondition(subkeys.contains(k), "Supplied key is not a direct child of subtree.")
         impl.insertSubtree(s.impl, in: key)

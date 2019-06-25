@@ -1,5 +1,5 @@
 //
-//  PersistentUnorderedTreeMap.swift
+//  PersistentUnorderedMapTree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/25.
@@ -25,7 +25,7 @@ import BTree
 /// - You can retrieve mutation result directly from subtree.
 ///   Modified tree can be obtained from `Subtree.tree`.
 ///
-public struct PersistentUnorderedTreeMap<Key,Value>: BidirectionalCollection where Key: Comparable {
+public struct PersistentUnorderedMapTree<Key,Value>: BidirectionalCollection where Key: Comparable {
     private(set) var impl: IMPL
     typealias IMPL = IMPLPersitentUnorderedTreeMap<Key,Value>
     /// Initializes a new ordered-tree-map instance with root element.
@@ -37,10 +37,10 @@ public struct PersistentUnorderedTreeMap<Key,Value>: BidirectionalCollection whe
     }
 }
 
-public extension PersistentUnorderedTreeMap {
+public extension PersistentUnorderedMapTree {
     func index(for key: Key) -> Index? {
         guard let i = impl.stateMap.index(forKey: key) else { return nil }
-        return PersistentUnorderedTreeMap.Index(impl: i)
+        return PersistentUnorderedMapTree.Index(impl: i)
     }
     subscript(_ key: Key) -> Value {
         get { return impl.stateMap[key]! }
@@ -77,7 +77,7 @@ public extension PersistentUnorderedTreeMap {
 //}
 
 // MARK: Collection Access
-public extension PersistentUnorderedTreeMap {
+public extension PersistentUnorderedMapTree {
     typealias Element = (key: Key, value: Value)
     var isEmpty: Bool {
         return impl.stateMap.isEmpty
@@ -104,8 +104,8 @@ public extension PersistentUnorderedTreeMap {
         private(set) var impl: IMPL.StateMap.Index
     }
 }
-public extension PersistentUnorderedTreeMap.Index {
-    static func < (lhs: PersistentUnorderedTreeMap.Index, rhs: PersistentUnorderedTreeMap.Index) -> Bool {
+public extension PersistentUnorderedMapTree.Index {
+    static func < (lhs: PersistentUnorderedMapTree.Index, rhs: PersistentUnorderedMapTree.Index) -> Bool {
         return lhs.impl < rhs.impl
     }
 }
