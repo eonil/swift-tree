@@ -1,5 +1,5 @@
 //
-//  EphemeralOrderedTree.swift
+//  PersistentOrderedTree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/24.
@@ -20,9 +20,9 @@ import Foundation
 /// - `PersistentOrderedTree` also provides object-oriented `Subtree` based interface.
 /// - You can use this type in either way you like.
 ///
-public struct EphemeralOrderedTree<Element> {
+public struct PersistentOrderedTree<Element> {
     private(set) var impl: IMPL
-    typealias IMPL = IMPLEphemeralOrderedTreeMap<II,Element>
+    typealias IMPL = IMPLPersistentOrderedMapTree<II,Element>
     typealias II = IMPLImplicitIdentity
     public init(_ e: Element) {
         impl = IMPL(root: (II(),e))
@@ -32,7 +32,7 @@ public struct EphemeralOrderedTree<Element> {
     }
 }
 
-public extension EphemeralOrderedTree {
+public extension PersistentOrderedTree {
     var isEmpty: Bool {
         return impl.stateMap.isEmpty
     }
@@ -66,7 +66,7 @@ public extension EphemeralOrderedTree {
     }
 }
 
-public extension EphemeralOrderedTree {
+public extension PersistentOrderedTree {
     /// Root subtree.
     var subtree: Subtree {
         let cks = impl.linkageMap[impl.rootKey]!
@@ -87,13 +87,13 @@ public extension EphemeralOrderedTree {
         var subkeys: IMPL.Children
     }
 }
-public extension EphemeralOrderedTree.Subtree {
+public extension PersistentOrderedTree.Subtree {
     typealias Index = Int
     init(_ e: Element) {
-        self = EphemeralOrderedTree(e).subtree
+        self = PersistentOrderedTree(e).subtree
     }
-    var tree: EphemeralOrderedTree {
-        return EphemeralOrderedTree(impl: impl)
+    var tree: PersistentOrderedTree {
+        return PersistentOrderedTree(impl: impl)
     }
     var startIndex: Int {
         return 0
@@ -106,7 +106,7 @@ public extension EphemeralOrderedTree.Subtree {
         return impl.stateMap[ck]!
     }
     /// Replaces subtrees in range with new subtrees recursively.
-    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newSubtrees: C) where C: Collection, C.Element == EphemeralOrderedTree.Subtree {
+    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newSubtrees: C) where C: Collection, C.Element == PersistentOrderedTree.Subtree {
         let ts1 = newSubtrees.lazy.map({ t in t.impl })
         impl.replaceSubtrees(subrange, in: key, with: ts1)
         // Update local cache.
@@ -114,13 +114,13 @@ public extension EphemeralOrderedTree.Subtree {
     }
     /// Replaces subtrees in range with new elements as new subtrees
     mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-        let kvs1 = newElements.lazy.map({ e in (EphemeralOrderedTree.II(),e) })
+        let kvs1 = newElements.lazy.map({ e in (PersistentOrderedTree.II(),e) })
         impl.replaceSubrange(subrange, in: key, with: kvs1)
         // Update local cache.
         subkeys = impl.linkageMap[key]!
     }
     /// Inserts a subtree at index recursively.
-    mutating func insert(_ s: EphemeralOrderedTree.Subtree, at i: Int) {
+    mutating func insert(_ s: PersistentOrderedTree.Subtree, at i: Int) {
         replaceSubtrees(i..<i, with: [s])
     }
     /// Inserts an element as a subtree.
@@ -132,7 +132,7 @@ public extension EphemeralOrderedTree.Subtree {
         replaceSubrange(i..<i+1, with: [])
     }
 }
-extension EphemeralOrderedTree.Subtree {
+extension PersistentOrderedTree.Subtree {
     var value: Element {
         get { return impl.stateMap[key]! }
         set(v) {
@@ -141,12 +141,12 @@ extension EphemeralOrderedTree.Subtree {
             subkeys = impl.linkageMap[key]!
         }
     }
-    func subtree(at i: Int) -> EphemeralOrderedTree.Subtree {
+    func subtree(at i: Int) -> PersistentOrderedTree.Subtree {
         let ck = subkeys[i]
         let ccks = impl.linkageMap[ck]!
-        return EphemeralOrderedTree.Subtree(impl: impl, key: ck, subkeys: ccks)
+        return PersistentOrderedTree.Subtree(impl: impl, key: ck, subkeys: ccks)
     }
-    func subtree(at p: IndexPath) -> EphemeralOrderedTree.Subtree {
+    func subtree(at p: IndexPath) -> PersistentOrderedTree.Subtree {
         switch p.count {
         case 0:
             return self

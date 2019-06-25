@@ -12,7 +12,7 @@ import XCTest
 
 class PersistentOrderedTreeMapTest: XCTestCase {
     func testBasica1() {
-        let a = EphemeralOrderedMapTree<Int,String>((111,"aaa"))
+        let a = PersistentOrderedMapTree<Int,String>((111,"aaa"))
         var b = a.subtree
         b.insert((222,"bbb"), at: 0)
         b.insert((333,"ccc"), at: 1)

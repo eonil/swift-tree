@@ -1,5 +1,5 @@
 //
-//  IMPLPersistentOrderedTreeMapTest.swift
+//  IMPLPersistentOrderedMapTreeTest.swift
 //  TreeTest
 //
 //  Created by Henry on 2019/06/24.
@@ -10,9 +10,9 @@ import Foundation
 import XCTest
 @testable import Tree
 
-class IMPLPersistentOrderedTreeMapTest: XCTestCase {
+class IMPLPersistentOrderedMapTreeTest: XCTestCase {
     func testBasica1() {
-        var a = IMPLPersistentOrderedTreeMap<Int,String>(root: (111,"aaa"))
+        var a = IMPLPersistentOrderedMapTree<Int,String>(root: (111,"aaa"))
         a.setState("aaa-aaa", for: 111)
         XCTAssertEqual(a.stateMap.count, 1)
         XCTAssertNotNil(a.stateMap[111])

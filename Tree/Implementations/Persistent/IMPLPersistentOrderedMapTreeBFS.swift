@@ -1,5 +1,5 @@
 //
-//  IMPLEphemeralOrderedTreeMapBFS.swift
+//  IMPLPersistentOrderedMapTreeBFS.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/24.
@@ -9,10 +9,10 @@
 import BTree
 
 /// This iterator is finished is `target == nil`.
-struct IMPLEphemeralOrderedTreeMapBFS<K,V> where K:Hashable {
+struct IMPLPersistentOrderedMapTreeBFS<K,V> where K:Comparable {
     private(set) var source:S
-    private(set) var queue:Array<K>
-    typealias S = IMPLEphemeralOrderedTreeMap<K,V>
+    private(set) var queue:List<K>
+    typealias S = IMPLPersistentOrderedMapTree<K,V>
     init(_ s:S) {
         source = s
         queue = []

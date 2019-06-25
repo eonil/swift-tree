@@ -57,19 +57,8 @@ although you can change value of root elment.
 Variants
 ---------
 These variants are available.
-- Ephemeral Ordered Map Tree.
+- Persistent Ordered Map Tree.
 - Persistent Unordered Map Tree.
-
-You're supposed to use unordered map-tree for persistent storage,
-and transfer changes into ordered map-tree with recovering orders
-from its value.
-
-This is because *ephemeral indices* are very unstable state, 
-therefore really bad for long term persistence. 
-You need to store orders explicitly to keep them stable, 
-and changes in order need to be transferred explicitly.
-
-See `PD` library to see how to transfer with recovering orders from values.
 
 
 

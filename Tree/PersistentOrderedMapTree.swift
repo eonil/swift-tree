@@ -23,9 +23,9 @@
 /// - You can retrieve mutation result directly from subtree.
 ///   Modified tree can be obtained from `Subtree.tree`.
 ///
-public struct EphemeralOrderedMapTree<Key,Value>: Collection where Key: Hashable {
+public struct PersistentOrderedMapTree<Key,Value>: Collection where Key: Comparable {
     private(set) var impl: IMPL
-    typealias IMPL = IMPLEphemeralOrderedTreeMap<Key,Value>
+    typealias IMPL = IMPLPersistentOrderedMapTree<Key,Value>
     /// Initializes a new ordered-tree-map instance with root element.
     public init(_ element: Element) {
         impl = IMPL(root: element)
@@ -35,10 +35,10 @@ public struct EphemeralOrderedMapTree<Key,Value>: Collection where Key: Hashable
     }
 }
 
-public extension EphemeralOrderedMapTree {
+public extension PersistentOrderedMapTree {
     func index(for key: Key) -> Index? {
         guard let i = impl.stateMap.index(forKey: key) else { return nil }
-        return EphemeralOrderedMapTree.Index(impl: i)
+        return PersistentOrderedMapTree.Index(impl: i)
     }
     subscript(_ key: Key) -> Value {
         get { return impl.stateMap[key]! }
@@ -75,7 +75,7 @@ public extension EphemeralOrderedMapTree {
 //}
 
 // MARK: Collection Access
-public extension EphemeralOrderedMapTree {
+public extension PersistentOrderedMapTree {
     typealias Element = (key: Key, value: Value)
     var isEmpty: Bool {
         return impl.stateMap.isEmpty
@@ -102,8 +102,8 @@ public extension EphemeralOrderedMapTree {
         private(set) var impl: IMPL.StateMap.Index
     }
 }
-public extension EphemeralOrderedMapTree.Index {
-    static func < (lhs: EphemeralOrderedMapTree.Index, rhs: EphemeralOrderedMapTree.Index) -> Bool {
+public extension PersistentOrderedMapTree.Index {
+    static func < (lhs: PersistentOrderedMapTree.Index, rhs: PersistentOrderedMapTree.Index) -> Bool {
         return lhs.impl < rhs.impl
     }
 }
