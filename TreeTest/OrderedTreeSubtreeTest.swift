@@ -12,7 +12,7 @@ import XCTest
 
 class OrderedTreeSubtreeTest: XCTestCase {
     func testBasics1() {
-        var s = OrderedTree<Int>(111)
+        var s = EphemeralOrderedTree<Int>(111)
         let rootKey = s.subtree.key
         let rootValue = s.subtree.value
         XCTAssertEqual(s.count, 1)

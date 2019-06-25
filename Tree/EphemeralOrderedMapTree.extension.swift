@@ -1,5 +1,5 @@
 //
-//  OrderedTreeMap.extension.swift
+//  EphemeralOrderedMapTree.extension.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension OrderedTreeMap {
+public extension EphemeralOrderedMapTree {
     subscript(_ p: IndexPath) -> Element {
         return subtree[p]
     }
@@ -17,14 +17,14 @@ public extension OrderedTreeMap {
     }
 }
 
-public extension OrderedTreeMap.Subtree {
+public extension EphemeralOrderedMapTree.Subtree {
     subscript(_ p: IndexPath) -> Element {
         let s = subtree(at: p)
         let k = s.key
         let v = s.value
         return (k,v)
     }
-    func subtree(at p: IndexPath) -> OrderedTreeMap.Subtree {
+    func subtree(at p: IndexPath) -> EphemeralOrderedMapTree.Subtree {
         switch p.count {
         case 0:
             return self

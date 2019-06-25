@@ -1,5 +1,5 @@
 //
-//  IMPLOrderedTreeMapDFS.swift
+//  IMPLEphemeralOrderedTreeMapDFS.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/24.
@@ -9,10 +9,10 @@
 import BTree
 
 /// This iterator is finished is `target == nil`.
-struct IMPLOrderedTreeMapDFS<K,V> where K:Comparable {
+struct IMPLEphemeralOrderedTreeMapDFS<K,V> where K:Hashable {
     private(set) var source:S
-    private(set) var reversedStack:List<K>
-    typealias S = IMPLOrderedTreeMap<K,V>
+    private(set) var reversedStack:Array<K>
+    typealias S = IMPLEphemeralOrderedTreeMap<K,V>
     init(_ s:S) {
         source = s
         reversedStack = []

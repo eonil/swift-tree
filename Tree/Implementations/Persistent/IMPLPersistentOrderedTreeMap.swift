@@ -1,5 +1,5 @@
 //
-//  IMPLOrderedTreeMap.swift
+//  IMPLPersistentOrderedTreeMap.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/23.
@@ -17,7 +17,7 @@ import BTree
 /// - Unordered iteration takes O(n).
 /// - DFS iteration takes O(log(n)).
 ///
-struct IMPLOrderedTreeMap<K,V> where K:Comparable {
+struct IMPLPersistentOrderedTreeMap<K,V> where K:Comparable {
     let rootKey:K
     private(set) var stateMap = StateMap()
     private(set) var linkageMap = LinkageMap()
@@ -28,26 +28,26 @@ struct IMPLOrderedTreeMap<K,V> where K:Comparable {
         linkageMap[k] = Children()
     }
 }
-extension IMPLOrderedTreeMap {
+extension IMPLPersistentOrderedTreeMap {
     typealias StateMap = Map<K,V>
     typealias LinkageMap = Map<K,Children>
     typealias Children = List<K>
 }
 
 // MARK: Tree Access
-extension IMPLOrderedTreeMap {
+extension IMPLPersistentOrderedTreeMap {
     mutating func setState(_ v:V, for k:K) {
         assert(stateMap[k] != nil, "State must exist at this point.")
         stateMap[k] = v
     }
-    mutating func replaceSubtrees<C>(_ r:Range<Int>, in pk:K, with ts:C) where C:Collection, C.Element == IMPLOrderedTreeMap {
+    mutating func replaceSubtrees<C>(_ r:Range<Int>, in pk:K, with ts:C) where C:Collection, C.Element == IMPLPersistentOrderedTreeMap {
         removeSubtrees(r, in: pk)
         insertSubtrees(ts, at: r.lowerBound, in: pk)
     }
     /// - TODO:
     ///     We dont need to initialize `IMPLOrderedTreeMap` instance every time...
     mutating func replaceSubrange<C>(_ r:Range<Int>, in pk:K, with kvs:C) where C:Collection, C.Element == (K,V) {
-        let ts1 = kvs.map({ IMPLOrderedTreeMap(root: $0) })
+        let ts1 = kvs.map({ IMPLPersistentOrderedTreeMap(root: $0) })
         replaceSubtrees(r, in: pk, with: ts1)
     }
     /// This inserts other trees recursively.
@@ -55,7 +55,7 @@ extension IMPLOrderedTreeMap {
     ///     O(n * log(n)).
     /// - TODO:
     ///     It seems this can be optimized further by using `BTree` directly.
-    private mutating func insertSubtrees<C>(_ ts:C, at i:Int, in pk:K) where C:Collection, C.Element == IMPLOrderedTreeMap {
+    private mutating func insertSubtrees<C>(_ ts:C, at i:Int, in pk:K) where C:Collection, C.Element == IMPLPersistentOrderedTreeMap {
         for t in ts {
             for (k,v) in t.stateMap {
                 precondition(stateMap[k] == nil, "You cannot insert duplicated key.")

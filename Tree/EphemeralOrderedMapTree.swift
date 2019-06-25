@@ -1,5 +1,5 @@
 //
-//  OrderedTreeMap.swift
+//  PersistentOrderedTreeMap.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/23.
@@ -23,9 +23,9 @@
 /// - You can retrieve mutation result directly from subtree.
 ///   Modified tree can be obtained from `Subtree.tree`.
 ///
-public struct OrderedTreeMap<Key,Value>: BidirectionalCollection where Key:Comparable {
+public struct EphemeralOrderedMapTree<Key,Value>: Collection where Key: Hashable {
     private(set) var impl: IMPL
-    typealias IMPL = IMPLOrderedTreeMap<Key,Value>
+    typealias IMPL = IMPLEphemeralOrderedTreeMap<Key,Value>
     /// Initializes a new ordered-tree-map instance with root element.
     public init(_ element: Element) {
         impl = IMPL(root: element)
@@ -35,10 +35,10 @@ public struct OrderedTreeMap<Key,Value>: BidirectionalCollection where Key:Compa
     }
 }
 
-public extension OrderedTreeMap {
+public extension EphemeralOrderedMapTree {
     func index(for key: Key) -> Index? {
         guard let i = impl.stateMap.index(forKey: key) else { return nil }
-        return OrderedTreeMap.Index(impl: i)
+        return EphemeralOrderedMapTree.Index(impl: i)
     }
     subscript(_ key: Key) -> Value {
         get { return impl.stateMap[key]! }
@@ -75,7 +75,7 @@ public extension OrderedTreeMap {
 //}
 
 // MARK: Collection Access
-public extension OrderedTreeMap {
+public extension EphemeralOrderedMapTree {
     typealias Element = (key: Key, value: Value)
     var isEmpty: Bool {
         return impl.stateMap.isEmpty
@@ -92,9 +92,9 @@ public extension OrderedTreeMap {
     func index(after i: Index) -> Index {
         return Index(impl: impl.stateMap.index(after: i.impl))
     }
-    func index(before i: Index) -> Index {
-        return Index(impl: impl.stateMap.index(before: i.impl))
-    }
+//    func index(before i: Index) -> Index {
+//        return Index(impl: impl.stateMap.index(before: i.impl))
+//    }
     subscript(_ i: Index) -> Element {
         return impl.stateMap[i.impl]
     }
@@ -102,8 +102,8 @@ public extension OrderedTreeMap {
         private(set) var impl: IMPL.StateMap.Index
     }
 }
-public extension OrderedTreeMap.Index {
-    static func < (lhs: OrderedTreeMap.Index, rhs: OrderedTreeMap.Index) -> Bool {
+public extension EphemeralOrderedMapTree.Index {
+    static func < (lhs: EphemeralOrderedMapTree.Index, rhs: EphemeralOrderedMapTree.Index) -> Bool {
         return lhs.impl < rhs.impl
     }
 }

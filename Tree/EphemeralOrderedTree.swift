@@ -1,5 +1,5 @@
 //
-//  OrderedTree.swift
+//  EphemeralOrderedTree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/24.
@@ -14,15 +14,15 @@ import Foundation
 /// for elements, you can use this type like nested array.
 ///
 /// In many cases, you need explicit node identities (keys) for performant tree
-/// operations. In that case, use `OrderedTreeMap` type.
+/// operations. In that case, use `PersistentOrderedTree` type.
 ///
-/// - `OrderedTree` provides `IndexPath` based interfaces.
-/// - `OrderedTree` also provides object-oriented `Subtree` based interface.
+/// - `PersistentOrderedTree` provides `IndexPath` based interfaces.
+/// - `PersistentOrderedTree` also provides object-oriented `Subtree` based interface.
 /// - You can use this type in either way you like.
 ///
-public struct OrderedTree<Element> {
+public struct EphemeralOrderedTree<Element> {
     private(set) var impl: IMPL
-    typealias IMPL = IMPLOrderedTreeMap<II,Element>
+    typealias IMPL = IMPLEphemeralOrderedTreeMap<II,Element>
     typealias II = IMPLImplicitIdentity
     public init(_ e: Element) {
         impl = IMPL(root: (II(),e))
@@ -32,7 +32,7 @@ public struct OrderedTree<Element> {
     }
 }
 
-public extension OrderedTree {
+public extension EphemeralOrderedTree {
     var isEmpty: Bool {
         return impl.stateMap.isEmpty
     }
@@ -66,7 +66,7 @@ public extension OrderedTree {
     }
 }
 
-public extension OrderedTree {
+public extension EphemeralOrderedTree {
     /// Root subtree.
     var subtree: Subtree {
         let cks = impl.linkageMap[impl.rootKey]!
@@ -87,13 +87,13 @@ public extension OrderedTree {
         var subkeys: IMPL.Children
     }
 }
-public extension OrderedTree.Subtree {
+public extension EphemeralOrderedTree.Subtree {
     typealias Index = Int
     init(_ e: Element) {
-        self = OrderedTree(e).subtree
+        self = EphemeralOrderedTree(e).subtree
     }
-    var tree: OrderedTree {
-        return OrderedTree(impl: impl)
+    var tree: EphemeralOrderedTree {
+        return EphemeralOrderedTree(impl: impl)
     }
     var startIndex: Int {
         return 0
@@ -106,7 +106,7 @@ public extension OrderedTree.Subtree {
         return impl.stateMap[ck]!
     }
     /// Replaces subtrees in range with new subtrees recursively.
-    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newSubtrees: C) where C: Collection, C.Element == OrderedTree.Subtree {
+    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newSubtrees: C) where C: Collection, C.Element == EphemeralOrderedTree.Subtree {
         let ts1 = newSubtrees.lazy.map({ t in t.impl })
         impl.replaceSubtrees(subrange, in: key, with: ts1)
         // Update local cache.
@@ -114,13 +114,13 @@ public extension OrderedTree.Subtree {
     }
     /// Replaces subtrees in range with new elements as new subtrees
     mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-        let kvs1 = newElements.lazy.map({ e in (OrderedTree.II(),e) })
+        let kvs1 = newElements.lazy.map({ e in (EphemeralOrderedTree.II(),e) })
         impl.replaceSubrange(subrange, in: key, with: kvs1)
         // Update local cache.
         subkeys = impl.linkageMap[key]!
     }
     /// Inserts a subtree at index recursively.
-    mutating func insert(_ s: OrderedTree.Subtree, at i: Int) {
+    mutating func insert(_ s: EphemeralOrderedTree.Subtree, at i: Int) {
         replaceSubtrees(i..<i, with: [s])
     }
     /// Inserts an element as a subtree.
@@ -132,7 +132,7 @@ public extension OrderedTree.Subtree {
         replaceSubrange(i..<i+1, with: [])
     }
 }
-extension OrderedTree.Subtree {
+extension EphemeralOrderedTree.Subtree {
     var value: Element {
         get { return impl.stateMap[key]! }
         set(v) {
@@ -141,12 +141,12 @@ extension OrderedTree.Subtree {
             subkeys = impl.linkageMap[key]!
         }
     }
-    func subtree(at i: Int) -> OrderedTree.Subtree {
+    func subtree(at i: Int) -> EphemeralOrderedTree.Subtree {
         let ck = subkeys[i]
         let ccks = impl.linkageMap[ck]!
-        return OrderedTree.Subtree(impl: impl, key: ck, subkeys: ccks)
+        return EphemeralOrderedTree.Subtree(impl: impl, key: ck, subkeys: ccks)
     }
-    func subtree(at p: IndexPath) -> OrderedTree.Subtree {
+    func subtree(at p: IndexPath) -> EphemeralOrderedTree.Subtree {
         switch p.count {
         case 0:
             return self

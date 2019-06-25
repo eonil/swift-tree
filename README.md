@@ -2,19 +2,21 @@ Tree
 ====
 Eonil, 2019.
 
-A generalized key-value tree-map implementation.
+Some generalized key-value tree implementation.
 
 In many cases, it's hard to archive certain level of performance with plain tree structure,
 and you need unique identifiers for trees. In that case, 
 you usually need key-value map-like tree structure.
 Here `OrderedTreeMap` provides such key-value tree-map structure.
 
+
+
 Getting Started
 -------------------
-Just initialize new `OrderedTreeMap` instance with root key-value pair,
-and get `OrderedTreeMap.Subtree` instance from `subtree` property.
+Just initialize new `EphemeralOrderedMapTree` instance with root key-value pair,
+and get `EphemeralOrderedMapTree.Subtree` instance from `subtree` property.
 
-    let a = OrderedTreeMap<Int,String>((111,"aaa"))
+    let a = EphemeralOrderedMapTree<Int,String>((111,"aaa"))
     var b = a.subtree
     
 You can insert key-value pairs like an `Array` instance. 
@@ -42,13 +44,32 @@ Finally, you can retrieve whole tree back from subtree.
     XCTAssertEqual(e[[2]].key, 444)
     XCTAssertEqual(e[[2]].value, "ddd")
     
-Basically, you use `OrderedTreeMap` type to control overall tree level,
-and use `OrderedTreeMap.Subtree` type to control single node and its direct children.
+Basically, you use `EphemeralOrderedMapTree` type to control overall tree level,
+and use `EphemeralOrderedMapTree.Subtree` type to control single node and its direct children.
 
-Conceptually, all `OrderedTreeMap` is a singly-rooted tree, and the instance itself
+Conceptually, all `EphemeralOrderedMapTree` is a singly-rooted tree, and the instance itself
 is regarded as root subtree. Therefore, there's always a root element, and you cannot
-remove root element from `OrderedTreeMap` 
+remove root element from `EphemeralOrderedMapTree` 
 although you can change value of root elment.
+
+
+
+Variants
+---------
+These variants are available.
+- Ephemeral Ordered Map Tree.
+- Persistent Unordered Map Tree.
+
+You're supposed to use unordered map-tree for persistent storage,
+and transfer changes into ordered map-tree with recovering orders
+from its value.
+
+This is because *ephemeral indices* are very unstable state, 
+therefore really bad for long term persistence. 
+You need to store orders explicitly to keep them stable, 
+and changes in order need to be transferred explicitly.
+
+See `PD` library to see how to transfer with recovering orders from values.
 
 
 

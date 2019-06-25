@@ -1,5 +1,5 @@
 //
-//  OrderedTreeMap.Subtree.swift
+//  EphemeralOrderedMapTree.Subtree.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/25.
@@ -7,7 +7,7 @@
 //
 
 // MARK: Subtree Access
-public extension OrderedTreeMap {
+public extension EphemeralOrderedMapTree {
     /// Convenient access to each subtree.
     ///
     /// Implicit Shallow Iteration
@@ -35,11 +35,11 @@ public extension OrderedTreeMap {
         }
     }
 }
-public extension OrderedTreeMap.Subtree {
+public extension EphemeralOrderedMapTree.Subtree {
     typealias Index = Int
     typealias Element = (key: Key, value: Value)
     init(_ e: Element) {
-        impl = OrderedTreeMap(e).impl
+        impl = EphemeralOrderedMapTree(e).impl
         key = e.key
         subkeys = impl.linkageMap[key]!
     }
@@ -52,8 +52,8 @@ public extension OrderedTreeMap.Subtree {
     /// - Modified tree can be obtained from `tree` property.
     /// - Mutation on subtree won't affect original tree.
     ///   Instead, a new version of tree will be created.
-    var tree: OrderedTreeMap {
-        return OrderedTreeMap(impl: impl)
+    var tree: EphemeralOrderedMapTree {
+        return EphemeralOrderedMapTree(impl: impl)
     }
     //    var index: OrderedTreeMap.Index? {
     //        guard let i = impl.stateMap.index(forKey: key) else { return nil }
@@ -75,12 +75,12 @@ public extension OrderedTreeMap.Subtree {
             replaceSubrange(i..<i+1, with: [v])
         }
     }
-    func subtree(at i: Int) -> OrderedTreeMap.Subtree {
+    func subtree(at i: Int) -> EphemeralOrderedMapTree.Subtree {
         let k = subkeys[i]
         return subtree(for: k)!
     }
     /// Search range is limited to direct children.
-    func subtree(for key: Key) -> OrderedTreeMap.Subtree? {
+    func subtree(for key: Key) -> EphemeralOrderedMapTree.Subtree? {
         guard subkeys.contains(key) else { return nil }
         return tree.subtree(for: key)
     }
@@ -97,7 +97,7 @@ public extension OrderedTreeMap.Subtree {
         }
     }
     /// Replaces subtrees in range with new subtrees recursively.
-    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == OrderedTreeMap.Subtree {
+    mutating func replaceSubtrees<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == EphemeralOrderedMapTree.Subtree {
         let ts1 = newElements.lazy.map({ $0.impl })
         impl.replaceSubtrees(subrange, in: key, with: ts1)
         // Update local cache.
@@ -107,15 +107,15 @@ public extension OrderedTreeMap.Subtree {
     /// - TODO:
     ///     We dont need to initialize `OrderedTreeMap` instance every time...
     mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-        replaceSubtrees(subrange, with: newElements.lazy.map({ e in OrderedTreeMap.Subtree(e) }))
+        replaceSubtrees(subrange, with: newElements.lazy.map({ e in EphemeralOrderedMapTree.Subtree(e) }))
     }
     /// Inserts a subtree recursively at index.
-    mutating func insert(_ s: OrderedTreeMap.Subtree, at i: Int) {
+    mutating func insert(_ s: EphemeralOrderedMapTree.Subtree, at i: Int) {
         replaceSubtrees(i..<i, with: [s])
     }
     /// Inserts an element as a subtree.
     mutating func insert(_ e: Element, at i: Int) {
-        let s = OrderedTreeMap.Subtree(e)
+        let s = EphemeralOrderedMapTree.Subtree(e)
         replaceSubtrees(i..<i, with: [s])
     }
     /// Removes a subtree recursively.
@@ -125,23 +125,23 @@ public extension OrderedTreeMap.Subtree {
 }
 
 // MARK: BFS
-public extension OrderedTreeMap.Subtree {
+public extension EphemeralOrderedMapTree.Subtree {
     var bfs: BFS { return BFS(impl: self) }
     struct BFS: Sequence {
-        private(set) var impl: OrderedTreeMap.Subtree
+        private(set) var impl: EphemeralOrderedMapTree.Subtree
     }
 }
-public extension OrderedTreeMap.Subtree.BFS {
-    __consuming func makeIterator() -> OrderedTreeMap.Subtree.BFS.Iterator {
-        let it = IMPLOrderedTreeMapBFS<Key,Value>(impl.impl, from: impl.key)
+public extension EphemeralOrderedMapTree.Subtree.BFS {
+    __consuming func makeIterator() -> EphemeralOrderedMapTree.Subtree.BFS.Iterator {
+        let it = IMPLEphemeralOrderedTreeMapBFS<Key,Value>(impl.impl, from: impl.key)
         return Iterator(impl: it)
     }
     struct Iterator: IteratorProtocol {
-        private(set) var impl: IMPLOrderedTreeMapBFS<Key,Value>
+        private(set) var impl: IMPLEphemeralOrderedTreeMapBFS<Key,Value>
     }
 }
-public extension OrderedTreeMap.Subtree.BFS.Iterator {
-    mutating func next() -> OrderedTreeMap.Element? {
+public extension EphemeralOrderedMapTree.Subtree.BFS.Iterator {
+    mutating func next() -> EphemeralOrderedMapTree.Element? {
         guard let k = impl.target else { return nil }
         let v = impl.source.stateMap[k]!
         impl.step()
@@ -151,23 +151,23 @@ public extension OrderedTreeMap.Subtree.BFS.Iterator {
 
 
 // MARK: DFS
-public extension OrderedTreeMap.Subtree {
+public extension EphemeralOrderedMapTree.Subtree {
     var dfs: DFS { return DFS(impl: self) }
     struct DFS: Sequence {
-        private(set) var impl: OrderedTreeMap.Subtree
+        private(set) var impl: EphemeralOrderedMapTree.Subtree
     }
 }
-public extension OrderedTreeMap.Subtree.DFS {
-    __consuming func makeIterator() -> OrderedTreeMap.Subtree.DFS.Iterator {
-        let it = IMPLOrderedTreeMapDFS<Key,Value>(impl.impl, from: impl.key)
+public extension EphemeralOrderedMapTree.Subtree.DFS {
+    __consuming func makeIterator() -> EphemeralOrderedMapTree.Subtree.DFS.Iterator {
+        let it = IMPLEphemeralOrderedTreeMapDFS<Key,Value>(impl.impl, from: impl.key)
         return Iterator(impl: it)
     }
     struct Iterator: IteratorProtocol {
-        private(set) var impl: IMPLOrderedTreeMapDFS<Key,Value>
+        private(set) var impl: IMPLEphemeralOrderedTreeMapDFS<Key,Value>
     }
 }
-public extension OrderedTreeMap.Subtree.DFS.Iterator {
-    mutating func next() -> OrderedTreeMap.Element? {
+public extension EphemeralOrderedMapTree.Subtree.DFS.Iterator {
+    mutating func next() -> EphemeralOrderedMapTree.Element? {
         guard let k = impl.target else { return nil }
         let v = impl.source.stateMap[k]!
         impl.step()

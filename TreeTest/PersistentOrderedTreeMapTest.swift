@@ -10,9 +10,9 @@ import Foundation
 import XCTest
 @testable import Tree
 
-class OrderedTreeMapTest: XCTestCase {
+class PersistentOrderedTreeMapTest: XCTestCase {
     func testBasica1() {
-        let a = OrderedTreeMap<Int,String>((111,"aaa"))
+        let a = EphemeralOrderedMapTree<Int,String>((111,"aaa"))
         var b = a.subtree
         b.insert((222,"bbb"), at: 0)
         b.insert((333,"ccc"), at: 1)
