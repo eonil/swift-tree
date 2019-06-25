@@ -11,6 +11,11 @@
 		4506A2BD22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BC22C0EB5600B6476E /* IMPLOrderedTreeMapTest.swift */; };
 		4506A2BF22C0ED9600B6476E /* OrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BE22C0ED9600B6476E /* OrderedTreeMapTest.swift */; };
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
+		4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */; };
+		4586D34322C1A2B600779050 /* PersistentTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34222C1A2B600779050 /* PersistentTreeMap.swift */; };
+		4586D34522C1A8C200779050 /* PersistentTreeMap.Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34422C1A8C200779050 /* PersistentTreeMap.Subtree.swift */; };
+		4586D34722C1A8F500779050 /* OrderedTreeMap.Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34622C1A8F500779050 /* OrderedTreeMap.Subtree.swift */; };
+		4586D34F22C1A9EA00779050 /* IMPLEphemeralOrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34E22C1A9EA00779050 /* IMPLEphemeralOrderedTreeMap.swift */; };
 		45A12DDF22BFB88F004DFDAF /* OrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */; };
 		45A12DE122BFB927004DFDAF /* IMPLOrderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */; };
 		45A12E8C22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */; };
@@ -65,6 +70,11 @@
 		458522B722BCA1E600C367E0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		458522B822BCA40D00C367E0 /* ImplPersistentMapBasedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplPersistentMapBasedTree.swift; sourceTree = "<group>"; };
 		458522BA22BCA80E00C367E0 /* ImplIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplIdentity.swift; sourceTree = "<group>"; };
+		4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMPLPersitentUnorderedTreeMap.swift; sourceTree = "<group>"; };
+		4586D34222C1A2B600779050 /* PersistentTreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentTreeMap.swift; sourceTree = "<group>"; };
+		4586D34422C1A8C200779050 /* PersistentTreeMap.Subtree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentTreeMap.Subtree.swift; sourceTree = "<group>"; };
+		4586D34622C1A8F500779050 /* OrderedTreeMap.Subtree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeMap.Subtree.swift; sourceTree = "<group>"; };
+		4586D34E22C1A9EA00779050 /* IMPLEphemeralOrderedTreeMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLEphemeralOrderedTreeMap.swift; sourceTree = "<group>"; };
 		4591BA8722BC5BA40052039C /* libTree.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTree.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4591BA9622BC5BC50052039C /* TreeIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeIndex.swift; sourceTree = "<group>"; };
 		4591BA9722BC5BC50052039C /* MutableTreeProtocol.extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutableTreeProtocol.extension.swift; sourceTree = "<group>"; };
@@ -83,7 +93,7 @@
 		45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMPLOrderedTreeMapBFS.swift; sourceTree = "<group>"; };
 		45A12EAA22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeMap.extension.swift; sourceTree = "<group>"; };
 		45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderedTree.swift; path = "../../../../../../repo/pub/github.com/eonil/swift-tree/Tree/OrderedTree.swift"; sourceTree = "<group>"; };
-		45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IMPLImplicitIdentity.swift; path = "../../../../../../repo/pub/github.com/eonil/swift-tree/Tree/IMPLImplicitIdentity.swift"; sourceTree = "<group>"; };
+		45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLImplicitIdentity.swift; sourceTree = "<group>"; };
 		45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeSubtreeTest.swift; sourceTree = "<group>"; };
 		45CE398622BC6182007205EE /* Tree.Index==TreeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tree.Index==TreeIndex.swift"; sourceTree = "<group>"; };
 		45CE398C22BC6576007205EE /* TreeTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +138,35 @@
 			path = Deprecated;
 			sourceTree = "<group>";
 		};
+		4586D34822C1A99300779050 /* Ephemeral */ = {
+			isa = PBXGroup;
+			children = (
+				4586D34E22C1A9EA00779050 /* IMPLEphemeralOrderedTreeMap.swift */,
+			);
+			path = Ephemeral;
+			sourceTree = "<group>";
+		};
+		4586D34922C1A99900779050 /* Persistent */ = {
+			isa = PBXGroup;
+			children = (
+				45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */,
+				45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */,
+				45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */,
+				4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */,
+			);
+			path = Persistent;
+			sourceTree = "<group>";
+		};
+		4586D35422C1ABBE00779050 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */,
+				4586D34822C1A99300779050 /* Ephemeral */,
+				4586D34922C1A99900779050 /* Persistent */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		4591BA7E22BC5BA40052039C = {
 			isa = PBXGroup;
 			children = (
@@ -156,12 +195,12 @@
 			isa = PBXGroup;
 			children = (
 				45A12DDE22BFB88F004DFDAF /* OrderedTreeMap.swift */,
+				4586D34622C1A8F500779050 /* OrderedTreeMap.Subtree.swift */,
 				45A12EAA22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift */,
 				45B5EBD122C0CC6C007E66B4 /* OrderedTree.swift */,
-				45A12DE022BFB927004DFDAF /* IMPLOrderedTreeMap.swift */,
-				45A12E8F22C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift */,
-				45A12E8B22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift */,
-				45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */,
+				4586D34222C1A2B600779050 /* PersistentTreeMap.swift */,
+				4586D34422C1A8C200779050 /* PersistentTreeMap.Subtree.swift */,
+				4586D35422C1ABBE00779050 /* Implementations */,
 			);
 			path = Tree;
 			sourceTree = "<group>";
@@ -318,12 +357,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				45A12DDF22BFB88F004DFDAF /* OrderedTreeMap.swift in Sources */,
+				4586D34522C1A8C200779050 /* PersistentTreeMap.Subtree.swift in Sources */,
 				45A12E8C22C0AEA1004DFDAF /* IMPLOrderedTreeMapDFS.swift in Sources */,
 				45B5EBD222C0CC6C007E66B4 /* OrderedTree.swift in Sources */,
+				4586D34F22C1A9EA00779050 /* IMPLEphemeralOrderedTreeMap.swift in Sources */,
+				4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */,
+				4586D34322C1A2B600779050 /* PersistentTreeMap.swift in Sources */,
 				45A12DE122BFB927004DFDAF /* IMPLOrderedTreeMap.swift in Sources */,
 				45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */,
 				45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */,
 				45A12EAB22C0BA4B004DFDAF /* OrderedTreeMap.extension.swift in Sources */,
+				4586D34722C1A8F500779050 /* OrderedTreeMap.Subtree.swift in Sources */,
 				45A12E9022C0B302004DFDAF /* IMPLOrderedTreeMapBFS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
