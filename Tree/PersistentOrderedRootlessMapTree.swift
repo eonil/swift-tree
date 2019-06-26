@@ -25,7 +25,7 @@
 ///   Use `PersistentOrderedRootlessMapTree` interface
 ///   for setting values for keys.
 ///
-public struct PersistentOrderedRootlessMapTree<Key,Value> where
+public struct PersistentOrderedRootlessMapTree<Key,Value>: Collection where
 Key: Comparable {
     private(set) var impl = IMPL()
     typealias IMPL = IMPLPersistentOrderedRootlessMapTree<Key,Value>
@@ -41,6 +41,32 @@ public extension PersistentOrderedRootlessMapTree {
         set(v) { impl.setValue(v, for: k) }
     }
 }
+
+// MARK: Collection
+public extension PersistentOrderedRootlessMapTree {
+    var startIndex: Index {
+        return Index(impl: impl.startIndex)
+    }
+    var endIndex: Index {
+        return Index(impl: impl.endIndex)
+    }
+    func index(after i: Index) -> Index {
+        return Index(impl: impl.index(after: i.impl))
+    }
+    subscript(_ i: Index) -> Element {
+        return impl[i.impl]
+    }
+    typealias Element = (key: Key, value: Value)
+    struct Index: Comparable {
+        var impl: IMPL.Index
+    }
+}
+public extension PersistentOrderedRootlessMapTree.Index {
+    static func < (lhs: PersistentOrderedRootlessMapTree.Index, rhs: PersistentOrderedRootlessMapTree.Index) -> Bool {
+        return lhs.impl < rhs.impl
+    }
+}
+
 // MARK: Subtree
 public extension PersistentOrderedRootlessMapTree {
     var subtree: Subtree {
