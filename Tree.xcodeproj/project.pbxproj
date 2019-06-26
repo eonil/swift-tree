@@ -11,6 +11,11 @@
 		4506A2BD22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */; };
 		4506A2BF22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */; };
 		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
+		45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift */; };
+		45639CD622C3106C00C0DD71 /* Optional.Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD522C3106C00C0DD71 /* Optional.Comparable.swift */; };
+		45639CD822C3115200C0DD71 /* Map.util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD722C3115200C0DD71 /* Map.util.swift */; };
+		45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */; };
+		45639CDC22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */; };
 		4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */; };
 		4586D34322C1A2B600779050 /* PersistentUnorderedMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34222C1A2B600779050 /* PersistentUnorderedMapTree.swift */; };
 		4586D34522C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34422C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift */; };
@@ -60,6 +65,11 @@
 		4558191B22BCEA4100B07175 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4558191D22BCEAD300B07175 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		4558195722BCF8E600B07175 /* ImplMapBasedTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplMapBasedTree.swift; sourceTree = "<group>"; };
+		45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLPersistentOrderedRootlessMapTree.swift; sourceTree = "<group>"; };
+		45639CD522C3106C00C0DD71 /* Optional.Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.Comparable.swift; sourceTree = "<group>"; };
+		45639CD722C3115200C0DD71 /* Map.util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.util.swift; sourceTree = "<group>"; };
+		45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLAlternativeOptional.swift; sourceTree = "<group>"; };
+		45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.swift; sourceTree = "<group>"; };
 		458522A622BC7F4400C367E0 /* TreePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -146,6 +156,7 @@
 		4586D34922C1A99900779050 /* Persistent */ = {
 			isa = PBXGroup;
 			children = (
+				45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift */,
 				4586D34E22C1A9EA00779050 /* IMPLPersistentOrderedMapTree.swift */,
 				45A12E8F22C0B302004DFDAF /* IMPLPersistentOrderedMapTreeBFS.swift */,
 				45A12E8B22C0AEA1004DFDAF /* IMPLPersistentOrderedMapTreeDFS.swift */,
@@ -158,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */,
+				45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */,
 				4586D34822C1A99300779050 /* Ephemeral */,
 				4586D34922C1A99900779050 /* Persistent */,
 			);
@@ -195,8 +207,11 @@
 				45A12DDE22BFB88F004DFDAF /* PersistentOrderedMapTree.swift */,
 				45A12EAA22C0BA4B004DFDAF /* PersistentOrderedMapTree.extension.swift */,
 				4586D34622C1A8F500779050 /* PersistentOrderedMapTree.Subtree.swift */,
+				45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */,
 				4586D34222C1A2B600779050 /* PersistentUnorderedMapTree.swift */,
 				4586D34422C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift */,
+				45639CD522C3106C00C0DD71 /* Optional.Comparable.swift */,
+				45639CD722C3115200C0DD71 /* Map.util.swift */,
 				4586D35422C1ABBE00779050 /* Implementations */,
 			);
 			path = Tree;
@@ -355,16 +370,21 @@
 			files = (
 				45A12DDF22BFB88F004DFDAF /* PersistentOrderedMapTree.swift in Sources */,
 				4586D34522C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift in Sources */,
+				45639CD622C3106C00C0DD71 /* Optional.Comparable.swift in Sources */,
 				45A12E8C22C0AEA1004DFDAF /* IMPLPersistentOrderedMapTreeDFS.swift in Sources */,
 				45B5EBD222C0CC6C007E66B4 /* PersistentOrderedTree.swift in Sources */,
+				45639CDC22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift in Sources */,
 				4586D34F22C1A9EA00779050 /* IMPLPersistentOrderedMapTree.swift in Sources */,
 				4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */,
 				4586D34322C1A2B600779050 /* PersistentUnorderedMapTree.swift in Sources */,
+				45639CD822C3115200C0DD71 /* Map.util.swift in Sources */,
 				45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */,
 				45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */,
 				45A12EAB22C0BA4B004DFDAF /* PersistentOrderedMapTree.extension.swift in Sources */,
+				45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift in Sources */,
 				4586D34722C1A8F500779050 /* PersistentOrderedMapTree.Subtree.swift in Sources */,
 				45A12E9022C0B302004DFDAF /* IMPLPersistentOrderedMapTreeBFS.swift in Sources */,
+				45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

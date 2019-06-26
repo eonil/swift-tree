@@ -71,6 +71,7 @@ public extension PersistentOrderedMapTree.Subtree {
             let cv = impl.stateMap[ck]!
             return (ck,cv)
         }
+        @available(*,deprecated: 0, message: "This cannot provide proper performance. Use `remove/insert` methods instead of.")
         set(v) {
             replaceSubrange(i..<i+1, with: [v])
         }
@@ -86,6 +87,7 @@ public extension PersistentOrderedMapTree.Subtree {
     }
     /// Gets value for a key.
     /// Search range is limited to direct (shallow) children of current subtree.
+    @available(*,deprecated: 0, message: "This cannot provide proper performance. Use `Tree[]` instead of.")
     subscript(_ k: Key) -> Value {
         get {
             precondition(subkeys.contains(k), "The key is not a direct child of this node.")
