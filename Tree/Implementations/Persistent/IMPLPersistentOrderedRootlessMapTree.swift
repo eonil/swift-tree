@@ -151,3 +151,16 @@ extension IMPLPersistentOrderedRootlessMapTree {
         valueMap.removeAll()
     }
 }
+
+extension IMPLPersistentOrderedRootlessMapTree {
+    /// - Complexity:
+    ///     O(n * log(n)).
+    func mapValues<X>(_ fx: (V) -> X) -> IMPLPersistentOrderedRootlessMapTree<K,X> {
+        var s = IMPLPersistentOrderedRootlessMapTree<K,X>()
+        s.subkeysMap = subkeysMap
+        for (k,v) in valueMap {
+            s.valueMap[k] = fx(v)
+        }
+        return s
+    }
+}
