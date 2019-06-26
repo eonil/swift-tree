@@ -53,6 +53,16 @@ public extension PersistentOrderedRootlessMapTree {
     mutating func insert<C>(contentsOf es: C, at i: Int, in pk: Key?) where C: Collection, C.Element == Element {
         impl.insert(contentsOf: es.lazy.map({ k,v in (k,v) }), at: i, in: pk)
     }
+    /// Removes subtrees in range recursively.
+    /// This method removes target element and all of its descendants.
+    mutating func removeSubtrees(_ r: Range<Int>, in pk: Key?) {
+        impl.removeSubtrees(r, in: pk)
+    }
+    /// Removes subtrees at index recursively.
+    /// This method removes target element and all of its descendants.
+    mutating func removeSubtree(at i: Int, in pk: Key?) {
+        removeSubtrees(i..<i+1, in: pk)
+    }
     /// This method fails if there's any child at the target subtree.
     mutating func removeSubrange(_ r: Range<Int>, in pk: Key?) {
         for (k,_) in subtree(for: pk) {
