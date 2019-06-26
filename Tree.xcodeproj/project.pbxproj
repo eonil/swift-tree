@@ -8,21 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4506A2A722C0DC8B00B6476E /* BTree in Frameworks */ = {isa = PBXBuildFile; productRef = 4506A2A622C0DC8B00B6476E /* BTree */; };
-		4506A2BD22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */; };
-		4506A2BF22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */; };
-		4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
 		45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedRootlessMapTree.swift */; };
 		45639CD622C3106C00C0DD71 /* Optional.Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD522C3106C00C0DD71 /* Optional.Comparable.swift */; };
 		45639CD822C3115200C0DD71 /* Map.util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD722C3115200C0DD71 /* Map.util.swift */; };
 		45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */; };
 		45639CDC22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */; };
-		45639CED22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */; };
-		45639CEF22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */; };
 		45639CF122C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CF022C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift */; };
 		45639D0D22C3532100C0DD71 /* PersistentOrderedRootlessMapTree.util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D0C22C3532100C0DD71 /* PersistentOrderedRootlessMapTree.util.swift */; };
 		45639D0F22C3559300C0DD71 /* PersistentOrderedRootlessMapTree.map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D0E22C3559300C0DD71 /* PersistentOrderedRootlessMapTree.map.swift */; };
 		45639D3A22C38A1800C0DD71 /* PersistentOrderedRootlessMapTree.keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D3922C38A1800C0DD71 /* PersistentOrderedRootlessMapTree.keys.swift */; };
 		45639D3C22C38D2800C0DD71 /* PersistentOrderedRootlessMapTree.values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D3B22C38D2800C0DD71 /* PersistentOrderedRootlessMapTree.values.swift */; };
+		45639D4022C3910400C0DD71 /* MapTreeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D3F22C3910400C0DD71 /* MapTreeMock.swift */; };
+		45639D4B22C392CD00C0DD71 /* MapTreeMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D4A22C392CD00C0DD71 /* MapTreeMockTest.swift */; };
+		45639D6922C3974D00C0DD71 /* TestUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 45639D6822C3974D00C0DD71 /* TestUtil */; };
+		45639D6B22C3999000C0DD71 /* Imports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D6A22C3999000C0DD71 /* Imports.swift */; };
 		4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */; };
 		4586D34322C1A2B600779050 /* PersistentUnorderedMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34222C1A2B600779050 /* PersistentUnorderedMapTree.swift */; };
 		4586D34522C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34422C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift */; };
@@ -35,8 +34,6 @@
 		45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
 		45B5EBD222C0CC6C007E66B4 /* PersistentOrderedTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBD122C0CC6C007E66B4 /* PersistentOrderedTree.swift */; };
 		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
-		45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */; };
-		45CE398F22BC6576007205EE /* TreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* TreeTest.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +81,9 @@
 		45639D0E22C3559300C0DD71 /* PersistentOrderedRootlessMapTree.map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.map.swift; sourceTree = "<group>"; };
 		45639D3922C38A1800C0DD71 /* PersistentOrderedRootlessMapTree.keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.keys.swift; sourceTree = "<group>"; };
 		45639D3B22C38D2800C0DD71 /* PersistentOrderedRootlessMapTree.values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.values.swift; sourceTree = "<group>"; };
+		45639D3F22C3910400C0DD71 /* MapTreeMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTreeMock.swift; sourceTree = "<group>"; };
+		45639D4A22C392CD00C0DD71 /* MapTreeMockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTreeMockTest.swift; sourceTree = "<group>"; };
+		45639D6A22C3999000C0DD71 /* Imports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imports.swift; sourceTree = "<group>"; };
 		458522A622BC7F4400C367E0 /* TreePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTreeSubtreeTest.swift; sourceTree = "<group>"; };
 		45CE398622BC6182007205EE /* Tree.Index==TreeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tree.Index==TreeIndex.swift"; sourceTree = "<group>"; };
 		45CE398C22BC6576007205EE /* TreeTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TreeTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		45CE398E22BC6576007205EE /* TreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTest.swift; sourceTree = "<group>"; };
+		45CE398E22BC6576007205EE /* xTreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xTreeTest.swift; sourceTree = "<group>"; };
 		45CE399022BC6576007205EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45639D6922C3974D00C0DD71 /* TestUtil in Frameworks */,
 				4506A2A722C0DC8B00B6476E /* BTree in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +267,7 @@
 		45CE398D22BC6576007205EE /* TreeTest */ = {
 			isa = PBXGroup;
 			children = (
-				45CE398E22BC6576007205EE /* TreeTest.swift */,
+				45CE398E22BC6576007205EE /* xTreeTest.swift */,
 				4558191922BCCCEF00B07175 /* SubtreeTest.swift */,
 				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
 				4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */,
@@ -274,6 +275,9 @@
 				4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */,
 				45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
+				45639D3F22C3910400C0DD71 /* MapTreeMock.swift */,
+				45639D4A22C392CD00C0DD71 /* MapTreeMockTest.swift */,
+				45639D6A22C3999000C0DD71 /* Imports.swift */,
 			);
 			path = TreeTest;
 			sourceTree = "<group>";
@@ -307,6 +311,7 @@
 			name = Tree;
 			packageProductDependencies = (
 				4506A2A622C0DC8B00B6476E /* BTree */,
+				45639D6822C3974D00C0DD71 /* TestUtil */,
 			);
 			productName = Tree;
 			productReference = 4591BA8722BC5BA40052039C /* libTree.a */;
@@ -363,6 +368,7 @@
 			mainGroup = 4591BA7E22BC5BA40052039C;
 			packageReferences = (
 				4506A2A522C0DC8B00B6476E /* XCRemoteSwiftPackageReference "BTree" */,
+				45639D6722C3974D00C0DD71 /* XCRemoteSwiftPackageReference "swift-test-util" */,
 			);
 			productRefGroup = 4591BA8822BC5BA40052039C /* Products */;
 			projectDirPath = "";
@@ -418,13 +424,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45639CED22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */,
-				4506A2BD22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift in Sources */,
-				45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */,
-				45639CEF22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */,
-				4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */,
-				4506A2BF22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift in Sources */,
-				45CE398F22BC6576007205EE /* TreeTest.swift in Sources */,
+				45639D4022C3910400C0DD71 /* MapTreeMock.swift in Sources */,
+				45639D6B22C3999000C0DD71 /* Imports.swift in Sources */,
+				45639D4B22C392CD00C0DD71 /* MapTreeMockTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +677,14 @@
 				kind = branch;
 			};
 		};
+		45639D6722C3974D00C0DD71 /* XCRemoteSwiftPackageReference "swift-test-util" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/eonil/swift-test-util";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -682,6 +692,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4506A2A522C0DC8B00B6476E /* XCRemoteSwiftPackageReference "BTree" */;
 			productName = BTree;
+		};
+		45639D6822C3974D00C0DD71 /* TestUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45639D6722C3974D00C0DD71 /* XCRemoteSwiftPackageReference "swift-test-util" */;
+			productName = TestUtil;
 		};
 		45B5EBF522C0D8D2007E66B4 /* BTree */ = {
 			isa = XCSwiftPackageProductDependency;
