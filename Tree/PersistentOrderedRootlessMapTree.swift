@@ -118,6 +118,9 @@ public extension PersistentOrderedRootlessMapTree.Subtree {
         let sv = impl.value(for: sk)
         return (sk,sv)
     }
+    mutating func append(_ e: Element) {
+        insert(e, at: count)
+    }
     mutating func insert<C>(contentsOf es: C, at i: Int) where C: Collection, C.Element == Element {
         impl.insert(contentsOf: es.lazy.map({ (k,v) in (k,v) }), at: i, in: key)
         cachedSubkeys = impl.subkeys(for: key)
