@@ -55,9 +55,11 @@ public extension PersistentOrderedRootlessMapTree {
     }
     /// This method fails if there's any child at the target subtree.
     mutating func removeSubrange(_ r: Range<Int>, in pk: Key?) {
-        precondition(
-            impl.subkeys(for: pk).isEmpty,
-            "Target subtree have some child.")
+        for (k,_) in subtree(for: pk) {
+            precondition(
+                impl.subkeys(for: k).isEmpty,
+                "Target subtrees have some descendants. Remove the descendatns first.")
+        }
         impl.removeSubtrees(r, in: pk)
     }
     /// This method fails if there's any child at the target subtree.
