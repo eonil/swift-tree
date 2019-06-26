@@ -69,8 +69,16 @@ public extension PersistentOrderedRootlessMapTree.Index {
 
 // MARK: Subtree
 public extension PersistentOrderedRootlessMapTree {
+    /// Root subtree.
     var subtree: Subtree {
-        return Subtree(impl: impl, key: nil)
+        return subtree(for: nil)
+    }
+    /// A subtree for key.
+    /// - Parameter for k:
+    ///     `nil` for root subtree.
+    ///     Otherwise a key to the subtree.
+    func subtree(for k: Key?) -> Subtree {
+        return Subtree(impl: impl, key: k)
     }
     struct Subtree: RandomAccessCollection {
         var impl: IMPL
