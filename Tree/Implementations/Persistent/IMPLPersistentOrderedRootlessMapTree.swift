@@ -19,6 +19,12 @@ import BTree
 /// - Unordered iteration takes O(n).
 /// - DFS iteration takes O(log(n)).
 ///
+/// Root-Less
+/// ---------
+/// This type has root-less design. (a.k.a. implicitly rooted or multi-rooted)
+/// There's no root node, and no value will be stored for root position.
+/// You can use `nil` to insert/remove subkeys of root position.
+///
 struct IMPLPersistentOrderedRootlessMapTree<K,V> where
 K:Comparable {
     private var subkeysMap = SubkeysMap()
@@ -79,12 +85,13 @@ extension IMPLPersistentOrderedRootlessMapTree {
         subkeysMap[Alt(pk)] = ks
     }
     mutating func insert<C>(contentsOf es:C, at i:Int, in pk:K?) where C:Collection, C.Element == Element {
-        var ks = subkeysMap[Alt(pk)]!
+        guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
         ks.insert(contentsOf: es.lazy.map({ $0.0 }), at: i)
         for (k,v) in es {
             subkeysMap[Alt(k)] = []
             valueMap[k] = v
         }
+        subkeysMap[Alt(pk)] = ks
     }
     /// All keys in all trees must be unique.
     mutating func insertSubtree(_ k:K, of t:IMPLPersistentOrderedRootlessMapTree, at i:Int, in pk:K?) {

@@ -24,8 +24,8 @@ struct IMPLAlternativeOptional<K>: Comparable where K:Comparable {
     }
     public static func < (lhs: IMPLAlternativeOptional, rhs: IMPLAlternativeOptional) -> Bool {
         switch (lhs.k,rhs.k) {
-        case (nil,nil): return false // because they're equal.
-        case (nil,_):   return false
+        case (nil,nil): return false // Because they're equal.
+        case (nil,_):   return true  // Because nothing is less than something.
         case (_,nil):   return false
         case (_,_):     return lhs.k! < rhs.k!
         }

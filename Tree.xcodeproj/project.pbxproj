@@ -16,6 +16,9 @@
 		45639CD822C3115200C0DD71 /* Map.util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD722C3115200C0DD71 /* Map.util.swift */; };
 		45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */; };
 		45639CDC22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */; };
+		45639CED22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */; };
+		45639CEF22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */; };
+		45639CF122C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CF022C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift */; };
 		4586D34122C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34022C1A0F200779050 /* IMPLPersitentUnorderedTreeMap.swift */; };
 		4586D34322C1A2B600779050 /* PersistentUnorderedMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34222C1A2B600779050 /* PersistentUnorderedMapTree.swift */; };
 		4586D34522C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586D34422C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift */; };
@@ -70,6 +73,9 @@
 		45639CD722C3115200C0DD71 /* Map.util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.util.swift; sourceTree = "<group>"; };
 		45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLAlternativeOptional.swift; sourceTree = "<group>"; };
 		45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.swift; sourceTree = "<group>"; };
+		45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLPersistentOrderedRootlessTreeMapTest.swift; sourceTree = "<group>"; };
+		45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessTreeMapTest.swift; sourceTree = "<group>"; };
+		45639CF022C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedRootlessMapTree.pathUtil.swift; sourceTree = "<group>"; };
 		458522A622BC7F4400C367E0 /* TreePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -208,6 +214,7 @@
 				45A12EAA22C0BA4B004DFDAF /* PersistentOrderedMapTree.extension.swift */,
 				4586D34622C1A8F500779050 /* PersistentOrderedMapTree.Subtree.swift */,
 				45639CDB22C3156700C0DD71 /* PersistentOrderedRootlessMapTree.swift */,
+				45639CF022C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift */,
 				4586D34222C1A2B600779050 /* PersistentUnorderedMapTree.swift */,
 				4586D34422C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift */,
 				45639CD522C3106C00C0DD71 /* Optional.Comparable.swift */,
@@ -251,7 +258,9 @@
 				4558191922BCCCEF00B07175 /* SubtreeTest.swift */,
 				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
 				4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */,
+				45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */,
 				4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */,
+				45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
 			);
 			path = TreeTest;
@@ -368,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45639CF122C3324E00C0DD71 /* PersistentOrderedRootlessMapTree.pathUtil.swift in Sources */,
 				45A12DDF22BFB88F004DFDAF /* PersistentOrderedMapTree.swift in Sources */,
 				4586D34522C1A8C200779050 /* PersistentUnorderedMapTree.Subtree.swift in Sources */,
 				45639CD622C3106C00C0DD71 /* Optional.Comparable.swift in Sources */,
@@ -392,8 +402,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45639CED22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */,
 				4506A2BD22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift in Sources */,
 				45B5EBE722C0D835007E66B4 /* OrderedTreeSubtreeTest.swift in Sources */,
+				45639CEF22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */,
 				4558191A22BCCCEF00B07175 /* SubtreeTest.swift in Sources */,
 				4506A2BF22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift in Sources */,
 				45CE398F22BC6576007205EE /* TreeTest.swift in Sources */,
