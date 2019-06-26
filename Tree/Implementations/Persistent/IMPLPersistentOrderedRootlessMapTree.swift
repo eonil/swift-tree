@@ -86,8 +86,21 @@ extension IMPLPersistentOrderedRootlessMapTree {
             valueMap[k] = v
         }
     }
+    /// All keys in all trees must be unique.
+    mutating func insertSubtree(_ k:K, of t:IMPLPersistentOrderedRootlessMapTree, at i:Int, in pk:K?) {
+        precondition(
+            !valueMap.keys.contains(k),
+            "There're some duplicated keys in supplied tree.")
+        let v = t.valueMap[k]!
+        let sks = t.subkeysMap[Alt(k)]!
+        for (i,sk) in sks.enumerated() {
+            insertSubtree(sk, of: t, at: i, in: k)
+        }
+        valueMap[k] = v
+        subkeysMap[Alt(k)] = sks
+    }
     /// Merges another tree.
-    /// All keys in finally merged trees must be unique.
+    /// All keys in all trees must be unique. 
     mutating func merge(_ t: IMPLPersistentOrderedRootlessMapTree) {
         for k in t.valueMap.keys {
             precondition(
