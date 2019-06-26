@@ -70,6 +70,12 @@ extension IMPLPersistentOrderedRootlessMapTree {
     func subkeys(for k:K?) -> Subkeys {
         return subkeysMap[Alt(k)]!
     }
+    /// - Complexity: O(log(`count`))
+    func firstIndex(of k:K) -> Index? {
+        guard let offset = valueMap.offset(of: k) else { return nil }
+        let index = valueMap.index(ofOffset: offset)
+        return index
+    }
 }
 // MARK: Write
 extension IMPLPersistentOrderedRootlessMapTree {
