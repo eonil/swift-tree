@@ -42,6 +42,30 @@ public extension PersistentOrderedRootlessMapTree {
     }
 }
 
+// MARK: Mutators
+public extension PersistentOrderedRootlessMapTree {
+    mutating func append(_ e: Element, in pk: Key) {
+        insert(e, at: count, in: pk)
+    }
+    mutating func insert(_ e: Element, at i: Int, in pk: Key) {
+        impl.insert(e, at: i, in: pk)
+    }
+    mutating func insert<C>(contentsOf es: C, at i: Int, in pk: Key) where C: Collection, C.Element == Element {
+        impl.insert(contentsOf: es.lazy.map({ k,v in (k,v) }), at: i, in: pk)
+    }
+    /// This method fails if there's any child at the target subtree.
+    mutating func removeSubrange(_ r: Range<Int>, in pk: Key) {
+        precondition(
+            impl.subkeys(for: pk).isEmpty,
+            "Target subtree have some child.")
+        impl.removeSubtrees(r, in: pk)
+    }
+    /// This method fails if there's any child at the target subtree.
+    mutating func remove(at i: Int, in pk: Key) {
+        removeSubrange(i..<i+1, in: pk)
+    }
+}
+
 // MARK: Collection
 public extension PersistentOrderedRootlessMapTree {
     var startIndex: Index {
