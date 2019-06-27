@@ -37,8 +37,7 @@ public extension KVLTStorage {
     }
     struct Tree: MapTree {
         var impl: IMPL
-        var pk: Key?
-        var idx: Int
+        var k: Key
     }
 }
 public extension KVLTStorage {
@@ -49,9 +48,12 @@ public extension KVLTStorage {
         get { return impl.value(for: k) }
         set(v) { impl.setValue(v, for: k) }
     }
+    func tree(for k: Key) -> Tree {
+        return Tree(impl: impl, k: k)
+    }
 }
 public extension KVLTStorage {
-    /// Optimized version of `replace`.
+    /// Optimized version of `replace` utilizing implementation details.
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
     C: Collection,
     C.Element == Tree {
@@ -106,19 +108,20 @@ public extension KVLTStorage.List {
         return cachedSubkeys.endIndex
     }
     subscript(_ i: Int) -> Tree {
-        return Tree(impl: impl, pk: pk, idx: i)
+        let k = impl.subkeys(for: pk)[i]
+        return Tree(impl: impl, k: k)
     }
 }
 public extension KVLTStorage.Tree {
     typealias List = KVLTStorage.List
     var key: Key {
-        return impl.subkeys(for: pk)[idx]
+        return k
     }
     var value: Value {
-        return impl.value(for: pk!)
+        return impl.value(for: k)
     }
     var collection: List {
-        let ks = impl.subkeys(for: key)
+        let ks = impl.subkeys(for: k)
         return List(pk: key, impl: impl, cachedSubkeys: ks)
     }
 }
