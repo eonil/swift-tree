@@ -41,6 +41,9 @@
 		459D761322C4DA0400CE5841 /* EmptyKVLT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D761222C4DA0400CE5841 /* EmptyKVLT.swift */; };
 		459D761522C4DB7A00CE5841 /* LazyKVLT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D761422C4DB7A00CE5841 /* LazyKVLT.swift */; };
 		459D761A22C505DC00CE5841 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */; };
+		459D761B22C5088600CE5841 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */; };
+		459D761C22C5088E00CE5841 /* xTreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE398E22BC6576007205EE /* xTreeTest.swift */; };
+		459D761D22C5088E00CE5841 /* SubtreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558191922BCCCEF00B07175 /* SubtreeTest.swift */; };
 		45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
 		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
@@ -294,6 +297,8 @@
 		459D761822C505B000CE5841 /* DeprecatedTest */ = {
 			isa = PBXGroup;
 			children = (
+				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
+				4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */,
 				4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */,
 			);
 			path = DeprecatedTest;
@@ -331,8 +336,6 @@
 			children = (
 				45CE398E22BC6576007205EE /* xTreeTest.swift */,
 				4558191922BCCCEF00B07175 /* SubtreeTest.swift */,
-				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
-				4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */,
 				45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */,
 				45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
@@ -496,6 +499,9 @@
 				45639D4022C3910400C0DD71 /* MapTreeMock.swift in Sources */,
 				45639D6B22C3999000C0DD71 /* Imports.swift in Sources */,
 				459D761A22C505DC00CE5841 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */,
+				459D761B22C5088600CE5841 /* PersistentOrderedRootlessTreeMapTest.swift in Sources */,
+				459D761C22C5088E00CE5841 /* xTreeTest.swift in Sources */,
+				459D761D22C5088E00CE5841 /* SubtreeTest.swift in Sources */,
 				45639D4B22C392CD00C0DD71 /* MapTreeMockTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
