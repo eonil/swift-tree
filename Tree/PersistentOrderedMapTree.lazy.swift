@@ -6,4 +6,8 @@
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-import Foundation
+public extension PersistentOrderedMapTree {
+    var lazy: LazyOrderedMapTree<PersistentOrderedMapTree> {
+        return LazyOrderedMapTree(base: self)
+    }
+}
