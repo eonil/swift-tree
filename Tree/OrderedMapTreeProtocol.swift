@@ -24,8 +24,7 @@ Element.Key == Key,
 Element.Value == Value {
     associatedtype Key
     associatedtype Value
-    func subtree(at: Index) -> Self
-
+    func subtree(at: Int) -> Self
 }
 public protocol OrderedMapSubtreeElementProtocol {
     associatedtype Key

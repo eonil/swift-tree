@@ -25,6 +25,8 @@
 ///   Use `PersistentOrderedMapTree` interface
 ///   for setting values for keys.
 ///
+/// `Subtree` is recommend way to perform subtree level operations.
+///
 public struct PersistentOrderedMapTree<Key,Value>: Collection where
 Key: Comparable {
     private(set) var impl = IMPL()
@@ -53,21 +55,38 @@ public extension PersistentOrderedMapTree {
     mutating func insert<C>(contentsOf es: C, at i: Int, in pk: Key?) where C: Collection, C.Element == Element {
         impl.insert(contentsOf: es.lazy.map({ k,v in (k,v) }), at: i, in: pk)
     }
-//    /// This inserts all elements in supplied subtrees recursively.
-//    /// All keys in all trees must be unique.
-//    mutating func insertSubtree<T>(contentsOf t: T, at i: Int, in pk: Key?) where T: OrderedMapSubtreeProtocol, T.Element == Subtree.Element, T.Index == Subtree.Index {
-//        for j in 0..<t.count {
-//            let e = t[j]
-//            insert(e, at: i+j, in: pk)
+    /// Inserts all elements in subtree for key `pk1` at index `i` under `pk2` recursively.
+    /// This also copies subtree structure.
+    /// All keys in all tree must be unique.
+    mutating func insertSubtree<T>(for pk1: Key?, of t: T, at i: Int, in pk2: Key?) where T: OrderedMapTreeProtocol, T.Element == Element {
+        let s = t.subtree(for: pk1)
+        let es = (0..<s.count).map({ (_ i: Int) -> Element in
+            let e = s[i]
+            let k = e.key
+            let v = e.value
+            return (k,v)
+        })
+        impl.insert(contentsOf: es, at: i, in: pk2)
+        for i in 0..<es.count {
+            let e = es[i]
+            let k = e.key
+            insertSubtree(for: k, of: t, at: 0, in: k)
+        }
+    }
+//    mutating func insert<T>(contentsOf s: OrderedMapSlice<T>, at i: Int, in pk: Key?) where T: OrderedMapTreeProtocol, T.Element == Element {
+//        let x = s.baseTree.subtree(for: s.parentKey)
+//        let es = s.selectedRange.map({ (_ i: Int) -> Element in
+//            let e = x[i]
+//            return (e.key,e.value)
+//        })
+//        insert(contentsOf: es, at: i, in: pk)
+//        for e in es {
 //            let (k,_) = e
-//            let st = t.subtree(at: j)
-//            insertSubtree(contentsOf: st, at: 0, in: k)
+//            let csubtree = s.baseTree.subtree(for: s.parentKey)
+//            let crange = csubtree.startIndex..<csubtree.endIndex
+//            let cslice = OrderedMapSlice(baseTree: s.baseTree, parentKey: k, selectedRange: crange)
+//            insert(contentsOf: cslice, at: 0, in: k)
 //        }
-//    }
-//    /// This inserts all elements in supplied subtrees recursively.
-//    /// All keys in all trees must be unique.
-//    mutating func insertSubtrees<C>(contentsOf c: C, at i: Int, in pk: Key?) where C: Collection, C.Element: OrderedMapSubtreeProtocol, C.Element.Element == Subtree.Element, C.Element.Index == Subtree.Index {
-//
 //    }
     /// Removes subtrees in range recursively.
     /// This method removes target element and all of its descendants.

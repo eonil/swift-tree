@@ -52,16 +52,10 @@ public extension PersistentOrderedMapTree.Subtree {
     }
     subscript(_ i: Index) -> Element {
         let sk = cachedSubkeys[i]
-        let sv = impl.value(for: sk)
-        return Element(key: sk, value: sv)
+        return Element(impl: impl, k: sk, idx: i)
     }
     mutating func append(_ e: Element) {
         insert(e, at: count)
-    }
-    mutating func insert<C>(contentsOf es: C, at i: Int) where C: Collection, C.Element == Element {
-        let kvs = es.lazy.map({ e in (e.key,e.value) })
-        impl.insert(contentsOf: kvs, at: i, in: key)
-        cachedSubkeys = impl.subkeys(for: key)
     }
     mutating func insert(_ e: Element, at i: Int) {
         impl.insert((e.key,e.value), at: i, in: key)
@@ -80,10 +74,19 @@ public extension PersistentOrderedMapTree.Subtree {
 }
 public extension PersistentOrderedMapTree.Subtree {
     struct Element: OrderedMapSubtreeElementProtocol {
-        public var key: Key
-        public var value: Value
-        public func mapValue<Derived>(_ fx: (Value) -> Derived) -> PersistentOrderedMapTree<Key,Derived>.Subtree.Element {
-            return PersistentOrderedMapTree<Key,Derived>.Subtree.Element(key: key, value: fx(value))
-        }
+        var impl: PersistentOrderedMapTree.IMPL
+        var k: Key
+        var idx: Int
+//        public func mapValue<Derived>(_ fx: (Value) -> Derived) -> PersistentOrderedMapTree<Key,Derived>.Subtree.Element {
+//            return PersistentOrderedMapTree<Key,Derived>.Subtree.Element(key: key, value: fx(value))
+//        }
+    }
+}
+public extension PersistentOrderedMapTree.Subtree.Element {
+    var key: Key { return k }
+    var value: Value { return impl.value(for: k) }
+    var subtree: PersistentOrderedMapTree.Subtree {
+        let sk = impl.subkeys(for: k)[idx]
+        return PersistentOrderedMapTree.Subtree(impl: impl, key: sk)
     }
 }

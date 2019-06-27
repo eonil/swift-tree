@@ -29,6 +29,7 @@
 		459D75DE22C483BB00CE5841 /* OrderedMapTree2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75DD22C483BB00CE5841 /* OrderedMapTree2.swift */; };
 		459D75E022C4891E00CE5841 /* PersistentOrderedMapTree.subtree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75DF22C4891E00CE5841 /* PersistentOrderedMapTree.subtree.swift */; };
 		459D75E222C48B0900CE5841 /* OrderedMapTreeElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75E122C48B0900CE5841 /* OrderedMapTreeElement.swift */; };
+		459D75E422C49EF800CE5841 /* PersistentOrderedMapTree.slice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75E322C49EF800CE5841 /* PersistentOrderedMapTree.slice.swift */; };
 		45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
 		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
@@ -107,6 +108,7 @@
 		459D75DD22C483BB00CE5841 /* OrderedMapTree2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedMapTree2.swift; sourceTree = "<group>"; };
 		459D75DF22C4891E00CE5841 /* PersistentOrderedMapTree.subtree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedMapTree.subtree.swift; sourceTree = "<group>"; };
 		459D75E122C48B0900CE5841 /* OrderedMapTreeElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedMapTreeElement.swift; sourceTree = "<group>"; };
+		459D75E322C49EF800CE5841 /* PersistentOrderedMapTree.slice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedMapTree.slice.swift; sourceTree = "<group>"; };
 		45A12D7F22BF3CB7004DFDAF /* DFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFS.swift; sourceTree = "<group>"; };
 		45A12D8122BF3D44004DFDAF /* Subtree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtree.swift; sourceTree = "<group>"; };
 		45A12D8322BF3DC2004DFDAF /* SubtreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeProtocol.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				45639D3922C38A1800C0DD71 /* PersistentOrderedMapTree.keys.swift */,
 				45639D3B22C38D2800C0DD71 /* PersistentOrderedMapTree.values.swift */,
 				45639D9D22C459B900C0DD71 /* PersistentOrderedMapTree.lazy.swift */,
+				459D75E322C49EF800CE5841 /* PersistentOrderedMapTree.slice.swift */,
 				459D75DF22C4891E00CE5841 /* PersistentOrderedMapTree.subtree.swift */,
 				45639DA322C4687B00C0DD71 /* LazyOrderedMapTree.swift */,
 				45639D9F22C459C700C0DD71 /* OrderedMapTree.swift */,
@@ -415,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45639D9E22C459B900C0DD71 /* PersistentOrderedMapTree.lazy.swift in Sources */,
+				459D75E422C49EF800CE5841 /* PersistentOrderedMapTree.slice.swift in Sources */,
 				45639CF122C3324E00C0DD71 /* PersistentOrderedMapTree.pathUtil.swift in Sources */,
 				459D75DE22C483BB00CE5841 /* OrderedMapTree2.swift in Sources */,
 				45639D0D22C3532100C0DD71 /* PersistentOrderedMapTree.util.swift in Sources */,
