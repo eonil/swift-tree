@@ -41,9 +41,6 @@ public extension KVLTStorage {
     }
 }
 public extension KVLTStorage {
-    func contains(_ k: Key) -> Bool {
-        return impl.firstIndex(of: k) != nil
-    }
     subscript(_ k: Key) -> Value {
         get { return impl.value(for: k) }
         set(v) { impl.setValue(v, for: k) }
