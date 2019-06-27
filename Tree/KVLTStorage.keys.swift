@@ -7,6 +7,8 @@
 //
 
 public extension KVLTStorage {
+    /// All keys in storage.
+    /// These keys are not ordered.
     var keys: Keys {
         return Keys(impl: impl)
     }

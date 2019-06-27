@@ -7,6 +7,8 @@
 //
 
 public extension KVLTStorage.List {
+    /// Collection of keys in this list.
+    /// These keys are ordered as they're in `Tree.collection`.
     var keys: Keys {
         return Keys(base: self)
     }
