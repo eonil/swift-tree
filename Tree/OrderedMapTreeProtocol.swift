@@ -19,18 +19,10 @@ Element == (key: Key, value: Value) {
     func subtree(for: Key?) -> Subtree
 }
 public protocol OrderedMapSubtreeProtocol: RandomAccessCollection where
-Element: OrderedMapSubtreeElementProtocol,
-Element.Key == Key,
-Element.Value == Value {
+Element == (key: Key, value: Value) {
     associatedtype Key
     associatedtype Value
     func subtree(at: Int) -> Self
-}
-public protocol OrderedMapSubtreeElementProtocol {
-    associatedtype Key
-    associatedtype Value
-    var key: Key { get }
-    var value: Value { get }
 }
 
 extension PersistentOrderedMapTree: OrderedMapTreeProtocol {}

@@ -25,7 +25,8 @@ public extension PersistentOrderedMapTree.Subtree {
             s.key != nil,
             "Path is out of range. There's no element at path.")
         let k = s.key! // At this point key cannot be `nil`.
-        return Element(impl: impl, k: k, idx: p.last!)
+        let v = s.impl.value(for: k)
+        return (k,v)
     }
     func subtree(at p: IndexPath) -> Subtree {
         switch p.count {

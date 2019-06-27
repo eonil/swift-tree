@@ -44,6 +44,7 @@ public extension PersistentOrderedMapTree.Subtree {
 // MARK: RandomAccessCollection
 public extension PersistentOrderedMapTree.Subtree {
     typealias Index = Int
+    typealias Element = (key: Key, value: Value)
     var startIndex: Index {
         return cachedSubkeys.startIndex
     }
@@ -52,7 +53,8 @@ public extension PersistentOrderedMapTree.Subtree {
     }
     subscript(_ i: Index) -> Element {
         let sk = cachedSubkeys[i]
-        return Element(impl: impl, k: sk, idx: i)
+        let sv = impl.value(for: sk)
+        return (sk,sv)
     }
     mutating func append(_ e: Element) {
         insert(e, at: count)
@@ -70,23 +72,5 @@ public extension PersistentOrderedMapTree.Subtree {
     mutating func remove(at i: Int) {
         impl.removeSubtree(at: i, in: key)
         cachedSubkeys = impl.subkeys(for: key)
-    }
-}
-public extension PersistentOrderedMapTree.Subtree {
-    struct Element: OrderedMapSubtreeElementProtocol {
-        var impl: PersistentOrderedMapTree.IMPL
-        var k: Key
-        var idx: Int
-//        public func mapValue<Derived>(_ fx: (Value) -> Derived) -> PersistentOrderedMapTree<Key,Derived>.Subtree.Element {
-//            return PersistentOrderedMapTree<Key,Derived>.Subtree.Element(key: key, value: fx(value))
-//        }
-    }
-}
-public extension PersistentOrderedMapTree.Subtree.Element {
-    var key: Key { return k }
-    var value: Value { return impl.value(for: k) }
-    var subtree: PersistentOrderedMapTree.Subtree {
-        let sk = impl.subkeys(for: k)[idx]
-        return PersistentOrderedMapTree.Subtree(impl: impl, key: sk)
     }
 }

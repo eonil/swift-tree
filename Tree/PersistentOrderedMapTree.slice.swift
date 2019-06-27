@@ -17,33 +17,3 @@ Base: OrderedMapTreeProtocol {
     var parentKey: Base.Key?
     var selectedRange: Range<Base.Subtree.Index>
 }
-
-
-//public struct OrderedMapSlice<Base>: RandomAccessCollection where Base: OrderedMapTreeProtocol {
-//    var parentKey: Base.Key?
-//    var selectedRange: Range<Int>
-//}
-//public extension OrderedMapSlice {
-//    var startIndex: Int {
-//        return selectedRange.lowerBound
-//    }
-//    var endIndex: Int {
-//        return selectedRange.upperBound
-//    }
-//    subscript(_ i: Int) -> OrderedMapIndex<Base> {
-//        return OrderedMapIndex(parentKey: parentKey, selectedIndex: i)
-//    }
-//}
-//
-//public struct OrderedMapIndex<Base> where Base: OrderedMapTreeProtocol {
-//    var parentKey: Base.Key?
-//    var selectedIndex: Int
-//}
-//
-//public extension OrderedMapTreeProtocol {
-//    subscript(_ i: OrderedMapIndex<Self>) -> Element {
-//        let s = subtree(for: i.parentKey)
-//        let e = s[i.selectedIndex]
-//        return (e.key, e.value)
-//    }
-//}
