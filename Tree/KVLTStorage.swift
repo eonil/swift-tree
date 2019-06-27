@@ -13,7 +13,7 @@
 /// types, and write on storage directly.
 ///
 public struct KVLTStorage<Key,Value>:
-MapTreeStorage, ReplaceableMapTreeStorage where
+KVLTProtocol, ReplaceableKVLTProtocol where
 Key: Comparable {
     private(set) var impl: IMPL
     typealias IMPL = IMPLPersistentOrderedMapTree<Key,Value>
@@ -56,7 +56,7 @@ public extension KVLTStorage {
 public extension KVLTStorage {
     /// Optimized version of `replace` utilizing implementation details.
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
-    C: Collection,
+    C: Swift.Collection,
     C.Element == Tree {
         impl.removeSubtrees(r, in: pk)
         for (i,t) in c.enumerated() {
@@ -65,7 +65,7 @@ public extension KVLTStorage {
     }
     /// Replaces subtrees in range `r` of subtree for`pk` with new subtrees `c`.
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
-    C: Collection,
+    C: Swift.Collection,
     C.Element: MapTree,
     C.Element.Key == Key,
     C.Element.Value == Value,
@@ -81,24 +81,24 @@ public extension KVLTStorage {
             insertRecursively(t, at: r.lowerBound+i, in: pk)
         }
     }
-    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
-    C: Collection,
-    C.Element: MapTree,
-    C.Element.Key == Key,
-    C.Element.Value == Value,
-    C.Element.Collection.Index == List.Index {
-        replace(i..<i, in: pk, with: c)
-    }
-    mutating func insert<T>(_ t: T, at i: Int, in pk: Key?) where
-    T: MapTree,
-    T.Key == Key,
-    T.Value == Value,
-    T.Collection.Index == List.Index {
-        replace(i..<i, in: pk, with: [t])
-    }
-    mutating func remove(_ subrange: Range<Int>, in pk: Key?) {
-        replace(subrange, in: pk, with: EmptyCollection<Tree>())
-    }
+//    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
+//    C: Swift.Collection,
+//    C.Element: MapTree,
+//    C.Element.Key == Key,
+//    C.Element.Value == Value,
+//    C.Element.Collection.Index == List.Index {
+//        replace(i..<i, in: pk, with: c)
+//    }
+//    mutating func insert<T>(_ t: T, at i: Int, in pk: Key?) where
+//    T: MapTree,
+//    T.Key == Key,
+//    T.Value == Value,
+//    T.Collection.Index == List.Index {
+//        replace(i..<i, in: pk, with: [t])
+//    }
+//    mutating func remove(_ subrange: Range<Int>, in pk: Key?) {
+//        replace(subrange, in: pk, with: EmptyCollection<Tree>())
+//    }
 }
 public extension KVLTStorage.List {
     typealias Tree = KVLTStorage.Tree
