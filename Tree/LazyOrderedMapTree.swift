@@ -6,6 +6,12 @@
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
+public extension OrderedMapTreeProtocol {
+    var lazyTree: LazyOrderedMapTree<Self> {
+        return LazyOrderedMapTree(base: self)
+    }
+}
+
 public struct LazyOrderedMapTree<Base> where
 Base: OrderedMapTreeProtocol {
     var base: Base
