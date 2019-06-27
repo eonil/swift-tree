@@ -16,9 +16,9 @@ public struct LazyOrderedMapTree<Base> where
 Base: OrderedMapTreeProtocol {
     var base: Base
 }
-public extension OrderedMapTreeProtocol {
-    func mapValues<DerivedValue>(_ fx: @escaping (Value) -> DerivedValue) -> LazyValueMappedTree<Self,DerivedValue> {
-        return LazyValueMappedTree(base: self, fx: fx)
+public extension LazyOrderedMapTree {
+    func mapValues<DerivedValue>(_ fx: @escaping (Base.Value) -> DerivedValue) -> LazyValueMappedTree<Base,DerivedValue> {
+        return LazyValueMappedTree(base: base, fx: fx)
     }
 }
 public struct LazyValueMappedTree<Base,Value>: OrderedMapTreeProtocol where
