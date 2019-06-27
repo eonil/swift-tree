@@ -13,7 +13,7 @@
 /// types, and write on storage directly.
 ///
 public struct KVLTStorage<Key,Value>:
-KVLTStorageProtocol, ReplaceableKVLTProtocol where
+KVLTStorageProtocol, ReplaceableKVLTStorageProtocol where
 Key: Comparable {
     private(set) var impl: IMPL
     typealias IMPL = IMPLPersistentOrderedMapTree<Key,Value>

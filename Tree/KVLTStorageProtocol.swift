@@ -25,7 +25,7 @@ public protocol KVLTProtocol: MapTree where
 Collection: KVLTListProtocol {
 }
 
-public protocol ReplaceableKVLTProtocol: KVLTStorageProtocol, ReplaceableMapTreeStorage {
+public protocol ReplaceableKVLTStorageProtocol: KVLTStorageProtocol, ReplaceableMapTreeStorage {
     subscript(_ k: Key) -> Value { get set }
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
         C: Swift.Collection,
@@ -37,7 +37,7 @@ public protocol ReplaceableKVLTProtocol: KVLTStorageProtocol, ReplaceableMapTree
         C: Swift.Collection,
         C.Element == (key: Key, value: Value)
 }
-public extension ReplaceableKVLTProtocol {
+public extension ReplaceableKVLTStorageProtocol {
     mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
         C: Swift.Collection,
         C.Element: MapTree,

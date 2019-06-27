@@ -7,7 +7,7 @@
 //
 
 public struct EmptyyKVLT<Key,Value>:
-KVLTStorageProtocol, ReplaceableKVLTProtocol where
+KVLTStorageProtocol, ReplaceableKVLTStorageProtocol where
 Key: Comparable {
     public init() {}
 }
