@@ -7,15 +7,15 @@
 //
 
 public struct EmptyyKVLT<Key,Value>:
-KVLTProtocol, ReplaceableKVLTProtocol where
+KVLTStorageProtocol, ReplaceableKVLTProtocol where
 Key: Comparable {
     public init() {}
 }
 public extension EmptyyKVLT {
     /// Root collection.
     var collection: List { return List() }
-    struct List: MapTreeCollection {}
-    struct Tree: MapTree {}
+    struct List: KVLTListProtocol {}
+    struct Tree: KVLTProtocol {}
 }
 public extension EmptyyKVLT {
     subscript(_ k: Key) -> Value {

@@ -13,7 +13,7 @@
 /// types, and write on storage directly.
 ///
 public struct KVLTStorage<Key,Value>:
-KVLTProtocol, ReplaceableKVLTProtocol where
+KVLTStorageProtocol, ReplaceableKVLTProtocol where
 Key: Comparable {
     private(set) var impl: IMPL
     typealias IMPL = IMPLPersistentOrderedMapTree<Key,Value>
@@ -30,12 +30,12 @@ public extension KVLTStorage {
         let ks = impl.subkeys(for: nil)
         return List(pk: nil, impl: impl, cachedSubkeys: ks)
     }
-    struct List: MapTreeCollection {
+    struct List: KVLTListProtocol {
         var pk: Key?
         var impl: IMPL
         var cachedSubkeys: IMPL.Subkeys
     }
-    struct Tree: MapTree {
+    struct Tree: KVLTProtocol {
         var impl: IMPL
         var k: Key
     }

@@ -6,23 +6,25 @@
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-public protocol KVLTProtocol: MapTreeStorage where Key: Comparable {
+public protocol KVLTStorageProtocol: MapTreeStorage where Key: Comparable {
     associatedtype Key
     associatedtype Value
-    associatedtype List where
-        List == Collection,
-        List.Index == Int,
-        List.Element == Tree
-    associatedtype Tree where
-        Tree.Key == Key,
-        Tree.Value == Value,
-        Tree.Collection == List
+    associatedtype List: KVLTListProtocol where List.Element == Tree
+    associatedtype Tree where Tree.Key == Key, Tree.Value == Value
     subscript(_ k: Key) -> Value { get }
     func collection(of pk: Key?) -> List
     func tree(for k: Key) -> Tree
 }
+public protocol KVLTListProtocol: MapTreeCollection where
+Index == Int,
+Element: KVLTProtocol {
 
-public protocol ReplaceableKVLTProtocol: KVLTProtocol, ReplaceableMapTreeStorage {
+}
+public protocol KVLTProtocol: MapTree where
+Collection: KVLTListProtocol {
+}
+
+public protocol ReplaceableKVLTProtocol: KVLTStorageProtocol, ReplaceableMapTreeStorage {
     subscript(_ k: Key) -> Value { get set }
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
         C: Swift.Collection,
