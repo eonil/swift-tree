@@ -6,11 +6,13 @@
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-public protocol KVLTStorageProtocol: MapTreeStorage where Key: Comparable {
+public protocol KVLTStorageProtocol: MapTreeStorage where
+Key: Comparable,
+Collection == List {
     associatedtype Key
     associatedtype Value
-    associatedtype List: KVLTListProtocol where List.Element == Tree
-    associatedtype Tree where Tree.Key == Key, Tree.Value == Value
+    associatedtype List: KVLTListProtocol
+    associatedtype Tree: KVLTProtocol
     subscript(_ k: Key) -> Value { get }
     func collection(of pk: Key?) -> List
     func tree(for k: Key) -> Tree
@@ -18,7 +20,6 @@ public protocol KVLTStorageProtocol: MapTreeStorage where Key: Comparable {
 public protocol KVLTListProtocol: MapTreeCollection where
 Index == Int,
 Element: KVLTProtocol {
-
 }
 public protocol KVLTProtocol: MapTree where
 Collection: KVLTListProtocol {
@@ -32,6 +33,9 @@ public protocol ReplaceableKVLTProtocol: KVLTStorageProtocol, ReplaceableMapTree
         C.Element.Key == Key,
         C.Element.Value == Value,
         C.Element.Collection.Index == List.Index
+    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
+        C: Swift.Collection,
+        C.Element == (key: Key, value: Value)
 }
 public extension ReplaceableKVLTProtocol {
     mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
@@ -48,6 +52,9 @@ public extension ReplaceableKVLTProtocol {
         T.Value == Value,
         T.Collection.Index == List.Index {
             replace(i..<i, in: pk, with: [t])
+    }
+    mutating func insert(_ e: (key: Key, value: Value), at i: Int, in pk: Key?) {
+        insert(contentsOf: CollectionOfOne(e), at: i, in: pk)
     }
     mutating func remove(_ subrange: Range<Int>, in pk: Key?) {
         replace(subrange, in: pk, with: EmptyyKVLT<Key,Value>.List())

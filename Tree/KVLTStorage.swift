@@ -81,6 +81,11 @@ public extension KVLTStorage {
             insertRecursively(t, at: r.lowerBound+i, in: pk)
         }
     }
+    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
+    C: Swift.Collection,
+    C.Element == (key: Key, value: Value) {
+        impl.insert(contentsOf: c.lazy.map({ (k,v) in (k,v) }), at: i, in: pk)
+    }
 //    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
 //    C: Swift.Collection,
 //    C.Element: MapTree,

@@ -34,6 +34,11 @@ public extension EmptyyKVLT {
     C.Element.Collection.Index == List.Index {
         fatalError()
     }
+    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
+    C: Swift.Collection,
+    C.Element == (key: Key, value: Value) {
+        fatalError()
+    }
 }
 public extension EmptyyKVLT.List {
     typealias Tree = EmptyyKVLT.Tree
