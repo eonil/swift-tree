@@ -56,6 +56,10 @@ public extension ReplaceableKVLTStorageProtocol {
     mutating func insert(_ e: (key: Key, value: Value), at i: Int, in pk: Key?) {
         insert(contentsOf: CollectionOfOne(e), at: i, in: pk)
     }
+    mutating func append(_ e: (key: Key, value: Value), in pk: Key?) {
+        let c = collection(of: pk).count
+        insert(e, at: c, in: pk)
+    }
     mutating func remove(_ subrange: Range<Int>, in pk: Key?) {
         replace(subrange, in: pk, with: EmptyyKVLT<Key,Value>.List())
     }

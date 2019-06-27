@@ -25,6 +25,14 @@ Key: Comparable {
     }
 }
 public extension KVLTStorage {
+    var isEmpty: Bool {
+        return count == 0
+    }
+    var count: Int {
+        return impl.count
+    }
+}
+public extension KVLTStorage {
     /// Root collection.
     var collection: List {
         let ks = impl.subkeys(for: nil)
