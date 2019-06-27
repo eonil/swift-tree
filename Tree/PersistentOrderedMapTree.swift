@@ -73,23 +73,9 @@ public extension PersistentOrderedMapTree {
             insertSubtree(for: k, of: t, at: 0, in: k)
         }
     }
-//    mutating func insert<T>(contentsOf s: OrderedMapSlice<T>, at i: Int, in pk: Key?) where T: OrderedMapTreeProtocol, T.Element == Element {
-//        let x = s.baseTree.subtree(for: s.parentKey)
-//        let es = s.selectedRange.map({ (_ i: Int) -> Element in
-//            let e = x[i]
-//            return (e.key,e.value)
-//        })
-//        insert(contentsOf: es, at: i, in: pk)
-//        for e in es {
-//            let (k,_) = e
-//            let csubtree = s.baseTree.subtree(for: s.parentKey)
-//            let crange = csubtree.startIndex..<csubtree.endIndex
-//            let cslice = OrderedMapSlice(baseTree: s.baseTree, parentKey: k, selectedRange: crange)
-//            insert(contentsOf: cslice, at: 0, in: k)
-//        }
-//    }
     /// Removes subtrees in range recursively.
     /// This method removes target element and all of its descendants.
+    @available(*, deprecated: 0, message: "This method doesn't have much benefit. Consider to remove.")
     mutating func removeSubtrees(_ r: Range<Int>, in pk: Key?) {
         impl.removeSubtrees(r, in: pk)
     }

@@ -1,5 +1,5 @@
 //
-//  PersistentOrderedMapTree.pathUtil.swift
+//  PersistentOrderedMapTree.path.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/26.
