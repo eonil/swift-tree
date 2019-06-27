@@ -46,8 +46,8 @@ public extension KVLTStorage {
         set(v) { impl.setValue(v, for: k) }
     }
     func collection(of pk: Key?) -> List {
-        let sks = impl.subkeys(for: pk)
-        return List(pk: pk, impl: impl, cachedSubkeys: sks)
+        let ks = impl.subkeys(for: pk)
+        return List(pk: pk, impl: impl, cachedSubkeys: ks)
     }
     func tree(for k: Key) -> Tree {
         return Tree(impl: impl, k: k)
@@ -114,8 +114,8 @@ public extension KVLTStorage.List {
         return cachedSubkeys.endIndex
     }
     subscript(_ i: Int) -> Tree {
-        let k = impl.subkeys(for: pk)[i]
-        return Tree(impl: impl, k: k)
+        let ck = cachedSubkeys[i]
+        return Tree(impl: impl, k: ck)
     }
 }
 public extension KVLTStorage.Tree {
@@ -127,8 +127,8 @@ public extension KVLTStorage.Tree {
         return impl.value(for: k)
     }
     var collection: List {
-        let ks = impl.subkeys(for: k)
-        return List(pk: key, impl: impl, cachedSubkeys: ks)
+        let sks = impl.subkeys(for: k)
+        return List(pk: k, impl: impl, cachedSubkeys: sks)
     }
 }
 
