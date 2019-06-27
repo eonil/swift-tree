@@ -60,7 +60,6 @@ Base: OrderedMapTreeProtocol {
 public extension LazyValueMappedSubtree {
     typealias Index = Int
     typealias Key = Base.Key
-    typealias Element = (key: Key, value: Value)
     var startIndex: Index {
         return base.startIndex
     }
@@ -68,11 +67,15 @@ public extension LazyValueMappedSubtree {
         return base.endIndex
     }
     subscript(_ i: Index) -> Element {
-        let (k,v) = base[i]
-        return (k,fx(v))
+        let e = base[i]
+        return Element(key: e.key, value: fx(e.value))
     }
     func subtree(at i: Index) -> LazyValueMappedSubtree {
         let ss = base.subtree(at: i)
         return LazyValueMappedSubtree(base: ss, fx: fx)
+    }
+    struct Element: OrderedMapSubtreeElementProtocol {
+        public var key: Base.Key
+        public var value: Value
     }
 }

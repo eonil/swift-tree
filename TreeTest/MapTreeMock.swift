@@ -76,7 +76,9 @@ extension MapTreeMock {
         guard snapshot.count > 0 else { return }
         let pk = selectRandomParentKey()
         guard let i = selectRandomUpdateOrRemoveIndexInKey(in: pk) else { return }
-        let (k,v) = snapshot.subtree(for: pk)[i]
+        let e = snapshot.subtree(for: pk)[i]
+        let k = e.key
+        let v = e.value
         let v1 = "\(v)."
         snapshot[k] = v1
     }
@@ -109,7 +111,9 @@ extension MapTreeMock {
         var t = ValidationStat()
         t.count += 1
         let s = snapshot.subtree(for: pk)
-        let (k,v) = s[i]
+        let e = s[i]
+        let k = e.key
+        let v = e.value
         XCTAssertEqual(snapshot[k], v)
         let s1 = s.subtree(at: i)
         for i1 in 0..<s1.count {

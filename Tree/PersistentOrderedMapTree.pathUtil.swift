@@ -10,7 +10,8 @@ import Foundation
 
 public extension PersistentOrderedMapTree {
     subscript(_ p: IndexPath) -> Element {
-        return subtree[p]
+        let e = subtree[p]
+        return (e.key,e.value)
     }
     func subtree(at p: IndexPath) -> Subtree {
         return subtree.subtree(at: p)
@@ -25,7 +26,7 @@ public extension PersistentOrderedMapTree.Subtree {
             "Path is out of range. There's no element at path.")
         let k = s.key! // At this point key cannot be `nil`.
         let v = s.impl.value(for: k)
-        return (k,v)
+        return Element(key: k, value: v)
     }
     func subtree(at p: IndexPath) -> Subtree {
         switch p.count {

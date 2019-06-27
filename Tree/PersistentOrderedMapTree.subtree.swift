@@ -44,7 +44,6 @@ public extension PersistentOrderedMapTree.Subtree {
 // MARK: RandomAccessCollection
 public extension PersistentOrderedMapTree.Subtree {
     typealias Index = Int
-    typealias Element = (key: Key, value: Value)
     var startIndex: Index {
         return cachedSubkeys.startIndex
     }
@@ -54,17 +53,18 @@ public extension PersistentOrderedMapTree.Subtree {
     subscript(_ i: Index) -> Element {
         let sk = cachedSubkeys[i]
         let sv = impl.value(for: sk)
-        return (sk,sv)
+        return Element(key: sk, value: sv)
     }
     mutating func append(_ e: Element) {
         insert(e, at: count)
     }
     mutating func insert<C>(contentsOf es: C, at i: Int) where C: Collection, C.Element == Element {
-        impl.insert(contentsOf: es.lazy.map({ (k,v) in (k,v) }), at: i, in: key)
+        let kvs = es.lazy.map({ e in (e.key,e.value) })
+        impl.insert(contentsOf: kvs, at: i, in: key)
         cachedSubkeys = impl.subkeys(for: key)
     }
     mutating func insert(_ e: Element, at i: Int) {
-        impl.insert(e, at: i, in: key)
+        impl.insert((e.key,e.value), at: i, in: key)
         cachedSubkeys = impl.subkeys(for: key)
     }
     /// This also removes subtrees in target range.
@@ -76,5 +76,14 @@ public extension PersistentOrderedMapTree.Subtree {
     mutating func remove(at i: Int) {
         impl.removeSubtree(at: i, in: key)
         cachedSubkeys = impl.subkeys(for: key)
+    }
+}
+public extension PersistentOrderedMapTree.Subtree {
+    struct Element: OrderedMapSubtreeElementProtocol {
+        public var key: Key
+        public var value: Value
+        public func mapValue<Derived>(_ fx: (Value) -> Derived) -> PersistentOrderedMapTree<Key,Derived>.Subtree.Element {
+            return PersistentOrderedMapTree<Key,Derived>.Subtree.Element(key: key, value: fx(value))
+        }
     }
 }

@@ -81,7 +81,8 @@ public extension PersistentOrderedMapTree {
     }
     /// This method fails if there's any child at the target subtree.
     mutating func removeSubrange(_ r: Range<Int>, in pk: Key?) {
-        for (k,_) in subtree(for: pk) {
+        for e in subtree(for: pk) {
+            let k = e.key
             precondition(
                 impl.subkeys(for: k).isEmpty,
                 "Target subtrees have some descendants. Remove the descendatns first.")
