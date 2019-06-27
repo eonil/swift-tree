@@ -80,11 +80,13 @@ extension IMPLPersistentOrderedMapTree {
 // MARK: Write
 extension IMPLPersistentOrderedMapTree {
     mutating func setValue(_ v:V, for k:K) {
+        precondition(valueMap[k] != nil, "Supplied key is not in this tree.")
         valueMap[k] = v
     }
     mutating func insert(_ e:Element, at i:Int, in pk:K?) {
+        guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
+        precondition(valueMap[e.0] == nil, "Supplied key is already in tree.")
         let (k,v) = e
-        var ks = subkeysMap[Alt(pk)] ?? []
         ks.insert(k, at: i)
         valueMap[k] = v
         subkeysMap[Alt(k)] = []
@@ -94,6 +96,7 @@ extension IMPLPersistentOrderedMapTree {
         guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
         ks.insert(contentsOf: es.lazy.map({ $0.0 }), at: i)
         for (k,v) in es {
+            precondition(valueMap[k] == nil, "Supplied key is already in tree.")
             subkeysMap[Alt(k)] = []
             valueMap[k] = v
         }
@@ -101,16 +104,19 @@ extension IMPLPersistentOrderedMapTree {
     }
     /// All keys in all trees must be unique.
     mutating func insertSubtree(_ k:K, of t:IMPLPersistentOrderedMapTree, at i:Int, in pk:K?) {
+        guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
         precondition(
             !valueMap.keys.contains(k),
-            "There're some duplicated keys in supplied tree.")
+            "Supplied tree contains one or more duplicated keys.")
         let v = t.valueMap[k]!
         let sks = t.subkeysMap[Alt(k)]!
-        for (i,sk) in sks.enumerated() {
-            insertSubtree(sk, of: t, at: i, in: k)
+        for (si,sk) in sks.enumerated() {
+            insertSubtree(sk, of: t, at: si, in: k)
         }
         valueMap[k] = v
         subkeysMap[Alt(k)] = sks
+        ks.insert(k, at: i)
+        subkeysMap[Alt(pk)] = ks
     }
     /// Merges another tree.
     /// All keys in all trees must be unique. 
@@ -124,7 +130,7 @@ extension IMPLPersistentOrderedMapTree {
         subkeysMap = subkeysMap.merging(t.subkeysMap)
     }
     mutating func removeSubtrees(_ r:Range<Int>, in pk:K?) {
-        var ks = subkeysMap[Alt(pk)]!
+        guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
         for k in ks[r] {
             removeAllDescendantsRecursively(for: k)
             valueMap[k] = nil
@@ -134,7 +140,7 @@ extension IMPLPersistentOrderedMapTree {
         subkeysMap[Alt(pk)] = ks
     }
     mutating func removeSubtree(at i:Int, in pk:K?) {
-        var ks = subkeysMap[Alt(pk)]!
+        guard var ks = subkeysMap[Alt(pk)] else { fatalError("The key is not a part of this tree.") }
         let k = ks[i]
         removeAllDescendantsRecursively(for: k)
         valueMap[k] = nil
@@ -144,7 +150,7 @@ extension IMPLPersistentOrderedMapTree {
     }
     /// Removes all descendants except target node itself.
     private mutating func removeAllDescendantsRecursively(for k:K?) {
-        let sks = subkeysMap[Alt(k)]!
+        guard let sks = subkeysMap[Alt(k)] else { fatalError("The key is not a part of this tree.") }
         for sk in sks {
             removeAllDescendantsRecursively(for: sk)
             valueMap[sk] = nil

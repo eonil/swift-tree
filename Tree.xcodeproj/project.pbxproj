@@ -40,6 +40,7 @@
 		459D761122C4D61E00CE5841 /* KVLTStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D761022C4D61E00CE5841 /* KVLTStorageProtocol.swift */; };
 		459D761322C4DA0400CE5841 /* EmptyKVLT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D761222C4DA0400CE5841 /* EmptyKVLT.swift */; };
 		459D761522C4DB7A00CE5841 /* LazyKVLT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D761422C4DB7A00CE5841 /* LazyKVLT.swift */; };
+		459D761A22C505DC00CE5841 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */; };
 		45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458522B522BC9B6E00C367E0 /* Tree.swift */; };
 		45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B5EBDC22C0CC83007E66B4 /* IMPLImplicitIdentity.swift */; };
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
@@ -238,6 +239,7 @@
 				4558191B22BCEA4100B07175 /* Package.swift */,
 				4591BA8922BC5BA40052039C /* Tree */,
 				45CE398D22BC6576007205EE /* TreeTest */,
+				459D761822C505B000CE5841 /* DeprecatedTest */,
 				45639D9C22C458DD00C0DD71 /* Deprecated3 */,
 				458522B222BC9A5100C367E0 /* Deprecated */,
 				45A12EA022C0B9CF004DFDAF /* Deprecated2 */,
@@ -289,6 +291,14 @@
 			path = Tree;
 			sourceTree = "<group>";
 		};
+		459D761822C505B000CE5841 /* DeprecatedTest */ = {
+			isa = PBXGroup;
+			children = (
+				4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */,
+			);
+			path = DeprecatedTest;
+			sourceTree = "<group>";
+		};
 		45A12D0522BE74D2004DFDAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,7 +334,6 @@
 				45B5EBE622C0D835007E66B4 /* OrderedTreeSubtreeTest.swift */,
 				4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */,
 				45639CEE22C32CC900C0DD71 /* PersistentOrderedRootlessTreeMapTest.swift */,
-				4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */,
 				45639CEC22C32C8600C0DD71 /* IMPLPersistentOrderedRootlessTreeMapTest.swift */,
 				45CE399022BC6576007205EE /* Info.plist */,
 				45639D3F22C3910400C0DD71 /* MapTreeMock.swift */,
@@ -486,6 +495,7 @@
 			files = (
 				45639D4022C3910400C0DD71 /* MapTreeMock.swift in Sources */,
 				45639D6B22C3999000C0DD71 /* Imports.swift in Sources */,
+				459D761A22C505DC00CE5841 /* IMPLPersistentOrderedRootlessTreeMapTest.swift in Sources */,
 				45639D4B22C392CD00C0DD71 /* MapTreeMockTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

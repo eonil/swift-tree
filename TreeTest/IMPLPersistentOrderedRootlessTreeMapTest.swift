@@ -45,4 +45,10 @@ class IMPLPersistentOrderedMapTreeTest: XCTestCase {
         XCTAssertEqual(a.count, 4)
         XCTAssertEqual(Array(a.subkeys(for: nil)), [333,555,666,777])
     }
+//    func testDuplicatedKeysCase1() {
+//        var a = IMPLPersistentOrderedMapTree<Int,String>()
+//        a.insert((111,"aaa"), at: 0, in: nil)
+//        a.insert((111,"bbb"), at: 1, in: nil) // This line should fail.
+//        XCTAssertEqual(a.count, 2)
+//    }
 }
