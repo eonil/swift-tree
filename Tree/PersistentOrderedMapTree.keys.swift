@@ -1,12 +1,12 @@
 //
-//  PersistentOrderedRootlessMapTree.keys.swift
+//  PersistentOrderedMapTree.keys.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/26.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-public extension PersistentOrderedRootlessMapTree {
+public extension PersistentOrderedMapTree {
     var keys: Keys {
         return Keys(impl: impl)
     }
@@ -14,8 +14,8 @@ public extension PersistentOrderedRootlessMapTree {
         private(set) var impl: IMPL
     }
 }
-public extension PersistentOrderedRootlessMapTree.Keys {
-    typealias Index = PersistentOrderedRootlessMapTree.Index
+public extension PersistentOrderedMapTree.Keys {
+    typealias Index = PersistentOrderedMapTree.Index
     typealias Element = Key
     /// - Complexity: O(log(`count`))
     func contains(_ k: Key) -> Bool {

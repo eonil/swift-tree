@@ -10,9 +10,9 @@ import Foundation
 import XCTest
 @testable import Tree
 
-class IMPLPersistentOrderedRootlessMapTreeTest: XCTestCase {
+class IMPLPersistentOrderedMapTreeTest: XCTestCase {
     func testBasica1() {
-        var a = IMPLPersistentOrderedRootlessMapTree<Int,String>()
+        var a = IMPLPersistentOrderedMapTree<Int,String>()
         a.insert((111,"aaa"), at: 0, in: nil)
         XCTAssertEqual(Array(a.subkeys(for: nil)), [111])
         XCTAssertEqual(Array(a.subkeys(for: 111)), [])

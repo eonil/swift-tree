@@ -1,5 +1,5 @@
 //
-//  PersistentOrderedRootlessMapTree.pathUtil.swift
+//  PersistentOrderedMapTree.pathUtil.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/26.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension PersistentOrderedRootlessMapTree {
+public extension PersistentOrderedMapTree {
     subscript(_ p: IndexPath) -> Element {
         return subtree[p]
     }
@@ -17,7 +17,7 @@ public extension PersistentOrderedRootlessMapTree {
     }
 }
 
-public extension PersistentOrderedRootlessMapTree.Subtree {
+public extension PersistentOrderedMapTree.Subtree {
     subscript(_ p: IndexPath) -> Element {
         let s = subtree(at: p)
         precondition(

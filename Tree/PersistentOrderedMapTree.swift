@@ -1,14 +1,12 @@
 //
-//  PersistentOrderedTreeMap.swift
+//  PersistentOrderedMapTree.swift
 //  Tree
 //
-//  Created by Henry on 2019/06/23.
+//  Created by Henry on 2019/06/26.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-/// A key-value storage that organizes internal elements in tree shape.
-///
-/// You can consider this as a map of `[key: Key: (value: Value, subtrees: [Self])]`.
+/// A key-value storage that organizes elements in tree shape.
 ///
 /// Map-Like Read, Tree-Like Write
 /// ------------------------------
@@ -18,92 +16,163 @@
 ///
 /// Subtree based Access
 /// --------------------
-/// - You can navigate tree substructures with object-oriented interface using `Subtree`.
-/// - You can perform mutation directly on `Subtree`.
-/// - You can retrieve mutation result directly from subtree.
-///   Modified tree can be obtained from `Subtree.tree`.
+/// - You can access tree substructures with object-oriented interface using `Subtree`.
+/// - You can modify tree structure directly on `Subtree`.
+/// - You can retrieve modified result directly from `tree` property.
+/// - `Subtree` does not support map-like value setter by key.
+///   Having such interface makes semantics ambiguous
+///   or comes with greatly dropped performance.
+///   Use `PersistentOrderedMapTree` interface
+///   for setting values for keys.
 ///
-public struct PersistentOrderedMapTree<Key,Value>: Collection where Key: Comparable {
-    private(set) var impl: IMPL
+public struct PersistentOrderedMapTree<Key,Value>: Collection where
+Key: Comparable {
+    private(set) var impl = IMPL()
     typealias IMPL = IMPLPersistentOrderedMapTree<Key,Value>
-    /// Initializes a new ordered-tree-map instance with root element.
-    public init(_ element: Element) {
-        impl = IMPL(root: element)
-    }
+    typealias Subkeys = IMPL.Subkeys
+    public init() {}
     init(impl x: IMPL) {
         impl = x
     }
 }
-
 public extension PersistentOrderedMapTree {
-    func index(for key: Key) -> Index? {
-        guard let i = impl.stateMap.index(forKey: key) else { return nil }
-        return PersistentOrderedMapTree.Index(impl: i)
-    }
-    subscript(_ key: Key) -> Value {
-        get { return impl.stateMap[key]! }
-        set(v) { impl.setState(v, for: key) }
+    subscript(_ k: Key) -> Value {
+        get { return impl.value(for: k) }
+        set(v) { impl.setValue(v, for: k) }
     }
 }
 
-//// MARK: Mutators
-//public extension OrderedTreeMap {
-//    /// Replaces subrange at non-root level.
-//    mutating func replaceSubtrees<C>(_ subrange: OrderedTreeMapRange<Key>, with newSubtrees: C) where C: Collection, C.Element == OrderedTreeMap {
-//        let ts1 = newSubtrees.lazy.map({ t in t.impl })
-//        impl.replaceSubrange(subrange.range, in: subrange.key, with: ts1)
-//    }
-//    /// Replaces subrange at non-root level.
-//    mutating func replaceSubrange<C>(_ subrange: OrderedTreeMapRange<Key>, with newElements: C) where C: Collection, C.Element == Element {
-//        let es1 = newElements.lazy.map({ k,v in (k,v) })
-//        impl.replaceSubrange(subrange.range, in: subrange.key, with: es1)
-//    }
-//    /// Replaces subrange at root level.
-//    mutating func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C: Collection, C.Element == Element {
-//        let es1 = newElements.lazy.map({ k,v in (k,v) })
-//        impl.replaceSubrange(subrange, in: impl.rootKey, with: es1)
-//    }
-//    /// Replaces subrange at non-root level.
-//    mutating func replaceSubrange<C>(_ subrange: Range<Int>, in key: Key, with newElements: C) where C: Collection, C.Element == Element {
-//        let es1 = newElements.lazy.map({ k,v in (k,v) })
-//        impl.replaceSubrange(subrange, in: key, with: es1)
-//    }
-//}
-//public struct OrderedTreeMapRange<Key> {
-//    var key: Key
-//    var range: Range<Int>
-//}
-
-// MARK: Collection Access
+// MARK: Mutators
 public extension PersistentOrderedMapTree {
-    typealias Element = (key: Key, value: Value)
-    var isEmpty: Bool {
-        return impl.stateMap.isEmpty
+    mutating func append(_ e: Element, in pk: Key?) {
+        insert(e, at: count, in: pk)
     }
-    var count: Int {
-        return impl.stateMap.count
+    mutating func insert(_ e: Element, at i: Int, in pk: Key?) {
+        impl.insert(e, at: i, in: pk)
     }
+    mutating func insert<C>(contentsOf es: C, at i: Int, in pk: Key?) where C: Collection, C.Element == Element {
+        impl.insert(contentsOf: es.lazy.map({ k,v in (k,v) }), at: i, in: pk)
+    }
+    /// Removes subtrees in range recursively.
+    /// This method removes target element and all of its descendants.
+    mutating func removeSubtrees(_ r: Range<Int>, in pk: Key?) {
+        impl.removeSubtrees(r, in: pk)
+    }
+    /// Removes subtrees at index recursively.
+    /// This method removes target element and all of its descendants.
+    mutating func removeSubtree(at i: Int, in pk: Key?) {
+        removeSubtrees(i..<i+1, in: pk)
+    }
+    /// This method fails if there's any child at the target subtree.
+    mutating func removeSubrange(_ r: Range<Int>, in pk: Key?) {
+        for (k,_) in subtree(for: pk) {
+            precondition(
+                impl.subkeys(for: k).isEmpty,
+                "Target subtrees have some descendants. Remove the descendatns first.")
+        }
+        impl.removeSubtrees(r, in: pk)
+    }
+    /// This method fails if there's any child at the target subtree.
+    mutating func remove(at i: Int, in pk: Key?) {
+        removeSubrange(i..<i+1, in: pk)
+    }
+}
+
+// MARK: Collection
+public extension PersistentOrderedMapTree {
     var startIndex: Index {
-        return Index(impl: impl.stateMap.startIndex)
+        return Index(impl: impl.startIndex)
     }
     var endIndex: Index {
-        return Index(impl: impl.stateMap.endIndex)
+        return Index(impl: impl.endIndex)
     }
     func index(after i: Index) -> Index {
-        return Index(impl: impl.stateMap.index(after: i.impl))
+        return Index(impl: impl.index(after: i.impl))
     }
-//    func index(before i: Index) -> Index {
-//        return Index(impl: impl.stateMap.index(before: i.impl))
-//    }
     subscript(_ i: Index) -> Element {
-        return impl.stateMap[i.impl]
+        return impl[i.impl]
     }
+    typealias Element = (key: Key, value: Value)
     struct Index: Comparable {
-        private(set) var impl: IMPL.StateMap.Index
+        var impl: IMPL.Index
     }
 }
 public extension PersistentOrderedMapTree.Index {
     static func < (lhs: PersistentOrderedMapTree.Index, rhs: PersistentOrderedMapTree.Index) -> Bool {
         return lhs.impl < rhs.impl
+    }
+}
+
+// MARK: Subtree
+public extension PersistentOrderedMapTree {
+    /// Root subtree.
+    var subtree: Subtree {
+        return subtree(for: nil)
+    }
+    /// A subtree for key.
+    /// - Parameter for k:
+    ///     `nil` for root subtree.
+    ///     Otherwise a key to the subtree.
+    func subtree(for k: Key?) -> Subtree {
+        return Subtree(impl: impl, key: k)
+    }
+    struct Subtree: RandomAccessCollection {
+        var impl: IMPL
+        var key: Key?
+        var cachedSubkeys: Subkeys
+        init(impl x: IMPL, key k: Key?) {
+            impl = x
+            key = k
+            cachedSubkeys = impl.subkeys(for: k)
+        }
+    }
+}
+public extension PersistentOrderedMapTree.Subtree {
+    typealias Tree = PersistentOrderedMapTree
+    typealias Subtree = Tree.Subtree
+    var tree: Tree {
+        return Tree(impl: impl)
+    }
+    func subtree(at i: Int) -> Subtree {
+        let sks = impl.subkeys(for: key)
+        let sk = sks[i]
+        return Subtree(impl: impl, key: sk)
+    }
+}
+// MARK: Subtree.RandomAccessCollection
+public extension PersistentOrderedMapTree.Subtree {
+    typealias Index = Int
+    typealias Element = (key: Key, value: Value)
+    var startIndex: Index {
+        return cachedSubkeys.startIndex
+    }
+    var endIndex: Index {
+        return cachedSubkeys.endIndex
+    }
+    subscript(_ i: Index) -> Element {
+        let sk = cachedSubkeys[i]
+        let sv = impl.value(for: sk)
+        return (sk,sv)
+    }
+    mutating func append(_ e: Element) {
+        insert(e, at: count)
+    }
+    mutating func insert<C>(contentsOf es: C, at i: Int) where C: Collection, C.Element == Element {
+        impl.insert(contentsOf: es.lazy.map({ (k,v) in (k,v) }), at: i, in: key)
+        cachedSubkeys = impl.subkeys(for: key)
+    }
+    mutating func insert(_ e: Element, at i: Int) {
+        impl.insert(e, at: i, in: key)
+        cachedSubkeys = impl.subkeys(for: key)
+    }
+    /// This also removes subtrees in target range.
+    mutating func removeSubrange(_ r: Range<Int>) {
+        impl.removeSubtrees(r, in: key)
+        cachedSubkeys = impl.subkeys(for: key)
+    }
+    /// This also removes subtrees at target index.
+    mutating func remove(at i: Int) {
+        impl.removeSubtree(at: i, in: key)
+        cachedSubkeys = impl.subkeys(for: key)
     }
 }

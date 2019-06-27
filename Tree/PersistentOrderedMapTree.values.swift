@@ -1,12 +1,12 @@
 //
-//  PersistentOrderedRootlessMapTree.values.swift
+//  PersistentOrderedMapTree.values.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/26.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-public extension PersistentOrderedRootlessMapTree {
+public extension PersistentOrderedMapTree {
     var values: Values {
         return Values(impl: impl)
     }
@@ -14,8 +14,8 @@ public extension PersistentOrderedRootlessMapTree {
         private(set) var impl: IMPL
     }
 }
-public extension PersistentOrderedRootlessMapTree.Values {
-    typealias Index = PersistentOrderedRootlessMapTree.Index
+public extension PersistentOrderedMapTree.Values {
+    typealias Index = PersistentOrderedMapTree.Index
     typealias Element = Value
     var startIndex: Index {
         return Index(impl: impl.startIndex)

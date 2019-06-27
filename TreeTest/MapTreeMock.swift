@@ -9,7 +9,7 @@
 import XCTest
 @testable import Tree
 
-typealias MapTree<K,V> = PersistentOrderedRootlessMapTree<K,V> where K: Comparable
+typealias MapTree<K,V> = PersistentOrderedMapTree<K,V> where K: Comparable
 
 struct MapTreeMock {
     typealias K = Int
