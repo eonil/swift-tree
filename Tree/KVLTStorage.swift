@@ -48,6 +48,10 @@ public extension KVLTStorage {
         get { return impl.value(for: k) }
         set(v) { impl.setValue(v, for: k) }
     }
+    func collection(of pk: Key?) -> List {
+        let sks = impl.subkeys(for: pk)
+        return List(pk: pk, impl: impl, cachedSubkeys: sks)
+    }
     func tree(for k: Key) -> Tree {
         return Tree(impl: impl, k: k)
     }
