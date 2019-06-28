@@ -12,6 +12,24 @@ public struct ListTreeStorage<Value>: ListTreeStorageProtocol {
     public var collection = List<ListTree<Value>>()
     public init() {}
 }
+public extension ListTreeStorage {
+    typealias Tree = ListTree<Value>
+    mutating func insert(_ t: Tree, at p: IndexPath) {
+        precondition(p.count > 0, "You cannot insert a tree at root position.")
+        let i = p.first!
+        let q = p.dropFirst()
+        collection[i].insert(t, at: q)
+    }
+    mutating func insert(_ v: Value, at p: IndexPath) {
+        insert(Tree(value: v), at: p)
+    }
+    mutating func remove(at p: IndexPath) {
+        precondition(p.count > 0, "You cannot remove tree at root position.")
+        let i = p.first!
+        let q = p.dropFirst()
+        collection[i].remove(at: q)
+    }
+}
 
 /// Tree of lists.
 public struct ListTree<Value>: ListTreeProtocol {
