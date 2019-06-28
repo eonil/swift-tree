@@ -7,6 +7,7 @@
 //
 
 /// A read-only ordered map-tree.
+@available(*, deprecated: 0)
 public protocol OrderedMapTreeProtocol: Collection where
 Element == (key: Key, value: Value) {
     associatedtype Key

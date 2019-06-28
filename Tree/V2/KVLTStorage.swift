@@ -38,7 +38,7 @@ public extension KVLTStorage {
         let ks = impl.subkeys(for: nil)
         return List(pk: nil, impl: impl, cachedSubkeys: ks)
     }
-    struct List: KVLTListProtocol {
+    struct List: RandomAccessCollection {
         var pk: Key?
         var impl: IMPL
         var cachedSubkeys: IMPL.Subkeys
@@ -74,10 +74,10 @@ public extension KVLTStorage {
     /// Replaces subtrees in range `r` of subtree for`pk` with new subtrees `c`.
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
     C: Swift.Collection,
-    C.Element: MapTree,
+    C.Index == List.Index,
+    C.Element: KeyValueCollectionTreeProtocol,
     C.Element.Key == Key,
-    C.Element.Value == Value,
-    C.Element.Collection.Index == List.Index {
+    C.Element.Value == Value {
         impl.removeSubtrees(r, in: pk)
         func insertRecursively(_ t: C.Element, at i: Int, in pk: Key?) {
             impl.insert((t.key,t.value), at: i, in: pk)
@@ -94,24 +94,6 @@ public extension KVLTStorage {
     C.Element == (key: Key, value: Value) {
         impl.insert(contentsOf: c.lazy.map({ (k,v) in (k,v) }), at: i, in: pk)
     }
-//    mutating func insert<C>(contentsOf c: C, at i: Int, in pk: Key?) where
-//    C: Swift.Collection,
-//    C.Element: MapTree,
-//    C.Element.Key == Key,
-//    C.Element.Value == Value,
-//    C.Element.Collection.Index == List.Index {
-//        replace(i..<i, in: pk, with: c)
-//    }
-//    mutating func insert<T>(_ t: T, at i: Int, in pk: Key?) where
-//    T: MapTree,
-//    T.Key == Key,
-//    T.Value == Value,
-//    T.Collection.Index == List.Index {
-//        replace(i..<i, in: pk, with: [t])
-//    }
-//    mutating func remove(_ subrange: Range<Int>, in pk: Key?) {
-//        replace(subrange, in: pk, with: EmptyCollection<Tree>())
-//    }
 }
 public extension KVLTStorage.List {
     typealias Tree = KVLTStorage.Tree
@@ -139,5 +121,3 @@ public extension KVLTStorage.Tree {
         return List(pk: k, impl: impl, cachedSubkeys: sks)
     }
 }
-
-
