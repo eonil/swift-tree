@@ -46,10 +46,14 @@ Collection.Index == Int {
 //        collection.insert(t1, at: i)
 //    }
     mutating func insert(contentsOf t: Tree, at p: IndexPath) {
-        precondition(p.count > 0, "You cannot insert a tree at root position.")
-        let i = p.first!
-        let q = p.dropFirst()
-        collection[i].insert(contentsOf: t, at: q)
+        switch p.count {
+        case 0: fatalError("You cannot insert a tree at root position.")
+        case 1: collection.insert(t, at: p.last!)
+        default:
+            let i = p.first!
+            let q = p.dropFirst()
+            collection[i].insert(contentsOf: t, at: q)
+        }
     }
     mutating func insert(_ v: Value, at p: IndexPath) {
         insert(contentsOf: Tree(value: v), at: p)
