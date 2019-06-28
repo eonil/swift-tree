@@ -47,7 +47,7 @@ SubCollection.Index == Int {
             }
         }
     }
-    mutating func insert(_ e: Self, at p: IndexPath) {
+    mutating func insert(contentsOf e: Self, at p: IndexPath) {
         switch p.count {
         case 0:
             precondition(p.count > 0, "You cannot insert a new tree at root position.")
@@ -61,7 +61,7 @@ SubCollection.Index == Int {
         }
     }
     mutating func insert(_ v: Value, at p: IndexPath) {
-        insert(Self(value: v), at: p)
+        insert(contentsOf: Self(value: v), at: p)
     }
     mutating func remove(at p: IndexPath) {
         switch p.count {

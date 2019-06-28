@@ -23,7 +23,8 @@ Collection: MutableCollection & RangeReplaceableCollection,
 Collection.Element: ReplaceableListTreeProtocol {
     var collection: Collection { get set }
     subscript(_: IndexPath) -> Tree { get set }
-    mutating func insert(_ t: Tree, at p: IndexPath)
-    mutating func remove(at p: IndexPath)
+    mutating func insert(contentsOf: Tree, at: IndexPath)
+    mutating func insert(_: Value, at: IndexPath)
+    mutating func remove(at: IndexPath)
 }
 
