@@ -14,6 +14,20 @@ public struct ListTreeStorage<Value>: ListTreeStorageProtocol {
 }
 public extension ListTreeStorage {
     typealias Tree = ListTree<Value>
+    subscript(_ p: IndexPath) -> Tree {
+        get {
+            precondition(p.count > 0, "There's no tree at root position.")
+            let i = p.first!
+            let q = p.dropFirst()
+            return collection[i][q]
+        }
+        set(v) {
+            precondition(p.count > 0, "There's no tree at root position.")
+            let i = p.first!
+            let q = p.dropFirst()
+            collection[i][q] = v
+        }
+    }
     mutating func insert(_ t: Tree, at p: IndexPath) {
         precondition(p.count > 0, "You cannot insert a tree at root position.")
         let i = p.first!
