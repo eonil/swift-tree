@@ -1,23 +1,26 @@
 //
-//  ListTree.map.swift
+//  ListTreeStorage.map.swift
 //  Tree
 //
 //  Created by Henry on 2019/06/28.
 //  Copyright © 2019 Eonil. All rights reserved.
 //
 
-public extension ListTree {
+public extension ListTreeStorage {
     /// Makes a new `T` instance with mapped values.
-    /// This overload makes Swift compiler to prefer `ListTree`
-    /// type if returning type is not been specified.
-    func map<X>(_ fx: (Value) -> X) -> ListTree<X> {
-        var t1 = ListTree<X>(value: fx(value))
-        for ct in collection {
-            let ct1 = ct.map(fx)
-            t1.collection.append(ct1)
+    func map<S,X>(_ fx: (Value) -> X) -> S where
+    S: ReplaceableListTreeStorageProtocol,
+    S.Value == X {
+        var s1 = S()
+        for t in collection {
+            let t1 = t.map(fx) as S.Tree
+            s1.collection.append(t1)
         }
-        return t1
+        return s1
     }
+}
+
+public extension ListTree {
     /// Makes a new `T` instance with mapped values.
     func map<T,X>(_ fx: (Value) -> X) -> T where
     T: ReplaceableListTreeProtocol,
