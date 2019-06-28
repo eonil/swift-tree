@@ -35,6 +35,16 @@ Collection.Index == Int {
             collection[i][q] = v
         }
     }
+//    mutating func insert<T>(contentsOf t: T, at p: IndexPath) where
+//    T: ListTreeProtocol,
+//    T.Value == Value {
+//        precondition(p.count > 0, "You cannot insert a tree at root position.")
+//        let i = p.last!
+//        let q = p.dropFirst()
+//        let t1 = Tree(value: t.value)
+//        t1.insert(contentsOf: <#T##ReplaceableListTreeProtocol#>, at: <#T##IndexPath#>)
+//        collection.insert(t1, at: i)
+//    }
     mutating func insert(contentsOf t: Tree, at p: IndexPath) {
         precondition(p.count > 0, "You cannot insert a tree at root position.")
         let i = p.first!
@@ -52,3 +62,15 @@ Collection.Index == Int {
     }
 }
 
+public extension ReplaceableListTreeStorageProtocol {
+    /// Initializes a new tree by copying values and topology of another tree.
+    init<T>(_ t: T) where
+    T: ReplaceableListTreeStorageProtocol,
+    T.Tree.Value == Tree.Value {
+        self = Self()
+        for ct in t.collection {
+            let ct1 = Tree(value: ct.value)
+            collection.append(ct1)
+        }
+    }
+}

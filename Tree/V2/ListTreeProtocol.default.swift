@@ -47,6 +47,25 @@ SubCollection.Index == Int {
             }
         }
     }
+//    mutating func insert<T>(contentsOf t: T, at p: IndexPath) where
+//    T: ListTreeProtocol,
+//    T.Value == Value {
+//        switch p.count {
+//        case 0:
+//            precondition(p.count > 0, "You cannot insert a new tree at root position.")
+//        case 1:
+//            let i = p.last!
+//            var t1 = Self(value: t.value)
+//            for ct in t.collection {
+//                t1.insert(contentsOf: ct, at: t1.collection.count)
+//            }
+//            collection.insert(t1, at: i)
+//        default:
+//            let q = p.dropLast()
+//            let i = p.last!
+//            self[q].collection.insert(contentsOf: t, at: i)
+//        }
+//    }
     mutating func insert(contentsOf e: Self, at p: IndexPath) {
         switch p.count {
         case 0:
@@ -74,6 +93,19 @@ SubCollection.Index == Int {
             let q = p.dropLast()
             let i = p.last!
             self[q].collection.remove(at: i)
+        }
+    }
+}
+
+public extension ReplaceableListTreeProtocol {
+    /// Initializes a new tree by copying values and topology of another tree.
+    init<T>(_ t: T) where
+    T: ReplaceableListTreeProtocol,
+    T.Value == Value {
+        self = Self(value: t.value)
+        for ct in t.collection {
+            let ct1 = Self(ct)
+            collection.append(ct1)
         }
     }
 }

@@ -21,8 +21,12 @@ Collection.Element.Value == Value {
 public protocol ReplaceableListTreeStorageProtocol: ListTreeStorageProtocol where
 Collection: MutableCollection & RangeReplaceableCollection,
 Collection.Element: ReplaceableListTreeProtocol {
+    init()
     var collection: Collection { get set }
     subscript(_: IndexPath) -> Tree { get set }
+//    mutating func insert<T>(contentsOf: T, at: IndexPath) where
+//    T: ListTreeProtocol,
+//    T.Value == Value
     mutating func insert(contentsOf: Tree, at: IndexPath)
     mutating func insert(_: Value, at: IndexPath)
     mutating func remove(at: IndexPath)
