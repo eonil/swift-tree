@@ -74,7 +74,6 @@ public extension KVLTStorage {
     /// Replaces subtrees in range `r` of subtree for`pk` with new subtrees `c`.
     mutating func replace<C>(_ r: Range<Int>, in pk: Key?, with c: C) where
     C: Swift.Collection,
-    C.Index == List.Index,
     C.Element: KeyValueCollectionTreeProtocol,
     C.Element.Key == Key,
     C.Element.Value == Value {

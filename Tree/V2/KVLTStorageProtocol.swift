@@ -28,7 +28,6 @@ public protocol ReplaceableKVLTStorageProtocol: KVLTStorageProtocol {
     /// Replaces subtrees of specified range `r` in collection of tree for `pk` with elements in `c`.
     mutating func replace<C>(_ r: Range<List.Index>, in pk: Key?, with c: C) where
     C: Swift.Collection,
-    C.Index == List.Index,
     C.Element: KeyValueCollectionTreeProtocol,
     C.Element.Key == Key,
     C.Element.Value == Value,
@@ -41,13 +40,12 @@ public protocol ReplaceableKVLTStorageProtocol: KVLTStorageProtocol {
 /// Convenient extension methods.
 public extension ReplaceableKVLTStorageProtocol {
     mutating func insert<C>(contentsOf c: C, at i: List.Index, in pk: Key?) where
-        C: Swift.Collection,
-        C.Index == List.Index,
-        C.Element: KeyValueCollectionTreeProtocol,
-        C.Element.Key == Key,
-        C.Element.Value == Value,
-        C.Element.SubCollection.Index == List.Index {
-            replace(i..<i, in: pk, with: c)
+    C: Swift.Collection,
+    C.Element: KeyValueCollectionTreeProtocol,
+    C.Element.Key == Key,
+    C.Element.Value == Value,
+    C.Element.SubCollection.Index == List.Index {
+        replace(i..<i, in: pk, with: c)
     }
     mutating func append(_ e: (key: Key, value: Value), in pk: Key?) {
         let c = collection(of: pk).endIndex
