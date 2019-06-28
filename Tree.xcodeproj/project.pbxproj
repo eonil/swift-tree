@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		454EA3E022C606FC0043E99D /* ListTreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA3DF22C606FC0043E99D /* ListTreeProtocol.swift */; };
+		454EA3E022C606FC0043E99D /* ListTreeStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */; };
 		454EA3E222C607210043E99D /* ListTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA3E122C607210043E99D /* ListTree.swift */; };
+		454EA40C22C620670043E99D /* ListTreeStorageProtocol.default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */; };
+		454EA40E22C620C10043E99D /* ListTreeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA40D22C620C10043E99D /* ListTreeProtocol.swift */; };
+		454EA41022C623580043E99D /* ListTreeProtocol.default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA40F22C623580043E99D /* ListTreeProtocol.default.swift */; };
 		45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedMapTree.swift */; };
 		45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */; };
 		45639D4022C3910400C0DD71 /* MapTreeMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D3F22C3910400C0DD71 /* MapTreeMock.swift */; };
@@ -77,8 +80,11 @@
 		4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLPersistentOrderedTreeMapTest.swift; sourceTree = "<group>"; };
 		4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedTreeMapTest.swift; sourceTree = "<group>"; };
 		451D8D2022BC785B00A4B819 /* TreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeProtocol.swift; sourceTree = "<group>"; };
-		454EA3DF22C606FC0043E99D /* ListTreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeProtocol.swift; sourceTree = "<group>"; };
+		454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorageProtocol.swift; sourceTree = "<group>"; };
 		454EA3E122C607210043E99D /* ListTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTree.swift; sourceTree = "<group>"; };
+		454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorageProtocol.default.swift; sourceTree = "<group>"; };
+		454EA40D22C620C10043E99D /* ListTreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeProtocol.swift; sourceTree = "<group>"; };
+		454EA40F22C623580043E99D /* ListTreeProtocol.default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeProtocol.default.swift; sourceTree = "<group>"; };
 		4558191722BCB57E00B07175 /* ImplCursor1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImplCursor1.swift; sourceTree = "<group>"; };
 		4558191922BCCCEF00B07175 /* SubtreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtreeTest.swift; sourceTree = "<group>"; };
 		4558191B22BCEA4100B07175 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -323,7 +329,10 @@
 				459D762522C5AED100CE5841 /* CollectionTreeProtocol.swift */,
 				459D762722C5B03100CE5841 /* CollectionTreeProtocol.dfs.swift */,
 				459D762D22C5B4A000CE5841 /* CollectionTreeStorageProtocol.swift */,
-				454EA3DF22C606FC0043E99D /* ListTreeProtocol.swift */,
+				454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */,
+				454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */,
+				454EA40D22C620C10043E99D /* ListTreeProtocol.swift */,
+				454EA40F22C623580043E99D /* ListTreeProtocol.default.swift */,
 				454EA3E122C607210043E99D /* ListTree.swift */,
 				459D762B22C5B48500CE5841 /* KeyValueCollectionTreeProtocol.swift */,
 				459D761022C4D61E00CE5841 /* KVLTStorageProtocol.swift */,
@@ -511,16 +520,19 @@
 				459D764222C5CD9C00CE5841 /* PersistentOrderedMapTree.keys.swift in Sources */,
 				459D764022C5CD9C00CE5841 /* PersistentOrderedMapTree.path.swift in Sources */,
 				45A12EB022C0C2C7004DFDAF /* Tree.swift in Sources */,
+				454EA41022C623580043E99D /* ListTreeProtocol.default.swift in Sources */,
 				459D763F22C5CD9C00CE5841 /* PersistentOrderedMapTree.swift in Sources */,
+				454EA40E22C620C10043E99D /* ListTreeProtocol.swift in Sources */,
 				459D764122C5CD9C00CE5841 /* PersistentOrderedMapTree.map.swift in Sources */,
 				459D760522C4D08A00CE5841 /* KVLTStorage.List.keys.swift in Sources */,
 				45B5EBDD22C0CC83007E66B4 /* IMPLImplicitIdentity.swift in Sources */,
 				45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedMapTree.swift in Sources */,
 				459D763822C5BE5600CE5841 /* KVLTStorageProtocol.swift in Sources */,
+				454EA40C22C620670043E99D /* ListTreeStorageProtocol.default.swift in Sources */,
 				459D764422C5CD9C00CE5841 /* PersistentOrderedMapTree.lazy.swift in Sources */,
 				459D764E22C5CE8200CE5841 /* OrderedMapTreeProtocol.swift in Sources */,
 				459D763722C5BE5600CE5841 /* KeyValueCollectionTreeProtocol.swift in Sources */,
-				454EA3E022C606FC0043E99D /* ListTreeProtocol.swift in Sources */,
+				454EA3E022C606FC0043E99D /* ListTreeStorageProtocol.swift in Sources */,
 				459D764722C5CD9C00CE5841 /* LazyOrderedMapTree.swift in Sources */,
 				459D763322C5BE5600CE5841 /* CollectionTreeProtocol.swift in Sources */,
 				45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */,

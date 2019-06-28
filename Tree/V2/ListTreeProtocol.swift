@@ -8,5 +8,19 @@
 
 import Foundation
 
-protocol ListTreeStorageProtocol: CollectionTreeStorageProtocol {}
-protocol ListTreeProtocol: CollectionTreeProtocol {}
+public protocol ListTreeProtocol: CollectionTreeProtocol where
+SubCollection: RandomAccessCollection,
+SubCollection.Index == Int {
+    associatedtype Value
+    init(value: Value)
+    var value: Value { get }
+    subscript(_: IndexPath) -> Self { get }
+}
+
+public protocol ReplaceableListTreeProtocol: ListTreeProtocol where
+SubCollection: MutableCollection & RangeReplaceableCollection {
+    var value: Value { get set }
+    var collection: SubCollection { get set }
+    subscript(_: IndexPath) -> Self { get set }
+}
+
