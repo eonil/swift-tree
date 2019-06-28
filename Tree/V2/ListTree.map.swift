@@ -7,11 +7,13 @@
 //
 
 public extension ListTree {
-    /// Makes a new `ListTree` with mapped values.
-    func map<X>(_ fx: (Value) -> X) -> ListTree<X> {
-        var t1 = ListTree<X>(value: fx(value))
+    /// Makes a new `T` instance with mapped values.
+    func map<T,X>(_ fx: (Value) -> X) -> T where
+    T: ReplaceableListTreeProtocol,
+    T.Value == X {
+        var t1 = T(value: fx(value))
         for ct in collection {
-            let ct1 = ct.map(fx)
+            let ct1 = ct.map(fx) as T
             t1.collection.append(ct1)
         }
         return t1
