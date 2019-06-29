@@ -27,4 +27,42 @@ class KVLTStorageTest: XCTestCase {
         XCTAssertEqual(s.count, 3)
         XCTAssertEqual(s.isEmpty, false)
     }
+    func testInsertChildWithOneDepth() {
+        var s = KVLTStorage<Int,String>()
+
+        s.insert((111,"aaa"), at: 0, in: nil)
+        XCTAssertEqual(s.collection.count, 1)
+        XCTAssertEqual(s.collection[0].key, 111)
+        XCTAssertEqual(s.collection[0].value, "aaa")
+        XCTAssertEqual(s.collection[0].collection.count, 0)
+
+        s.insert((222,"bbb"), at: 0, in: 111)
+        XCTAssertEqual(s.collection[0].collection.count, 1)
+        XCTAssertEqual(s.collection[0].collection[0].key, 222)
+        XCTAssertEqual(s.collection[0].collection[0].value, "bbb")
+
+        s.insert((333,"ccc"), at: 1, in: 111)
+        XCTAssertEqual(s.collection[0].collection.count, 2)
+        XCTAssertEqual(s.collection[0].collection[1].key, 333)
+        XCTAssertEqual(s.collection[0].collection[1].value, "ccc")
+    }
+    func testInsertChildWithTwoDepths() {
+        var s = KVLTStorage<Int,String>()
+
+        s.insert((111,"aaa"), at: 0, in: nil)
+        XCTAssertEqual(s.collection.count, 1)
+        XCTAssertEqual(s.collection[0].key, 111)
+        XCTAssertEqual(s.collection[0].value, "aaa")
+        XCTAssertEqual(s.collection[0].collection.count, 0)
+
+        s.insert((222,"bbb"), at: 0, in: 111)
+        XCTAssertEqual(s.collection[0].collection.count, 1)
+        XCTAssertEqual(s.collection[0].collection[0].key, 222)
+        XCTAssertEqual(s.collection[0].collection[0].value, "bbb")
+
+        s.insert((333,"ccc"), at: 0, in: 222)
+        XCTAssertEqual(s.collection[0].collection[0].collection.count, 1)
+        XCTAssertEqual(s.collection[0].collection[0].collection[0].key, 333)
+        XCTAssertEqual(s.collection[0].collection[0].collection[0].value, "ccc")
+    }
 }

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import TestUtil
 @testable import Tree
 
 class MapTreeTest: XCTestCase {

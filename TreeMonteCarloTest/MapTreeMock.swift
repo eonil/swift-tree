@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import TestUtil
 @testable import Tree
 
 typealias MapTree<K,V> = PersistentOrderedMapTree<K,V> where K: Comparable
