@@ -108,4 +108,14 @@ public extension ReplaceableListTreeProtocol {
             collection.append(ct1)
         }
     }
+    /// Initializes a new tree by copying values and topology of another tree.
+    init<T>(_ t: T) where
+        T: KVLTProtocol,
+        Value == (key: T.Key, value: T.Value) {
+            self = Self(value: (t.key,t.value))
+            for ct in t.collection {
+                let ct1 = Self(ct)
+                collection.append(ct1)
+            }
+    }
 }

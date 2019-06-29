@@ -16,6 +16,8 @@
 		45639CD422C304EB00C0DD71 /* IMPLPersistentOrderedMapTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD322C304EB00C0DD71 /* IMPLPersistentOrderedMapTree.swift */; };
 		45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639CD922C312F600C0DD71 /* IMPLAlternativeOptional.swift */; };
 		45639D6B22C3999000C0DD71 /* Imports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45639D6A22C3999000C0DD71 /* Imports.swift */; };
+		4580D85C22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4580D85B22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift */; };
+		4580D85E22C73B3C00DEF8BA /* KVLTProtocol.map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4580D85D22C73B3C00DEF8BA /* KVLTProtocol.map.swift */; };
 		459D75EB22C4B62C00CE5841 /* KVLTStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75EA22C4B62C00CE5841 /* KVLTStorage.swift */; };
 		459D75EF22C4BC9600CE5841 /* KVLTStorage.conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75EE22C4BC9600CE5841 /* KVLTStorage.conversion.swift */; };
 		459D75FF22C4CFAD00CE5841 /* KVLTStorage.keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459D75FE22C4CFAD00CE5841 /* KVLTStorage.keys.swift */; };
@@ -122,6 +124,8 @@
 		45639D9F22C459C700C0DD71 /* ConceptualProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConceptualProtocols.swift; sourceTree = "<group>"; };
 		45639DA122C4684600C0DD71 /* OrderedMapTreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedMapTreeProtocol.swift; sourceTree = "<group>"; };
 		45639DA322C4687B00C0DD71 /* LazyOrderedMapTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyOrderedMapTree.swift; sourceTree = "<group>"; };
+		4580D85B22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVLTStorage.Tree.map.swift; sourceTree = "<group>"; };
+		4580D85D22C73B3C00DEF8BA /* KVLTProtocol.map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVLTProtocol.map.swift; sourceTree = "<group>"; };
 		458522A622BC7F4400C367E0 /* TreePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePath.swift; sourceTree = "<group>"; };
 		458522A822BC813900C367E0 /* TreePathProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreePathProtocol.swift; sourceTree = "<group>"; };
 		458522AC22BC831C00C367E0 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				454EA41222C643490043E99D /* ListTreeStorage.map.swift */,
 				459D762B22C5B48500CE5841 /* KeyValueCollectionTreeProtocol.swift */,
 				459D761022C4D61E00CE5841 /* KVLTStorageProtocol.swift */,
+				4580D85D22C73B3C00DEF8BA /* KVLTProtocol.map.swift */,
 				459D75EA22C4B62C00CE5841 /* KVLTStorage.swift */,
 				459D760022C4CFE500CE5841 /* KVLTStorage.index.swift */,
 				459D75FE22C4CFAD00CE5841 /* KVLTStorage.keys.swift */,
@@ -379,6 +384,7 @@
 				459D760422C4D08A00CE5841 /* KVLTStorage.List.keys.swift */,
 				459D760622C4D2A900CE5841 /* KVLTStorage.map.swift */,
 				459D760C22C4D49000CE5841 /* KVLTStorage.lazy.swift */,
+				4580D85B22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift */,
 				459D761422C4DB7A00CE5841 /* LazyKVLTStorage.swift */,
 				459D761222C4DA0400CE5841 /* EmptyKVLT.swift */,
 			);
@@ -623,6 +629,7 @@
 				459D764E22C5CE8200CE5841 /* OrderedMapTreeProtocol.swift in Sources */,
 				459D763722C5BE5600CE5841 /* KeyValueCollectionTreeProtocol.swift in Sources */,
 				454EA3E022C606FC0043E99D /* ListTreeStorageProtocol.swift in Sources */,
+				4580D85C22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift in Sources */,
 				45E4013A22C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift in Sources */,
 				459D764722C5CD9C00CE5841 /* LazyOrderedMapTree.swift in Sources */,
 				459D763322C5BE5600CE5841 /* CollectionTreeProtocol.swift in Sources */,
@@ -630,6 +637,7 @@
 				45E4013822C6F0C100C5395A /* CollectionTreeProtocol.paths.swift in Sources */,
 				459D761522C4DB7A00CE5841 /* LazyKVLTStorage.swift in Sources */,
 				459D764622C5CD9C00CE5841 /* PersistentOrderedMapTree.subtree.swift in Sources */,
+				4580D85E22C73B3C00DEF8BA /* KVLTProtocol.map.swift in Sources */,
 				459D760D22C4D49000CE5841 /* KVLTStorage.lazy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
