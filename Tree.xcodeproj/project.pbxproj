@@ -54,6 +54,8 @@
 		45CE399122BC6576007205EE /* libTree.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4591BA8722BC5BA40052039C /* libTree.a */; };
 		45E4010422C6668200C5395A /* ListTreeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4010322C6668200C5395A /* ListTreeTest.swift */; };
 		45E4010622C6668B00C5395A /* ListTreeStorageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4010522C6668B00C5395A /* ListTreeStorageTest.swift */; };
+		45E4013822C6F0C100C5395A /* CollectionTreeProtocol.paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4013722C6F0C100C5395A /* CollectionTreeProtocol.paths.swift */; };
+		45E4013A22C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E4013922C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,8 @@
 		45CE399022BC6576007205EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45E4010322C6668200C5395A /* ListTreeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeTest.swift; sourceTree = "<group>"; };
 		45E4010522C6668B00C5395A /* ListTreeStorageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorageTest.swift; sourceTree = "<group>"; };
+		45E4013722C6F0C100C5395A /* CollectionTreeProtocol.paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTreeProtocol.paths.swift; sourceTree = "<group>"; };
+		45E4013922C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTreeProtocol.paths.dfs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -334,6 +338,7 @@
 			children = (
 				459D762522C5AED100CE5841 /* CollectionTreeProtocol.swift */,
 				459D762722C5B03100CE5841 /* CollectionTreeProtocol.dfs.swift */,
+				45E4013D22C6F72D00C5395A /* FoundationExtensions */,
 				459D762D22C5B4A000CE5841 /* CollectionTreeStorageProtocol.swift */,
 				454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */,
 				454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */,
@@ -399,6 +404,15 @@
 				45E4010522C6668B00C5395A /* ListTreeStorageTest.swift */,
 			);
 			path = TreeTest;
+			sourceTree = "<group>";
+		};
+		45E4013D22C6F72D00C5395A /* FoundationExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				45E4013722C6F0C100C5395A /* CollectionTreeProtocol.paths.swift */,
+				45E4013922C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift */,
+			);
+			path = FoundationExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,9 +557,11 @@
 				459D764E22C5CE8200CE5841 /* OrderedMapTreeProtocol.swift in Sources */,
 				459D763722C5BE5600CE5841 /* KeyValueCollectionTreeProtocol.swift in Sources */,
 				454EA3E022C606FC0043E99D /* ListTreeStorageProtocol.swift in Sources */,
+				45E4013A22C6F12200C5395A /* CollectionTreeProtocol.paths.dfs.swift in Sources */,
 				459D764722C5CD9C00CE5841 /* LazyOrderedMapTree.swift in Sources */,
 				459D763322C5BE5600CE5841 /* CollectionTreeProtocol.swift in Sources */,
 				45639CDA22C312F600C0DD71 /* IMPLAlternativeOptional.swift in Sources */,
+				45E4013822C6F0C100C5395A /* CollectionTreeProtocol.paths.swift in Sources */,
 				459D761522C4DB7A00CE5841 /* LazyKVLTStorage.swift in Sources */,
 				459D764622C5CD9C00CE5841 /* PersistentOrderedMapTree.subtree.swift in Sources */,
 				459D760D22C4D49000CE5841 /* KVLTStorage.lazy.swift in Sources */,
