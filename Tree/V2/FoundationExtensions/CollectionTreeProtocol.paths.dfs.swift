@@ -26,16 +26,17 @@ public extension CollectionTreePathsDFS {
         return Iterator(reversedStack: [(path: [], tree: base)])
     }
     struct Iterator: IteratorProtocol {
-        var reversedStack = [Element]()
+        var reversedStack = [Location]()
+        typealias Location = (path: IndexPath, tree: Base)
     }
 }
 public extension CollectionTreePathsDFS.Iterator {
-    typealias Element = (path: IndexPath, tree: Base)
+    typealias Element = IndexPath
     mutating func next() -> Element? {
         guard !reversedStack.isEmpty else { return nil }
         let (p,e) = reversedStack.removeFirst()
         let cpes = e.collection.enumerated().map({ (i,ce) in (p.appending(i),ce) })
         reversedStack.insert(contentsOf: cpes, at: 0)
-        return (p,e)
+        return p
     }
 }
