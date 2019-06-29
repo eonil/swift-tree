@@ -65,7 +65,8 @@ extension IMPLPersistentOrderedMapTree {
         return valueMap[i]
     }
     func value(for k:K) -> V {
-        return valueMap[k]!
+        guard let v = valueMap[k] else { fatalError("Supplied key is not in this tree.") }
+        return v
     }
     func subkeys(for k:K?) -> Subkeys {
         return subkeysMap[Alt(k)]!
