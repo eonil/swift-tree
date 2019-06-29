@@ -59,10 +59,14 @@ Collection.Index == Int {
         insert(contentsOf: Tree(value: v), at: p)
     }
     mutating func remove(at p: IndexPath) {
-        precondition(p.count > 0, "You cannot remove tree at root position.")
-        let i = p.first!
-        let q = p.dropFirst()
-        collection[i].remove(at: q)
+        switch p.count {
+        case 0: fatalError("You cannot remove tree at root position.")
+        case 1: collection.remove(at: p.last!)
+        default:
+            let i = p.first!
+            let q = p.dropFirst()
+            collection[i].remove(at: q)
+        }
     }
 }
 
