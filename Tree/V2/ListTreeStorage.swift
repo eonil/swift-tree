@@ -11,7 +11,8 @@ import BTree
 
 public struct ListTreeStorage<Value>:
 ListTreeStorageProtocol,
-ReplaceableListTreeStorageProtocol {
+ReplaceableListTreeStorageProtocol,
+CustomReflectable {
     public var collection = List<ListTree<Value>>()
     public init() {}
 }
@@ -19,7 +20,8 @@ ReplaceableListTreeStorageProtocol {
 /// Tree of lists.
 public struct ListTree<Value>:
 ListTreeProtocol,
-ReplaceableListTreeProtocol {
+ReplaceableListTreeProtocol,
+CustomReflectable {
     public var value: Value
     public typealias SubCollection = List<ListTree<Value>>
     public var collection = SubCollection()

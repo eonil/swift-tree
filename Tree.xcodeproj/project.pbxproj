@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4536253922CA4675002CEF59 /* ListTreeStorage.mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4536253822CA4675002CEF59 /* ListTreeStorage.mirror.swift */; };
+		4536253B22CA4719002CEF59 /* KVLTStorage.mirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4536253A22CA4719002CEF59 /* KVLTStorage.mirror.swift */; };
 		454EA3E022C606FC0043E99D /* ListTreeStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */; };
 		454EA3E222C607210043E99D /* ListTreeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA3E122C607210043E99D /* ListTreeStorage.swift */; };
 		454EA40C22C620670043E99D /* ListTreeStorageProtocol.default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */; };
@@ -97,6 +99,8 @@
 		4506A2BC22C0EB5600B6476E /* IMPLPersistentOrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMPLPersistentOrderedTreeMapTest.swift; sourceTree = "<group>"; };
 		4506A2BE22C0ED9600B6476E /* PersistentOrderedTreeMapTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentOrderedTreeMapTest.swift; sourceTree = "<group>"; };
 		451D8D2022BC785B00A4B819 /* TreeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeProtocol.swift; sourceTree = "<group>"; };
+		4536253822CA4675002CEF59 /* ListTreeStorage.mirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorage.mirror.swift; sourceTree = "<group>"; };
+		4536253A22CA4719002CEF59 /* KVLTStorage.mirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVLTStorage.mirror.swift; sourceTree = "<group>"; };
 		454EA3DF22C606FC0043E99D /* ListTreeStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorageProtocol.swift; sourceTree = "<group>"; };
 		454EA3E122C607210043E99D /* ListTreeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorage.swift; sourceTree = "<group>"; };
 		454EA40B22C620670043E99D /* ListTreeStorageProtocol.default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTreeStorageProtocol.default.swift; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 				454EA40F22C623580043E99D /* ListTreeProtocol.default.swift */,
 				454EA3E122C607210043E99D /* ListTreeStorage.swift */,
 				454EA41222C643490043E99D /* ListTreeStorage.map.swift */,
+				4536253822CA4675002CEF59 /* ListTreeStorage.mirror.swift */,
 				459D762B22C5B48500CE5841 /* KeyValueCollectionTreeProtocol.swift */,
 				459D761022C4D61E00CE5841 /* KVLTStorageProtocol.swift */,
 				4580D85D22C73B3C00DEF8BA /* KVLTProtocol.map.swift */,
@@ -385,6 +390,7 @@
 				459D760622C4D2A900CE5841 /* KVLTStorage.map.swift */,
 				459D760C22C4D49000CE5841 /* KVLTStorage.lazy.swift */,
 				4580D85B22C73B2C00DEF8BA /* KVLTStorage.Tree.map.swift */,
+				4536253A22CA4719002CEF59 /* KVLTStorage.mirror.swift */,
 				459D761422C4DB7A00CE5841 /* LazyKVLTStorage.swift */,
 				459D761222C4DA0400CE5841 /* EmptyKVLT.swift */,
 			);
@@ -603,12 +609,14 @@
 			files = (
 				459D75FF22C4CFAD00CE5841 /* KVLTStorage.keys.swift in Sources */,
 				459D763422C5BE5600CE5841 /* CollectionTreeProtocol.dfs.swift in Sources */,
+				4536253B22CA4719002CEF59 /* KVLTStorage.mirror.swift in Sources */,
 				459D764322C5CD9C00CE5841 /* PersistentOrderedMapTree.values.swift in Sources */,
 				459D760722C4D2A900CE5841 /* KVLTStorage.map.swift in Sources */,
 				459D761322C4DA0400CE5841 /* EmptyKVLT.swift in Sources */,
 				454EA41322C643490043E99D /* ListTreeStorage.map.swift in Sources */,
 				454EA3E222C607210043E99D /* ListTreeStorage.swift in Sources */,
 				459D75EB22C4B62C00CE5841 /* KVLTStorage.swift in Sources */,
+				4536253922CA4675002CEF59 /* ListTreeStorage.mirror.swift in Sources */,
 				459D763522C5BE5600CE5841 /* CollectionTreeStorageProtocol.swift in Sources */,
 				459D764522C5CD9C00CE5841 /* PersistentOrderedMapTree.slice.swift in Sources */,
 				459D75EF22C4BC9600CE5841 /* KVLTStorage.conversion.swift in Sources */,
