@@ -82,6 +82,9 @@ SubCollection.Index == Int {
     mutating func insert(_ v: Value, at p: IndexPath) {
         insert(contentsOf: Self(value: v), at: p)
     }
+    mutating func insert<C>(contentsOf es: C, at i: Int, in pp: IndexPath) where C: Collection, C.Element == Self {
+        self[pp].collection.insert(contentsOf: es, at: i)
+    }
     mutating func remove(at p: IndexPath) {
         switch p.count {
         case 0:
@@ -94,6 +97,9 @@ SubCollection.Index == Int {
             let i = p.last!
             self[q].collection.remove(at: i)
         }
+    }
+    mutating func removeSubrange(_ r: Range<Int>, in pp: IndexPath) {
+        self[pp].collection.removeSubrange(r)
     }
 }
 
